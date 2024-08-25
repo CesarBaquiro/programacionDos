@@ -6,6 +6,9 @@ public class Cliente extends Usuario {
     private String correoElectronico;
     private String contrasena;
 
+
+    Gimnasio gimnasio = new Gimnasio();
+
     // Constructor con paramentros
     public Cliente(String cedula, String nombre, String direccion, String telefono, String correoElectronico, String contrasena) {
         super(cedula, nombre);
@@ -18,6 +21,13 @@ public class Cliente extends Usuario {
     // Constructor sin paramentros
     public Cliente(){}
 
+    // Metodos de la clase -------------------------------
+
+    public void registrarCliente(){
+
+        //gimnasio.setNuevoCliente(cliente);
+        System.out.println("Cliente registrado");
+    }
 
     // Getters and setters ----------------------------------
     public String getDireccion() {
@@ -50,5 +60,18 @@ public class Cliente extends Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    // Metodo toString para los clientes
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                " cedula="+getCedula()+
+                " nombre="+getNombre()+
+                ", direccion="+getDireccion()+
+                ", telefono="+getTelefono()+
+                ", Correo electronico="+getCorreoElectronico()+
+                ", Contraseña="+getContrasena()+
+                "}";
     }
 }

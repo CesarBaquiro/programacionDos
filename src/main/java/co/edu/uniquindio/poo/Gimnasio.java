@@ -10,19 +10,31 @@ public class Gimnasio {
     private ArrayList<Reserva> listadoReservas;
     private ArrayList<Entrenador> listadoEntrenadores;
 
+
+
     // Constructor con parametros
-    public Gimnasio(ArrayList<Cliente> listadoClientes, ArrayList<Clase> listadoClases,
-            ArrayList<Entrenamiento> listadoEntrenamientos, ArrayList<Reserva> listadoReservas,
-            ArrayList<Entrenador> listadoEntrenadores) {
-        this.listadoClientes = listadoClientes;
-        this.listadoClases = listadoClases;
-        this.listadoEntrenamientos = listadoEntrenamientos;
-        this.listadoReservas = listadoReservas;
-        this.listadoEntrenadores = listadoEntrenadores;
-    }
 
     // Constructor sin parametros
     public Gimnasio() {
+
+        // Inicializar datos
+        Cliente cliente1 = new Cliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD");
+        Cliente cliente2 = new Cliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD");
+        Entrenador entrenador1 = new Entrenador("156465465", "Camilo", "Fuerza");
+        Entrenador entrenador2 = new Entrenador("15646513", "Daniela", "Gluteo");
+
+        // Inicializacion de listas vacias
+        this.listadoClientes = new ArrayList<Cliente>();
+        this.listadoClases = new ArrayList<Clase>();
+        this.listadoEntrenamientos = new ArrayList<Entrenamiento>();
+        this.listadoReservas = new ArrayList<Reserva>();
+        this.listadoEntrenadores = new ArrayList<Entrenador>();
+
+        // Ingreso de datos de prueba
+        listadoEntrenadores.add(entrenador1);
+        listadoEntrenadores.add(entrenador2);
+        listadoClientes.add(cliente1);
+        listadoClientes.add(cliente2);
     }
 
     // Metodos de reportes------------------------------------
@@ -98,8 +110,9 @@ public class Gimnasio {
         return listadoClientes;
     }
 
-    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
-        this.listadoClientes = listadoClientes;
+    public void setNuevoCliente(Cliente cliente) {
+        listadoClientes.add(cliente);
     }
+
 
 }

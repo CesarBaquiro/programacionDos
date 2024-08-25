@@ -16,7 +16,7 @@ public class Usuario {
     // Metodos de la clase -----------------------------
 
     public void registrarUsuario(){
-        System.out.println("El usuario se ha registrado");
+        System.out.println("El cliente se ha registrado");
     }
 
 

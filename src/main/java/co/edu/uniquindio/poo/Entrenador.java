@@ -21,4 +21,13 @@ public class Entrenador extends Usuario {
         this.especialidad = especialidad;
     }
 
+    // Metodo toString para los entrenadores
+    @Override
+    public String toString() {
+        return "Entrenador{" +
+                " cedula="+getCedula()+
+                " nombre="+getNombre()+
+                " especialidad="+getEspecialidad()+
+                "}";
+    }
 }

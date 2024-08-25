@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 /**
@@ -8,16 +9,19 @@ import java.util.Scanner;
 
 public class Menu {
 
-    // Se intancian las clases usadas
+    // Se instancian las clases usadas
     Gimnasio gimnasio = new Gimnasio();
-    Usuario usuario = new Usuario();
+    Cliente cliente = new Cliente();
 
+    // Se instancian recursos necesarios
     private static final Scanner scanner = new Scanner(System.in);
+    LocalDateTime tiempoActual = LocalDateTime.now().withSecond(0).withNano(0);
 
     public void seleccionarMenu() {
         Integer opcion = 0;
 
         do {
+            System.out.println("Hora: " + tiempoActual); // Imprime la hora actual
             // Mostrar el menú
             System.out.println("----------------Menú:--------------");
             System.out.println("1. Usuarios"); // Dentro lleva las opciones registrar, actualizar, eliminar
@@ -36,15 +40,20 @@ public class Menu {
                     System.out.println("1. Registrar usuario");
                     System.out.println("2. Actualizar datos de usuario");
                     System.out.println("3. Eliminar usuario");
+                    System.out.println("4. Ver listado de entrenadores");
                     Integer opcionUsuarios = scanner.nextInt();
                     if (opcionUsuarios == 1) { // Busqueda por entrenador
                         System.out.println("Registrando usuario");
-                        usuario.registrarUsuario();
+                        cliente.registrarCliente();
                     } else if (opcionUsuarios == 2) {
                         System.out.println("Actualizando los datos de usuario");
                     } else if (opcionUsuarios == 3) {
                         System.out.println("Eliminando el usuario");
-                    } else {
+
+                    }else if (opcionUsuarios == 4) {
+                        System.out.println("----Listado de entrenadores-----");
+                        System.out.println(gimnasio.getListadoEntrenadores().toString());
+                    }else {
                         System.out.println("Esta opcion no esta disponible");
                     }
                     break;
