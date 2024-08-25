@@ -1,9 +1,9 @@
 package co.edu.uniquindio.poo;
 
-
 import java.util.ArrayList;
 
 public class Gimnasio {
+    //Parametros de la clase gimnasio.
     private ArrayList<Cliente> listadoClientes;
     private ArrayList<Clase> listadoClases;
     private ArrayList<Entrenamiento> listadoEntrenamientos;
@@ -11,7 +11,9 @@ public class Gimnasio {
     private ArrayList<Entrenador> listadoEntrenadores;
 
     // Constructor con parametros
-    public Gimnasio(ArrayList<Cliente> listadoClientes, ArrayList<Clase> listadoClases, ArrayList<Entrenamiento> listadoEntrenamientos, ArrayList<Reserva> listadoReservas, ArrayList<Entrenador> listadoEntrenadores) {
+    public Gimnasio(ArrayList<Cliente> listadoClientes, ArrayList<Clase> listadoClases,
+            ArrayList<Entrenamiento> listadoEntrenamientos, ArrayList<Reserva> listadoReservas,
+            ArrayList<Entrenador> listadoEntrenadores) {
         this.listadoClientes = listadoClientes;
         this.listadoClases = listadoClases;
         this.listadoEntrenamientos = listadoEntrenamientos;
@@ -20,36 +22,38 @@ public class Gimnasio {
     }
 
     // Constructor sin parametros
-    public Gimnasio() {}
+    public Gimnasio() {
+    }
 
+    // Metodos de reportes------------------------------------
 
-    // Metodos de la clase ------------------------------------
-
-    public ArrayList<Clase> obtenerClaseMasPopular(ArrayList<Clase> listadoClases){
+    public ArrayList<Clase> obtenerClaseMasPopular(ArrayList<Clase> listadoClases) {
 
         return listadoClases;
     }
 
-    public ArrayList<Cliente> obtenerUsuariosMasActivos(ArrayList<Cliente> listadoClientes){
+    public ArrayList<Cliente> obtenerUsuariosMasActivos(ArrayList<Cliente> listadoClientes) {
         return listadoClientes;
     }
 
-    public Entrenamiento obtenerEjercicioMasPracticado(ArrayList<Entrenamiento> listadoEntrenamientos){
+    public Entrenamiento obtenerEjercicioMasPracticado(ArrayList<Entrenamiento> listadoEntrenamientos) {
         return listadoEntrenamientos.get(0);
     }
 
-    public ArrayList<Clase> obtenerClase(ArrayList<Clase> clases, Integer tipoBusqueda, String nombreEntrenador, Integer tipoClaseSeleccionada, String horario) {
+    // Metodo para buscar y analizar clases------------------------------------
+    public ArrayList<Clase> obtenerClase(ArrayList<Clase> clases, Integer tipoBusqueda, String nombreEntrenador,
+            Integer tipoClaseSeleccionada, String horario) {
 
-        if(tipoBusqueda == 1){ // Busqueda por entrenador
+        if (tipoBusqueda == 1) { // Busqueda por entrenador
             System.out.println("Buscando por nombre de entrenador");
-            if(nombreEntrenador == null){
+            if (nombreEntrenador == null) {
                 System.out.println("El nombre del entrenador no esta registrado");
             }
         } else if (tipoBusqueda == 2 && tipoClaseSeleccionada != null) {
             System.out.println("Buscando por el tipo de clase");
         } else if (tipoBusqueda == 3 && horario != null) {
             System.out.println("Buscando por horario");
-        }else{
+        } else {
             System.out.println("Esta opcion no esta disponible");
         }
 
@@ -97,7 +101,5 @@ public class Gimnasio {
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
     }
-
-
 
 }

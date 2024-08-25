@@ -1,7 +1,6 @@
 package co.edu.uniquindio.poo;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 /**
  * Clase Menu para el control de la aplicacion y sus procesos
@@ -13,9 +12,7 @@ public class Menu {
     Gimnasio gimnasio = new Gimnasio();
     Usuario usuario = new Usuario();
 
-    private static final Logger LOG = Logger.getLogger(Menu.class.getName());
     private static final Scanner scanner = new Scanner(System.in);
-
 
     public void seleccionarMenu() {
         Integer opcion = 0;
@@ -23,7 +20,7 @@ public class Menu {
         do {
             // Mostrar el menú
             System.out.println("----------------Menú:--------------");
-            System.out.println("1. Usuarios"); //Dentro lleva las opciones registrar, actualizar, eliminar
+            System.out.println("1. Usuarios"); // Dentro lleva las opciones registrar, actualizar, eliminar
             System.out.println("2. Clases"); // Dentro lleva Busqueda, reservar
             System.out.println("3. Reservas"); // Dentro tiene ver, cancelar
             System.out.println("4. Entrenamientos"); // Ver por cedula
@@ -40,19 +37,18 @@ public class Menu {
                     System.out.println("2. Actualizar datos de usuario");
                     System.out.println("3. Eliminar usuario");
                     Integer opcionUsuarios = scanner.nextInt();
-                    if(opcionUsuarios == 1){ // Busqueda por entrenador
+                    if (opcionUsuarios == 1) { // Busqueda por entrenador
                         System.out.println("Registrando usuario");
                         usuario.registrarUsuario();
                     } else if (opcionUsuarios == 2) {
                         System.out.println("Actualizando los datos de usuario");
                     } else if (opcionUsuarios == 3) {
                         System.out.println("Eliminando el usuario");
-                    }else{
+                    } else {
                         System.out.println("Esta opcion no esta disponible");
                     }
                     break;
                 case 2:
-
 
                     System.out.println("----------------Opciones de busqueda de clases:--------------");
                     System.out.println("1. Nombre del entrenador");
@@ -69,7 +65,6 @@ public class Menu {
                     break;
                 case 5:
 
-
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -80,7 +75,3 @@ public class Menu {
         scanner.close();
     }
 }
-
-
-
-

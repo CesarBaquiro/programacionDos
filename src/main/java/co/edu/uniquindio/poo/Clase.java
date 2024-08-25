@@ -12,11 +12,13 @@ public class Clase {
     private Boolean disponible;
     private TipoClase tipoClase;
     private LocalDateTime horario;
-    private Entrenador entrenador;
-
+    private String cedulaEntrenador;
+    private ArrayList<Reserva> inscritos;
 
     // Constructor con paramentros
-    public Clase(String id, String nombre, Integer capacidad, LocalDateTime fechaInicio, LocalDateTime fechaFin, Boolean disponible, TipoClase tipoClase, LocalDateTime horario, Entrenador entrenador) {
+    public Clase(String id, String nombre, Integer capacidad, LocalDateTime fechaInicio, LocalDateTime fechaFin,
+            Boolean disponible, TipoClase tipoClase, LocalDateTime horario, String cedulaEntrenador,
+            ArrayList<Reserva> inscritos) {
         this.id = id;
         this.nombre = nombre;
         this.capacidad = capacidad;
@@ -25,19 +27,15 @@ public class Clase {
         this.disponible = disponible;
         this.tipoClase = tipoClase;
         this.horario = horario;
-        this.entrenador = entrenador;
+        this.cedulaEntrenador = cedulaEntrenador;
+        this.inscritos = inscritos;
     }
 
-    // Constructor sin paramentros
-    public Clase() {}
-
-
-
-
-
+    // Constructor sin parametros
+    public Clase() {
+    }
 
     // Getters and setters ----------------------------------
-
     public String getId() {
         return id;
     }
@@ -102,11 +100,20 @@ public class Clase {
         this.horario = horario;
     }
 
-    public Entrenador getEntrenador() {
-        return entrenador;
+    public String getCedulaEntrenador() {
+        return cedulaEntrenador;
     }
 
-    public void setEntrenador(Entrenador entrenador) {
-        this.entrenador = entrenador;
+    public void setCedulaEntrenador(String cedulaEntrenador) {
+        this.cedulaEntrenador = cedulaEntrenador;
     }
+
+    public ArrayList<Reserva> getInscritos() {
+        return inscritos;
+    }
+
+    public void setInscritos(ArrayList<Reserva> inscritos) {
+        this.inscritos = inscritos;
+    }
+
 }

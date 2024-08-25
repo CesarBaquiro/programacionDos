@@ -1,5 +1,5 @@
 package co.edu.uniquindio.poo;
 
 public enum TipoClase {
-    RUMBATERAPIA, PILATES, CARDIO
+    RUMBATERAPIA, AEROBICOS, RESISTENCIA, FUERZA
 }
