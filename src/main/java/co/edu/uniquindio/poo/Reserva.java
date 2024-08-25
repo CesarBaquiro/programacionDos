@@ -3,9 +3,8 @@ package co.edu.uniquindio.poo;
 import java.time.LocalDateTime;
 
 public class Reserva {
-    String disponibilidad;
-    Boolean estado;
-    Clase clase;
-    Usuario usuario;
-    LocalDateTime fechaReserva;
+    private Boolean estado; // Estado de la reserva
+    private Clase clase; // La clase a reservar
+    private Usuario usuario;
+    private LocalDateTime fechaReserva; // Formato:
 }
