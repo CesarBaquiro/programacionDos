@@ -42,4 +42,14 @@ public class Entrenamiento {
         this.caloriasQuemadas = caloriasQuemadas;
     }
 
+
+    // Metodo toString para los entrenadores
+    @Override
+    public String toString() {
+        return "Entrenamiento{" +
+                " Tipo de ejercicio="+getTipoEjercicio()+
+                " duracion="+getDuracion()+
+                " calorias="+getCaloriasQuemadas()+
+                "}";
+    }
 }

@@ -6,9 +6,6 @@ public class Cliente extends Usuario {
     private String correoElectronico;
     private String contrasena;
 
-
-    Gimnasio gimnasio = new Gimnasio();
-
     // Constructor con paramentros
     public Cliente(String cedula, String nombre, String direccion, String telefono, String correoElectronico, String contrasena) {
         super(cedula, nombre);
