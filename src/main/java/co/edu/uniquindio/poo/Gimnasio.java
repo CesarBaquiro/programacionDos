@@ -25,10 +25,6 @@ public class Gimnasio {
         Cliente cliente1 = new Cliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD");
         Cliente cliente2 = new Cliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD");
 
-        // ENTRENADORES
-        Entrenador entrenador1 = new Entrenador("156465465", "Camilo", "Fuerza");
-        Entrenador entrenador2 = new Entrenador("15646513", "Daniela", "Gluteo");
-
         // ENTRENAMIENTOS
         Entrenamiento entrenamiento1 = new Entrenamiento(TipoEjercicio.BICICLETA, 30, 5);
         Entrenamiento entrenamiento2 = new Entrenamiento(TipoEjercicio.ESPALDA, 15, 5);
@@ -69,9 +65,7 @@ public class Gimnasio {
         horariosClase3.add(fechaHorario9);
 
 
-        Clase clase1 = new Clase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, entrenador1.getCedula(), null);
-        Clase clase2 = new Clase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true, TipoClase.RUMBATERAPIA, horariosClase2, entrenador2.getCedula(), null);
-        Clase clase3 = new Clase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true, TipoClase.YOGA, horariosClase2, entrenador1.getCedula(), null);
+
 
 
 
@@ -83,13 +77,21 @@ public class Gimnasio {
         this.listadoEntrenadores = new ArrayList<Entrenador>();
 
         // Ingreso de datos de prueba
-        listadoEntrenadores.add(entrenador1);
-        listadoEntrenadores.add(entrenador2);
+        // ENTRENADORES
+        listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
+        listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
+        listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Culonas"));
         listadoClientes.add(cliente1);
         listadoClientes.add(cliente2);
         listadoEntrenamientos.add(entrenamiento1);
         listadoEntrenamientos.add(entrenamiento2);
         listadoEntrenamientos.add(entrenamiento3);
+
+
+        Clase clase1 = new Clase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null);
+        Clase clase2 = new Clase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true, TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null);
+        Clase clase3 = new Clase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true, TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null);
+
         listadoClases.add(clase1);
         listadoClases.add(clase2);
         listadoClases.add(clase3);
@@ -142,6 +144,10 @@ public class Gimnasio {
                 System.out.println(clase);
             }
         }
+    }
+
+    public Entrenador registrarEntrenador(String cedula, String nombre, String especialidad){
+        return new Entrenador(cedula, nombre, especialidad);
     }
 
 
