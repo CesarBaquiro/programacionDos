@@ -1,12 +1,11 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Gimnasio {
 
-    //Parametros de la clase gimnasio.
+    // Parametros de la clase gimnasio.
     private ArrayList<Cliente> listadoClientes;
     private ArrayList<Clase> listadoClases;
     private ArrayList<Entrenamiento> listadoEntrenamientos;
@@ -21,9 +20,6 @@ public class Gimnasio {
 
         // Inicializar datos
 
-        // CLIENTES
-        Cliente cliente1 = new Cliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD");
-        Cliente cliente2 = new Cliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD");
 
         // ENTRENAMIENTOS
         Entrenamiento entrenamiento1 = new Entrenamiento(TipoEjercicio.BICICLETA, 30, 5);
@@ -34,6 +30,7 @@ public class Gimnasio {
         // Fechas de inicio y fin de la clase 1
         LocalDateTime fechaInicio1 = LocalDateTime.parse("2024-08-22T00:00");
         LocalDateTime fechaFin1 = LocalDateTime.parse("2024-09-22T00:00");
+
         // Horarios de la clase 1
         ArrayList<LocalDateTime> horariosClase1 = new ArrayList<>();
         LocalDateTime fechaHorario1 = LocalDateTime.parse("2024-09-22T08:00");
@@ -64,11 +61,6 @@ public class Gimnasio {
         horariosClase3.add(fechaHorario8);
         horariosClase3.add(fechaHorario9);
 
-
-
-
-
-
         // Inicializacion de listas vacias
         this.listadoClientes = new ArrayList<Cliente>();
         this.listadoClases = new ArrayList<Clase>();
@@ -81,20 +73,25 @@ public class Gimnasio {
         listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
         listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
         listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Culonas"));
-        listadoClientes.add(cliente1);
-        listadoClientes.add(cliente2);
         listadoEntrenamientos.add(entrenamiento1);
         listadoEntrenamientos.add(entrenamiento2);
         listadoEntrenamientos.add(entrenamiento3);
 
+        
+        // CLIENTES
+        listadoClientes.add(registarCliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD"));
+        
+        listadoClientes.add(registarCliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD"));
 
-        Clase clase1 = new Clase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null);
-        Clase clase2 = new Clase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true, TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null);
-        Clase clase3 = new Clase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true, TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null);
+        // CLASES
+        listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null));
 
-        listadoClases.add(clase1);
-        listadoClases.add(clase2);
-        listadoClases.add(clase3);
+        listadoClases.add(registrarClase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true,
+        TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null));
+
+        listadoClases.add(registrarClase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true,
+        TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null));
+
     }
 
     // Metodos de reportes------------------------------------
@@ -132,24 +129,43 @@ public class Gimnasio {
         return listadoClases;
     }
 
-    public void mostrarClasesTodas(ArrayList<Clase> listadoClases){
+    public void mostrarClasesTodas(ArrayList<Clase> listadoClases) {
         for (Clase clase : listadoClases) {
             System.out.println(clase);
         }
     }
 
-    public void mostrarClasesDisponibles(ArrayList<Clase> listadoClases){
+    public void mostrarClasesDisponibles(ArrayList<Clase> listadoClases) {
         for (Clase clase : listadoClases) {
-            if(clase.getDisponible() == true){
+            if (clase.getDisponible() == true) {
                 System.out.println(clase);
             }
         }
     }
 
-    public Entrenador registrarEntrenador(String cedula, String nombre, String especialidad){
+    // METODO PARA REGISTRAR UN ENTRENADOR
+    public Entrenador registrarEntrenador(String cedula, String nombre, String especialidad) {
         return new Entrenador(cedula, nombre, especialidad);
     }
 
+    // METODO PARA REGISTRAR UNA NUEVA CLASE
+    public Clase registrarClase(String id, String nombre, Integer capacidad, LocalDateTime fechaInicio,
+            LocalDateTime fechaFin,
+            Boolean disponible, TipoClase tipoClase, ArrayList<LocalDateTime> horario, String cedulaEntrenador,
+            ArrayList<Reserva> inscritos) {
+
+        return new Clase(id, nombre, capacidad, fechaInicio, fechaFin, disponible, tipoClase, horario, cedulaEntrenador,
+                inscritos);
+
+    }
+
+    // METODO PARA REGISTRAR UN NUEVO CLIENTE
+    public Cliente registarCliente(String cedula, String nombre, String direccion, String telefono,
+            String correoElectronico, String contrasena) {
+
+        return new Cliente(cedula, nombre, direccion, telefono, correoElectronico, contrasena);
+
+    }
 
     // Getters and setters -----------------------
 
