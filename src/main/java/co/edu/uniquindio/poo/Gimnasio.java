@@ -70,9 +70,9 @@ public class Gimnasio {
 
         // Ingreso de datos de prueba
         // ENTRENADORES
-        listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
-        listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
-        listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Culonas"));
+        listadoEntrenadores.add(registrarEntrenador("1486", "Camilo", "Fuerza"));
+        listadoEntrenadores.add(registrarEntrenador("2846", "Daniela", "Gluteo"));
+        listadoEntrenadores.add(registrarEntrenador("8896", "Pepito", "Culonas"));
         listadoEntrenamientos.add(entrenamiento1);
         listadoEntrenamientos.add(entrenamiento2);
         listadoEntrenamientos.add(entrenamiento3);
@@ -133,14 +133,67 @@ public class Gimnasio {
         for (Clase clase : listadoClases) {
             System.out.println(clase);
         }
+        if(listadoClases.isEmpty()){
+            System.out.println(" - No se encontraron clases de este tipo - ");
+        }
     }
 
     public void mostrarClasesDisponibles(ArrayList<Clase> listadoClases) {
         for (Clase clase : listadoClases) {
+            // Solo muestra las clases que esten disponibles
             if (clase.getDisponible() == true) {
-                System.out.println(clase);
+                System.out.println(clase.toString());
             }
         }
+        if(listadoClases.isEmpty()){
+            System.out.println(" - No se encontraron clases disponibles - ");
+        }
+    }
+
+    public ArrayList<Clase> buscarClasePorCedulaEntrenador(String cedulaEntrenador) {
+        ArrayList<Clase> clasesEncontradas =  new ArrayList<>();
+        ArrayList<Clase> listaClases =  getListadoClases();
+        for(Clase clase : listaClases) {
+            if(clase.getCedulaEntrenador() == cedulaEntrenador) {
+                clasesEncontradas.add(clase);
+            }
+        }
+        return clasesEncontradas;
+    }
+
+    public ArrayList<Clase> buscarClasePorTipo(Integer opcionTipo) {
+        ArrayList<Clase> clasesEncontradas =  new ArrayList<>();
+        ArrayList<Clase> listaClases =  getListadoClases();
+        TipoClase tipo = null;
+
+        switch(opcionTipo) {
+            case 1:
+                tipo = TipoClase.RUMBATERAPIA;
+                break;
+            case 2:
+                tipo = TipoClase.AEROBICOS;
+                break;
+            case 3:
+                tipo = TipoClase.RESISTENCIA;
+                break;
+            case 4:
+                tipo = TipoClase.FUERZA;
+                break;
+            case 5:
+                tipo = TipoClase.YOGA;
+                break;
+            default:
+                System.out.println(" - Por favor ingrese una opcion valida - ");
+                break;
+        }
+
+        for(Clase clase : listaClases) {
+            if(clase.getTipoClase() == tipo) {
+                clasesEncontradas.add(clase);
+            }
+        }
+
+        return clasesEncontradas;
     }
 
     // METODO PARA REGISTRAR UN ENTRENADOR

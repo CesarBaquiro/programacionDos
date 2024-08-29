@@ -14,7 +14,6 @@ public class Menu {
     Cliente cliente = new Cliente();
 
 
-
     // Se instancian recursos necesarios
     private static final Scanner scanner = new Scanner(System.in);
     LocalDateTime tiempoActual = LocalDateTime.now().withSecond(0).withNano(0);
@@ -62,7 +61,7 @@ public class Menu {
                 case 2:
                     System.out.println("----------------Opciones de busqueda de clases:--------------");
                     System.out.println("1. Ver clases disponibles");
-                    System.out.println("2. Buscar por nombre del entrenador");
+                    System.out.println("2. Buscar por cedula del entrenador");
                     System.out.println("3. Buscar por tipo de clase");
                     System.out.println("4. Buscar por horario");
                     System.out.print("Seleccione una opción: ");
@@ -70,10 +69,20 @@ public class Menu {
                     if(opcionClases == 1){
                         gimnasio.mostrarClasesDisponibles(gimnasio.getListadoClases());
                     } else if (opcionClases == 2) {
-                        System.out.println("Buscando por nombre...");
-                        //gimnasio.obtenerClase(null, 1, null, null, null);
+                        System.out.println("Buscando por cedula de entrenador...");
+                        System.out.println(" - Ingrese la cédula");
+                        String cedulaEntrenador = scanner.next();
+                        System.out.println(gimnasio.buscarClasePorCedulaEntrenador(cedulaEntrenador));
                     }else if (opcionClases == 3) {
                         System.out.println("Buscando por tipo...");
+                        System.out.println(" - Ingrese el tipo de clase que desea");
+                        System.out.println("1. Rumbaterapia");
+                        System.out.println("2. Aerobicos");
+                        System.out.println("3. Resistencia");
+                        System.out.println("4. Fuerza");
+                        System.out.println("5. Yoga");
+                        Integer opcionTipo = scanner.nextInt();
+                        gimnasio.mostrarClasesTodas(gimnasio.buscarClasePorTipo(opcionTipo));
                     }else if (opcionClases == 4) {
                         System.out.println("Buscando por horario...");
                     }
