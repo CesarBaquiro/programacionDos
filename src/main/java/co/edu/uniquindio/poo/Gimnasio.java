@@ -1,7 +1,6 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Gimnasio {
@@ -25,10 +24,15 @@ public class Gimnasio {
         Cliente cliente1 = new Cliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD");
         Cliente cliente2 = new Cliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD");
 
-        // ENTRENAMIENTOS
+
+        /*
         Entrenamiento entrenamiento1 = new Entrenamiento(TipoEjercicio.BICICLETA, 30, 5);
         Entrenamiento entrenamiento2 = new Entrenamiento(TipoEjercicio.ESPALDA, 15, 5);
         Entrenamiento entrenamiento3 = new Entrenamiento(TipoEjercicio.GLUTEO, 15, 5);
+        */
+
+
+
 
         // CLASES
         // Fechas de inicio y fin de la clase 1
@@ -43,7 +47,10 @@ public class Gimnasio {
         horariosClase1.add(fechaHorario2);
         horariosClase1.add(fechaHorario3);
 
-        // Horarios de la clase 2
+        // Fechas de inicio y fin de la clase 2
+        LocalDateTime fechaInicio2 = LocalDateTime.parse("2024-08-22T00:00");
+        LocalDateTime fechaFin2 = LocalDateTime.parse("2024-09-22T00:00");
+
         ArrayList<LocalDateTime> horariosClase2 = new ArrayList<>();
         LocalDateTime fechaHorario4 = LocalDateTime.parse("2024-11-05T18:00");
         LocalDateTime fechaHorario5 = LocalDateTime.parse("2024-11-07T18:00");
@@ -53,8 +60,8 @@ public class Gimnasio {
         horariosClase2.add(fechaHorario6);
 
         // Fechas de inicio y fin de la clase 3
-        LocalDateTime fechaInicio2 = LocalDateTime.parse("2024-12-01T00:00");
-        LocalDateTime fechaFin2 = LocalDateTime.parse("2025-02-15T00:00");
+        LocalDateTime fechaInicio3 = LocalDateTime.parse("2024-12-01T00:00");
+        LocalDateTime fechaFin3 = LocalDateTime.parse("2025-02-15T00:00");
         // Horarios de la clase 3
         ArrayList<LocalDateTime> horariosClase3 = new ArrayList<>();
         LocalDateTime fechaHorario7 = LocalDateTime.parse("2024-12-05T14:00");
@@ -77,15 +84,23 @@ public class Gimnasio {
         this.listadoEntrenadores = new ArrayList<Entrenador>();
 
         // Ingreso de datos de prueba
+
         // ENTRENADORES
         listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
         listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
         listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Culonas"));
         listadoClientes.add(cliente1);
         listadoClientes.add(cliente2);
-        listadoEntrenamientos.add(entrenamiento1);
-        listadoEntrenamientos.add(entrenamiento2);
-        listadoEntrenamientos.add(entrenamiento3);
+
+        //RESERVAS
+        listadoReservas.add(registrarReserva(true,  "01",  "Ana",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio2));
+        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio3));
+
+        // ENTRENAMIENTOS
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
 
 
         Clase clase1 = new Clase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null);
@@ -150,6 +165,15 @@ public class Gimnasio {
         return new Entrenador(cedula, nombre, especialidad);
     }
 
+
+    public Entrenamiento registrarEntrenamiento(TipoEjercicio tipoEjercicio, Integer duracion, Integer caloriasQuemadas){
+        return new Entrenamiento(tipoEjercicio, duracion, caloriasQuemadas);
+    }
+
+    public Reserva registrarReserva(Boolean estado, String idClase, String usuario, LocalDateTime fechaReserva){
+        return new Reserva(estado, idClase, usuario, fechaReserva);
+
+    }
 
     // Getters and setters -----------------------
 
