@@ -51,7 +51,7 @@ public class Menu {
                         System.out.println("Actualizando los datos de usuario");
                     } else if (opcionUsuarios == 3) {
                         System.out.println("Eliminando el usuario");
-
+                        System.out.println(gimnasio.getListadoClientes().toString());
                     }else if (opcionUsuarios == 4) {
                         System.out.println("----Listado de entrenadores-----");
                         System.out.println(gimnasio.getListadoEntrenadores().toString());
