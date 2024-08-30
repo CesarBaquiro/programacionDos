@@ -18,20 +18,11 @@ public class Clase {
     private String cedulaEntrenador;
     private ArrayList<Reserva> inscritos;
 
-
+    // Se instancian las clases que se requieren
+    Gimnasio gimnasio;
 
     //Formato de la fecha de inicio y fin de las clases
     private DateTimeFormatter formatoFechaInicioFin = DateTimeFormatter.ofPattern("dd-MMMM-yyyy");
-
-
-    //private DateTimeFormatter formatoHorarioClase = DateTimeFormatter.ofPattern("dd HH:mm");
-
-
-
-    //System.out.println(horarioClase);
-    //System.out.println("Horarios disponibles: "+horarioClasePresentacion);
-    //System.out.println("Clase disponible del "+fechaInicioPresentacion+" al "+fechaFinPresentacion);
-
 
     // Constructor con paramentros
     public Clase(String id, String nombre, Integer capacidad, LocalDateTime fechaInicio, LocalDateTime fechaFin,
@@ -47,9 +38,6 @@ public class Clase {
         this.horario = horario;
         this.cedulaEntrenador = cedulaEntrenador;
         this.inscritos = inscritos;
-
-
-
     }
 
     // Constructor sin parametros
@@ -59,25 +47,27 @@ public class Clase {
 
     // Metodos de la clase
 
-    public void mostrarHorarios(ArrayList<LocalDateTime> horarios) {
+    public ArrayList<String> formatearHorarios(ArrayList<LocalDateTime> horarios) {
+        ArrayList <String> horarioClasePresentacion = new ArrayList<>();
         // Horario en formato numero dia y hora
         for(LocalDateTime horario : horarios) {
-        String diaDeSemanaClase = horario.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
-        Integer diaDeSemanaClaseNumero = horario.getDayOfMonth();
-        String horaClase = horario.getHour() + ":" + horario.getMinute()+horario.getSecond();
-        String horarioClase = diaDeSemanaClase + " " +diaDeSemanaClaseNumero+ " a las " + horaClase;
-        String horarioClasePresentacion = horarioClase;
-        System.out.println(horarioClase);
-        System.out.println("Horarios disponibles: "+horarioClasePresentacion);
+            String diaDeSemanaClase = horario.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
+            Integer diaDeSemanaClaseNumero = horario.getDayOfMonth();
+            String horaClase = horario.getHour() + ":" + horario.getMinute()+horario.getSecond();
+            String horarioClase = diaDeSemanaClase + " " +diaDeSemanaClaseNumero+ " a las " + horaClase;
+            horarioClasePresentacion.add(horarioClase);
         }
+        return horarioClasePresentacion;
     }
 
-    public void mostrarFechaInicioFin(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+    public String formatearFechaInicioFin(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         //Formato de hora para visualizacion de la hora de la clase
         String fechaInicioPresentacion = fechaInicio.format(formatoFechaInicioFin);
         String fechaFinPresentacion = fechaFin.format(formatoFechaInicioFin);
-        System.out.println("Clase disponible del "+fechaInicioPresentacion+" al "+fechaFinPresentacion);
+        return "Clase disponible del "+fechaInicioPresentacion+" al "+fechaFinPresentacion;
     }
+
+
 
 
     // Getters and setters ----------------------------------
@@ -161,20 +151,17 @@ public class Clase {
         this.horario = horario;
     }
 
-
-
     @Override
     public String toString() {
         return "Clase{" +
-                " ID: " + getId()+
-                " Nombre: " + getNombre()+
-                " Capacidad: " + getCapacidad()+
-                " Fecha de inicio: " + getFechaInicio()+
-                " Fecha de fin: " + getFechaFin()+
-                " Disponible: " + getDisponible()+
-                " Tipo de clase: " + getTipoClase()+
-                " Horario: " + getHorario()+
-                " Cédula del entrenador: " + getCedulaEntrenador()+
+                " ID: " + getId()+ " | "+
+                " Nombre: " + getNombre()+ " | "+
+                " Capacidad: " + getCapacidad()+" | "+
+                " Fechas inicio-fin: " + formatearFechaInicioFin(getFechaInicio(),getFechaFin()) +" | "+
+                " Disponible: " + getDisponible() +" | "+
+                " Tipo de clase: " + getTipoClase()+" | "+
+                " Horario: " + formatearHorarios(getHorario())+" | "+
+                " Cédula del entrenador: " + getCedulaEntrenador()+" | "+
                 " Inscritos: " + getInscritos()+
                 "}";
     }
