@@ -47,10 +47,7 @@ public class Gimnasio {
         horariosClase1.add(fechaHorario2);
         horariosClase1.add(fechaHorario3);
 
-        // Fechas de inicio y fin de la clase 2
-        LocalDateTime fechaInicio2 = LocalDateTime.parse("2024-08-22T00:00");
-        LocalDateTime fechaFin2 = LocalDateTime.parse("2024-09-22T00:00");
-
+        // Horarios de la clase 2
         ArrayList<LocalDateTime> horariosClase2 = new ArrayList<>();
         LocalDateTime fechaHorario4 = LocalDateTime.parse("2024-11-05T18:00");
         LocalDateTime fechaHorario5 = LocalDateTime.parse("2024-11-07T18:00");
@@ -60,8 +57,8 @@ public class Gimnasio {
         horariosClase2.add(fechaHorario6);
 
         // Fechas de inicio y fin de la clase 3
-        LocalDateTime fechaInicio3 = LocalDateTime.parse("2024-12-01T00:00");
-        LocalDateTime fechaFin3 = LocalDateTime.parse("2025-02-15T00:00");
+        LocalDateTime fechaInicio2 = LocalDateTime.parse("2024-12-01T00:00");
+        LocalDateTime fechaFin2 = LocalDateTime.parse("2025-02-15T00:00");
         // Horarios de la clase 3
         ArrayList<LocalDateTime> horariosClase3 = new ArrayList<>();
         LocalDateTime fechaHorario7 = LocalDateTime.parse("2024-12-05T14:00");
@@ -94,8 +91,8 @@ public class Gimnasio {
 
         //RESERVAS
         listadoReservas.add(registrarReserva(true,  "01",  "Ana",  fechaInicio1));
-        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio2));
-        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio3));
+        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio2));
 
         // ENTRENAMIENTOS
         listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
