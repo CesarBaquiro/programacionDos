@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Gimnasio {
 
@@ -15,16 +16,13 @@ public class Gimnasio {
     // Se instancian las clases usadas
     Clase clase = new Clase();
 
+    // Se instancian recursos necesarios
+    private final Scanner scanner = new Scanner(System.in);
+
     // Constructor sin parametros
     public Gimnasio() {
 
         // Inicializar datos
-
-
-        // ENTRENAMIENTOS
-        Entrenamiento entrenamiento1 = new Entrenamiento(TipoEjercicio.BICICLETA, 30, 5);
-        Entrenamiento entrenamiento2 = new Entrenamiento(TipoEjercicio.ESPALDA, 15, 5);
-        Entrenamiento entrenamiento3 = new Entrenamiento(TipoEjercicio.GLUTEO, 15, 5);
 
         // CLASES
         // Fechas de inicio y fin de la clase 1
@@ -69,28 +67,36 @@ public class Gimnasio {
         this.listadoEntrenadores = new ArrayList<Entrenador>();
 
         // Ingreso de datos de prueba
-        // ENTRENADORES
-        listadoEntrenadores.add(registrarEntrenador("1486", "Camilo", "Fuerza"));
-        listadoEntrenadores.add(registrarEntrenador("2846", "Daniela", "Gluteo"));
-        listadoEntrenadores.add(registrarEntrenador("8896", "Pepito", "Culonas"));
-        listadoEntrenamientos.add(entrenamiento1);
-        listadoEntrenamientos.add(entrenamiento2);
-        listadoEntrenamientos.add(entrenamiento3);
 
-        
+        // ENTRENADORES
+        listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
+        listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
+        listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Cardio"));
+
+
+        //RESERVAS
+        listadoReservas.add(registrarReserva(true,  "01",  "Ana",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio2));
+
+        // ENTRENAMIENTOS
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
+
+
         // CLIENTES
-        listadoClientes.add(registarCliente("11111111111", "Cesar", "Av dada", "1565464", "cmcmamc@gmail.com", "ADADADAD"));
-        
-        listadoClientes.add(registarCliente("145476891111", "Sara", "Calle", "66654443", "cmcmamc@gmail.com", "ADADADAD"));
+    
 
         // CLASES
-        listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null));
+        listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,
+                TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null));
 
         listadoClases.add(registrarClase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true,
-        TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null));
+                TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null));
 
         listadoClases.add(registrarClase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true,
-        TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null));
+                TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null));
 
     }
 
@@ -212,11 +218,45 @@ public class Gimnasio {
 
     }
 
-    // METODO PARA REGISTRAR UN NUEVO CLIENTE
-    public Cliente registarCliente(String cedula, String nombre, String direccion, String telefono,
-            String correoElectronico, String contrasena) {
+    // Metodo para registar clientes
+    public Cliente registrarCliente() {
+
+        System.out.println(" - Ingrese la cédula");
+        String cedula = scanner.next();
+        System.out.println(" - Ingrese el nombre");
+        String nombre = scanner.next();
+        System.out.println(" - Ingrese la dirección");
+        String direccion = scanner.next();
+        System.out.println(" - Ingrese el teléfono");
+        String telefono = scanner.next();
+        System.out.println("\n" + " - Ingrese el correo");
+        String correoElectronico = scanner.next();
+        System.out.println(" - Ingrese el contraseña");
+        String contrasena = scanner.next();
 
         return new Cliente(cedula, nombre, direccion, telefono, correoElectronico, contrasena);
+
+    }
+
+    // Metodo para eliminar cliente
+    public void eliminarCliente() {
+        System.out.println(" - Ingrese la cédula");
+        String cedula = scanner.next();
+
+        for (int i = 0; i < listadoClientes.size(); i++) {
+            if (listadoClientes.get(i).getCedula().equals(cedula)) {
+                listadoClientes.remove(i);
+                System.out.println("\n" + "Cliente eliminado");
+            }
+        }
+    }
+
+    public Entrenamiento registrarEntrenamiento(TipoEjercicio tipoEjercicio, Integer duracion, Integer caloriasQuemadas){
+        return new Entrenamiento(tipoEjercicio, duracion, caloriasQuemadas);
+    }
+
+    public Reserva registrarReserva(Boolean estado, String idClase, String usuario, LocalDateTime fechaReserva){
+        return new Reserva(estado, idClase, usuario, fechaReserva);
 
     }
 
