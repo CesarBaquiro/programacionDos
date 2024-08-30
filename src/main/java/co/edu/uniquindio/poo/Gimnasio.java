@@ -68,25 +68,14 @@ public class Gimnasio {
 
         // Ingreso de datos de prueba
 
+        // CLIENTES
+
+
         // ENTRENADORES
         listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
         listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
         listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Cardio"));
 
-
-        //RESERVAS
-        listadoReservas.add(registrarReserva(true,  "01",  "Ana",  fechaInicio1));
-        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio1));
-        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio2));
-
-        // ENTRENAMIENTOS
-        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
-        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
-        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
-
-
-        // CLIENTES
-    
 
         // CLASES
         listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,
@@ -97,6 +86,21 @@ public class Gimnasio {
 
         listadoClases.add(registrarClase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true,
                 TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null));
+
+
+        //RESERVAS
+        listadoReservas.add(registrarReserva(true,  "CLA_RUM-08",  "156465465",  listadoClases.get(0).getHorarios().get(0)));
+        listadoReservas.add(registrarReserva(true,  "CLA_RUM-18",  "156465465",listadoClases.get(0).getHorarios().get(0)));
+        listadoReservas.add(registrarReserva(true,  "CLA_YOGA-10",  "15646513",  listadoClases.get(0).getHorarios().get(0)));
+
+
+        // ENTRENAMIENTOS
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
+
+
+
 
     }
 
@@ -255,8 +259,8 @@ public class Gimnasio {
         return new Entrenamiento(tipoEjercicio, duracion, caloriasQuemadas);
     }
 
-    public Reserva registrarReserva(Boolean estado, String idClase, String usuario, LocalDateTime fechaReserva){
-        return new Reserva(estado, idClase, usuario, fechaReserva);
+    public Reserva registrarReserva(Boolean estado, String idClase, String cedulaCliente, LocalDateTime fechaReserva){
+        return new Reserva(estado, idClase, cedulaCliente, fechaReserva);
 
     }
 

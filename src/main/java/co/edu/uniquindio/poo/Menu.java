@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo;
 
+import javax.xml.transform.stream.StreamSource;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -97,6 +98,14 @@ public class Menu {
                     System.out.println(gimnasio.getListadoEntrenamientos().toString());
                     break;
                 case 4:
+                    System.out.println("------------Reservas disponibles:----------");
+                    System.out.println("\n" + "----------------Opciones:--------------");
+                    System.out.println("1. Reservas");
+                    System.out.println("2. Reservar clase");
+                    System.out.println("3. Cancelar reserva");
+                    Integer opcionReserva = scanner.nextInt();
+
+
 
                     break;
                 case 5:

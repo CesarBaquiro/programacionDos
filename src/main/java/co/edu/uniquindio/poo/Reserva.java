@@ -55,4 +55,14 @@ public class Reserva {
         this.fechaReserva = fechaReserva;
     }
 
+    // Metodo toString para las Reservas
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                " Estado="+getEstado()+
+                " idClase ="+getIdClase()+
+                " usuario="+getUsuario()+
+                " fechaReserva="+getFechaReserva()+
+                "}";
+    }
 }
