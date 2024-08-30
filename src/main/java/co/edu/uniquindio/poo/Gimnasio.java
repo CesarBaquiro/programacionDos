@@ -24,11 +24,6 @@ public class Gimnasio {
 
         // Inicializar datos
 
-        // ENTRENAMIENTOS
-        Entrenamiento entrenamiento1 = new Entrenamiento(TipoEjercicio.BICICLETA, 30, 5);
-        Entrenamiento entrenamiento2 = new Entrenamiento(TipoEjercicio.ESPALDA, 15, 5);
-        Entrenamiento entrenamiento3 = new Entrenamiento(TipoEjercicio.GLUTEO, 15, 5);
-
         // CLASES
         // Fechas de inicio y fin de la clase 1
         LocalDateTime fechaInicio1 = LocalDateTime.parse("2024-08-22T00:00");
@@ -72,25 +67,26 @@ public class Gimnasio {
         this.listadoEntrenadores = new ArrayList<Entrenador>();
 
         // Ingreso de datos de prueba
+
         // ENTRENADORES
         listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
         listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
         listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Culonas"));
-        listadoEntrenamientos.add(entrenamiento1);
-        listadoEntrenamientos.add(entrenamiento2);
-        listadoEntrenamientos.add(entrenamiento3);
+
+
+        //RESERVAS
+        listadoReservas.add(registrarReserva(true,  "01",  "Ana",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "02",  "Melquides",  fechaInicio1));
+        listadoReservas.add(registrarReserva(true,  "03",  "Roberto",  fechaInicio2));
+
+        // ENTRENAMIENTOS
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
+        listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
+
 
         // CLIENTES
-        /*
-         * listadoClientes
-         * .add(registarCliente("11111111111", "Cesar", "Av dada", "1565464",
-         * "cmcmamc@gmail.com", "ADADADAD"));
-         * 
-         * listadoClientes
-         * .add(registarCliente("145476891111", "Sara", "Calle", "66654443",
-         * "cmcmamc@gmail.com", "ADADADAD"))
-         * 
-         */
+    
 
         // CLASES
         listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,
@@ -200,6 +196,15 @@ public class Gimnasio {
                 System.out.println("\n" + "Cliente eliminado");
             }
         }
+    }
+
+    public Entrenamiento registrarEntrenamiento(TipoEjercicio tipoEjercicio, Integer duracion, Integer caloriasQuemadas){
+        return new Entrenamiento(tipoEjercicio, duracion, caloriasQuemadas);
+    }
+
+    public Reserva registrarReserva(Boolean estado, String idClase, String usuario, LocalDateTime fechaReserva){
+        return new Reserva(estado, idClase, usuario, fechaReserva);
+
     }
 
     // Getters and setters -----------------------
