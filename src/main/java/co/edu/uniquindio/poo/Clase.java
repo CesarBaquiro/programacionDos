@@ -14,7 +14,7 @@ public class Clase {
     private LocalDateTime fechaFin;
     private Boolean disponible;
     private TipoClase tipoClase;
-    private ArrayList<LocalDateTime> horario; // Ejemplo: ["2024-01-22T00:00", "2024-02-22T00:00", "2024-05-22T00:00"]
+    private ArrayList<LocalDateTime> horarios; // Ejemplo: ["2024-01-22T00:00", "2024-02-22T00:00", "2024-05-22T00:00"]
     private String cedulaEntrenador;
     private ArrayList<Reserva> inscritos;
 
@@ -26,8 +26,8 @@ public class Clase {
 
     // Constructor con paramentros
     public Clase(String id, String nombre, Integer capacidad, LocalDateTime fechaInicio, LocalDateTime fechaFin,
-            Boolean disponible, TipoClase tipoClase, ArrayList<LocalDateTime> horario, String cedulaEntrenador,
-            ArrayList<Reserva> inscritos) {
+                 Boolean disponible, TipoClase tipoClase, ArrayList<LocalDateTime> horarios, String cedulaEntrenador,
+                 ArrayList<Reserva> inscritos) {
         this.id = id;
         this.nombre = nombre;
         this.capacidad = capacidad;
@@ -35,7 +35,7 @@ public class Clase {
         this.fechaFin = fechaFin;
         this.disponible = disponible;
         this.tipoClase = tipoClase;
-        this.horario = horario;
+        this.horarios = horarios;
         this.cedulaEntrenador = cedulaEntrenador;
         this.inscritos = inscritos;
     }
@@ -143,12 +143,10 @@ public class Clase {
         this.inscritos = inscritos;
     }
 
-    public ArrayList<LocalDateTime> getHorario() {
-        return horario;
-    }
+    public ArrayList<LocalDateTime> getHorarios() {return horarios;}
 
-    public void setHorario(ArrayList<LocalDateTime> horario) {
-        this.horario = horario;
+    public void setHorarios(ArrayList<LocalDateTime> horarios) {
+        this.horarios = horarios;
     }
 
     @Override
@@ -160,7 +158,7 @@ public class Clase {
                 " Fechas inicio-fin: " + formatearFechaInicioFin(getFechaInicio(),getFechaFin()) +" | "+
                 " Disponible: " + getDisponible() +" | "+
                 " Tipo de clase: " + getTipoClase()+" | "+
-                " Horario: " + formatearHorarios(getHorario())+" | "+
+                " Horario: " + formatearHorarios(getHorarios())+" | "+
                 " Cédula del entrenador: " + getCedulaEntrenador()+" | "+
                 " Inscritos: " + getInscritos()+
                 "}";
