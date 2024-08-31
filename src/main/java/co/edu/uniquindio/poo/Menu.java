@@ -98,14 +98,26 @@ public class Menu {
                     System.out.println(gimnasio.getListadoEntrenamientos().toString());
                     break;
                 case 4:
-                    System.out.println("------------Reservas disponibles:----------");
                     System.out.println("\n" + "----------------Opciones:--------------");
-                    System.out.println("1. Reservas");
-                    System.out.println("2. Reservar clase");
+                    System.out.println("1. Ver reservas");
+                    System.out.println("2. Registrar reserva");
                     System.out.println("3. Cancelar reserva");
                     Integer opcionReserva = scanner.nextInt();
-
-
+                    if (opcionReserva == 1) {
+                        gimnasio.mostrarReservasActivas(gimnasio.getListadoReservas());
+                    }else if(opcionReserva == 2) {
+                        System.out.println("Ingrese el ID de la clase");
+                        String idClase = scanner.next();
+                        System.out.println("Ingrese la cedula del cliente");
+                        String cedulaCliente = scanner.next();
+                        gimnasio.registrarReserva(idClase, cedulaCliente);
+                    }else if (opcionReserva == 3) {
+                        System.out.println("Ingrese la cedula del cliente");
+                        String cedulaCliente = scanner.next();
+                        gimnasio.cancelarReserva(cedulaCliente);
+                    }else{
+                        System.out.println("Esta opcion no esta disponible");
+                    }
 
                     break;
                 case 5:

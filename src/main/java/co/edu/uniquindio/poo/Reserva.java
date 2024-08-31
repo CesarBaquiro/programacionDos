@@ -6,14 +6,14 @@ public class Reserva {
 
     private Boolean estado; // Estado de la reserva
     private String idClase; // La clase a reservar
-    private String usuario;
+    private String cedulaUsuario;
     private LocalDateTime fechaReserva; // Formato:
 
     // Constructor default para la clase reserva
-    public Reserva(Boolean estado, String idClase, String usuario, LocalDateTime fechaReserva) {
+    public Reserva(Boolean estado, String idClase, String cedulaUsuario, LocalDateTime fechaReserva) {
         this.estado = estado;
         this.idClase = idClase;
-        this.usuario = usuario;
+        this.cedulaUsuario = cedulaUsuario;
         this.fechaReserva = fechaReserva;
     }
 
@@ -39,12 +39,12 @@ public class Reserva {
         this.idClase = idClase;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getCedulaUsuario() {
+        return cedulaUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setCedulaUsuario(String cedulaUsuario) {
+        this.cedulaUsuario = cedulaUsuario;
     }
 
     public LocalDateTime getFechaReserva() {
@@ -58,11 +58,17 @@ public class Reserva {
     // Metodo toString para las Reservas
     @Override
     public String toString() {
+        String estado;
+        if(getEstado() == true){
+            estado = "Activo";
+        }else{
+            estado = "Inactivo";
+        }
         return "Reserva{" +
-                " Estado="+getEstado()+
-                " idClase ="+getIdClase()+
-                " usuario="+getUsuario()+
-                " fechaReserva="+getFechaReserva()+
+                "Estado = "+estado+ " | "+
+                "ID de la clase = "+getIdClase()+" | "+
+                "Cedula del cliente = "+ getCedulaUsuario()+" | "+
+                "Fecha de la reserva = "+getFechaReserva()+" | "+
                 "}";
     }
 }

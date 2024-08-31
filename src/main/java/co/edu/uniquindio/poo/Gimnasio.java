@@ -26,38 +26,30 @@ public class Gimnasio {
 
         // CLASES
         // Fechas de inicio y fin de la clase 1
-        LocalDateTime fechaInicio1 = LocalDateTime.parse("2024-08-22T00:00");
-        LocalDateTime fechaFin1 = LocalDateTime.parse("2024-09-22T00:00");
+        LocalDateTime fechaInicio1 = crearFecha("2024","08","22","00","00");
+        LocalDateTime fechaFin1 = crearFecha("2024","09","22","00","00");
 
         // Horarios de la clase 1
         ArrayList<LocalDateTime> horariosClase1 = new ArrayList<>();
-        LocalDateTime fechaHorario1 = LocalDateTime.parse("2024-09-22T08:00");
-        LocalDateTime fechaHorario2 = LocalDateTime.parse("2024-09-23T08:00");
-        LocalDateTime fechaHorario3 = LocalDateTime.parse("2024-09-24T08:00");
-        horariosClase1.add(fechaHorario1);
-        horariosClase1.add(fechaHorario2);
-        horariosClase1.add(fechaHorario3);
+        horariosClase1.add(crearFecha("2024","09","22","08","00"));
+        horariosClase1.add(crearFecha("2024","09","23","08","00"));
+        horariosClase1.add(crearFecha("2024","09","24","08","00"));
 
         // Horarios de la clase 2
         ArrayList<LocalDateTime> horariosClase2 = new ArrayList<>();
-        LocalDateTime fechaHorario4 = LocalDateTime.parse("2024-11-05T18:00");
-        LocalDateTime fechaHorario5 = LocalDateTime.parse("2024-11-07T18:00");
-        LocalDateTime fechaHorario6 = LocalDateTime.parse("2024-11-09T18:00");
-        horariosClase2.add(fechaHorario4);
-        horariosClase2.add(fechaHorario5);
-        horariosClase2.add(fechaHorario6);
+        horariosClase2.add(crearFecha("2024","11","05","18","00"));
+        horariosClase2.add(crearFecha("2024","11","07","18","00"));
+        horariosClase2.add(crearFecha("2024","11","09","18","00"));
 
         // Fechas de inicio y fin de la clase 3
-        LocalDateTime fechaInicio2 = LocalDateTime.parse("2024-12-01T00:00");
-        LocalDateTime fechaFin2 = LocalDateTime.parse("2025-02-15T00:00");
+        LocalDateTime fechaInicio2 = crearFecha("2024","12","01","18","00");
+        LocalDateTime fechaFin2 = crearFecha("2024","02","15","18","00");
+
         // Horarios de la clase 3
         ArrayList<LocalDateTime> horariosClase3 = new ArrayList<>();
-        LocalDateTime fechaHorario7 = LocalDateTime.parse("2024-12-05T14:00");
-        LocalDateTime fechaHorario8 = LocalDateTime.parse("2024-01-15T10:00");
-        LocalDateTime fechaHorario9 = LocalDateTime.parse("2025-02-25T18:00");
-        horariosClase3.add(fechaHorario7);
-        horariosClase3.add(fechaHorario8);
-        horariosClase3.add(fechaHorario9);
+        horariosClase3.add(crearFecha("2024","01","05","08","00"));
+        horariosClase3.add(crearFecha("2024","02","15","10","00"));
+        horariosClase3.add( crearFecha("2024","03","25","12","00"));
 
         // Inicializacion de listas vacias
         this.listadoClientes = new ArrayList<Cliente>();
@@ -66,48 +58,42 @@ public class Gimnasio {
         this.listadoReservas = new ArrayList<Reserva>();
         this.listadoEntrenadores = new ArrayList<Entrenador>();
 
-        // Ingreso de datos de prueba
+        // Ingreso de datos de prueba ----------------------------------------
 
         // CLIENTES
-
 
         // ENTRENADORES
         listadoEntrenadores.add(registrarEntrenador("156465465", "Camilo", "Fuerza"));
         listadoEntrenadores.add(registrarEntrenador("15646513", "Daniela", "Gluteo"));
         listadoEntrenadores.add(registrarEntrenador("15121531", "Pepito", "Cardio"));
 
-
         // CLASES
         listadoClases.add(registrarClase("CLA_RUM-08", "Clase rumba 8AM", 30, fechaInicio1, fechaFin1, true,
                 TipoClase.RUMBATERAPIA, horariosClase1, getListadoEntrenadores().get(0).getCedula(), null));
 
-        listadoClases.add(registrarClase("CLA_RUM-18", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true,
+        listadoClases.add(registrarClase("CLA_RUM-10", "Clase rumba 6PM", 25, fechaInicio1, fechaFin1, true,
                 TipoClase.RUMBATERAPIA, horariosClase2, getListadoEntrenadores().get(1).getCedula(), null));
 
-        listadoClases.add(registrarClase("CLA_YOGA-10", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true,
+        listadoClases.add(registrarClase("CLA_YOGA-12", "Clase yoga nuevo año", 20, fechaInicio2, fechaFin2, true,
                 TipoClase.YOGA, horariosClase2, getListadoEntrenadores().get(2).getCedula(), null));
 
-
         //RESERVAS
-        listadoReservas.add(registrarReserva(true,  "CLA_RUM-08",  "156465465",  listadoClases.get(0).getHorarios().get(0)));
-        listadoReservas.add(registrarReserva(true,  "CLA_RUM-18",  "156465465",listadoClases.get(0).getHorarios().get(0)));
-        listadoReservas.add(registrarReserva(true,  "CLA_YOGA-10",  "15646513",  listadoClases.get(0).getHorarios().get(0)));
-
+        Reserva reservaGenerica = new Reserva(true, "CLA_RUM-08",  "1234", listadoClases.get(0).getHorarios().get(0));
+        Reserva reservaGenerica2 = new Reserva(true, "CLA_RUM-10",  "4321", listadoClases.get(0).getHorarios().get(1));
+        Reserva reservaGenerica3 = new Reserva(false, "CLA_YOGA-12",  "0000", listadoClases.get(0).getHorarios().get(1));
+        listadoReservas.add(reservaGenerica);
+        listadoReservas.add(reservaGenerica2);
+        listadoReservas.add(reservaGenerica3);
 
         // ENTRENAMIENTOS
         listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.BICICLETA, 30, 5));
         listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.ESPALDA, 15, 5));
         listadoEntrenamientos.add(registrarEntrenamiento(TipoEjercicio.GLUTEO, 15, 5));
-
-
-
-
     }
 
     // Metodos de reportes------------------------------------
 
     public ArrayList<Clase> obtenerClaseMasPopular(ArrayList<Clase> listadoClases) {
-
         return listadoClases;
     }
 
@@ -135,7 +121,6 @@ public class Gimnasio {
         } else {
             System.out.println("Esta opcion no esta disponible");
         }
-
         return listadoClases;
     }
 
@@ -202,7 +187,6 @@ public class Gimnasio {
                 clasesEncontradas.add(clase);
             }
         }
-
         return clasesEncontradas;
     }
 
@@ -219,12 +203,10 @@ public class Gimnasio {
 
         return new Clase(id, nombre, capacidad, fechaInicio, fechaFin, disponible, tipoClase, horario, cedulaEntrenador,
                 inscritos);
-
     }
 
     // Metodo para registar clientes
     public Cliente registrarCliente() {
-
         System.out.println(" - Ingrese la cédula");
         String cedula = scanner.next();
         System.out.println(" - Ingrese el nombre");
@@ -237,9 +219,7 @@ public class Gimnasio {
         String correoElectronico = scanner.next();
         System.out.println(" - Ingrese el contraseña");
         String contrasena = scanner.next();
-
         return new Cliente(cedula, nombre, direccion, telefono, correoElectronico, contrasena);
-
     }
 
     // Metodo para eliminar cliente
@@ -259,9 +239,48 @@ public class Gimnasio {
         return new Entrenamiento(tipoEjercicio, duracion, caloriasQuemadas);
     }
 
-    public Reserva registrarReserva(Boolean estado, String idClase, String cedulaCliente, LocalDateTime fechaReserva){
-        return new Reserva(estado, idClase, cedulaCliente, fechaReserva);
+    public Reserva registrarReserva(String idClase, String cedulaCliente){
 
+        Boolean estado = true;
+        LocalDateTime fechaReserva = null;
+        for(int i = 0; i < listadoClases.size(); i++) {
+            if(listadoClases.get(i).getId() ==  idClase){
+                System.out.println(listadoClases.get(i).getHorarios().toString());
+                System.out.println("Seleccione el horario que desea registrar");
+                Integer horarioOpcion = scanner.nextInt();
+                if(horarioOpcion > 0 && horarioOpcion < listadoClases.get(i).getHorarios().size()) {
+                    fechaReserva = listadoClases.get(i).getHorarios().get(horarioOpcion);
+                }else{
+                    System.out.println("El horario solicitado no es valido");
+                }
+            }
+        }
+        return new Reserva(estado, idClase, cedulaCliente, fechaReserva);
+    }
+
+    public void mostrarReservasActivas(ArrayList<Reserva> listadoReservas) {
+        for(Reserva reserva : listadoReservas) {
+            if(reserva.getEstado()){
+            System.out.println(reserva.toString());
+            }
+        }
+    }
+
+    public void cancelarReserva(String cedulaCliente){
+        for(Reserva reserva: listadoReservas){
+            if(reserva.getCedulaUsuario() ==  cedulaCliente){
+                System.out.println("---- Listado de reservas ----");
+                System.out.println(reserva.toString());
+            }else{
+                System.out.println("El usuario no tiene reservas");
+            }
+        }
+
+    }
+
+    public LocalDateTime crearFecha(String anio, String mes, String dia,String hora, String minuto){
+        String fecha = anio+"-"+mes+"-"+dia+"T"+hora+":"+minuto;
+        return LocalDateTime.parse(fecha);
     }
 
     // Getters and setters -----------------------
@@ -305,5 +324,4 @@ public class Gimnasio {
     public void setNuevoCliente(Cliente cliente) {
         listadoClientes.add(cliente);
     }
-
 }
