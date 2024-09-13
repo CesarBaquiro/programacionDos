@@ -2,7 +2,11 @@
 
 Desarrollo de actividades universitarias semestre 2024-2
 
-# Autores
+# Problema a resolver
+
+Se requiere desarrollar un sistema de reservas de viajes personalizadas, donde los usuarios pueden planificar su itinerario de viaje de manera detallada. Cada reserva puede incluir información como la fecha de salida, la duración del viaje, el tipo de alojamiento, preferencias de transporte, actividades planeadas y dietas especiales. Sin embargo, no todos los usuarios desean proporcionar la misma cantidad de detalles al realizar una reserva. Algunos podrían querer especificar sólo la fecha de salida y el destino, mientras que otros desean personalizar cada aspecto del viaje. Haga uso del patrón Builder para flexibilizar la creación de objetos de tipo Reserva. Cree la clase Reserva y ReservaBuilder. Además, haga una clase adicional para probar la implementación.
+
+# Autor
 
 -   Autor Cesar Baquiro
 
