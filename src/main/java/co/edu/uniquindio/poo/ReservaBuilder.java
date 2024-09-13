@@ -54,5 +54,4 @@ public class ReservaBuilder {
             return new Reserva(destino, duracion, fechaSalida, transporte, tipoAlojamiento, actividades, dietasEspeciales);
     }
 
-
 }
