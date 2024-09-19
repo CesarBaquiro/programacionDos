@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo;
+package co.edu.uniquindio.poo.programaciondos;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
