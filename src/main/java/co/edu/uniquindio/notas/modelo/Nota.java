@@ -1,24 +1,25 @@
 package co.edu.uniquindio.notas.modelo;
 
-import javafx.event.ActionEvent;
-
 import java.time.LocalDateTime;
 
 public class Nota {
+    private int idNota = 0;
     private String titulo;
     private String categoria;
     private String Nota;
     private String descripcion;
     private LocalDateTime fechaCreacion;
 
-    NotaPrincipal notaPrincipal;
 
     public Nota(String titulo, String nota, String categoria) {
+        this.idNota++;
         this.titulo = titulo;
         this.Nota = nota;
         this.categoria = categoria;
         this.fechaCreacion = LocalDateTime.now();
     }
+
+    public int getIdNota() {return idNota;}
 
     public String getTitulo() {
         return titulo;

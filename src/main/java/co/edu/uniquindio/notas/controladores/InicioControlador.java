@@ -18,12 +18,17 @@ public class InicioControlador implements Initializable {
     private final NotaPrincipal notaPrincipal;
 
 
+
     public InicioControlador() {
         notaPrincipal = new NotaPrincipal();
+        tablaNotas = new TableView<>();
     }
 
     @FXML
     private TableView<Nota> tablaNotas;
+
+    @FXML
+    private TableColumn<Nota, String> colId;
 
     @FXML
     private TableColumn<Nota, String> colTitulo;
@@ -43,6 +48,16 @@ public class InicioControlador implements Initializable {
     @FXML
     private TextField txtCategoria;
 
+    /**
+    @FXML
+    private ComboBox<String> boxCategorias;
+
+    @FXML
+    public String obtenerSeleccionCategoria() {
+        String seleccion = boxCategorias.getValue();  // Obtener el valor seleccionado
+        return seleccion;
+    }
+*/
     @FXML
     private TextArea txtNota;
 
@@ -130,13 +145,18 @@ public class InicioControlador implements Initializable {
 
     }
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //boxCategorias.getItems().addAll("Tarea", "Trabajo", "Examen", "Reunion");
+
+        colId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdNota())));
+
         colTitulo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitulo()));
         colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
         colTexto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNota()));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaCreacion().toString()));
-
 
     }
 
