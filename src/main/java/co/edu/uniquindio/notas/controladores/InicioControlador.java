@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,8 +19,6 @@ import java.util.ResourceBundle;
 public class InicioControlador implements Initializable {
 
     private final NotaPrincipal notaPrincipal;
-
-
 
     public InicioControlador() {
         notaPrincipal = new NotaPrincipal();
@@ -28,7 +29,7 @@ public class InicioControlador implements Initializable {
     private TableView<Nota> tablaNotas;
 
     @FXML
-    private TableColumn<Nota, String> colId;
+    private Button btnNuevaNota;
 
     @FXML
     private TableColumn<Nota, String> colTitulo;
@@ -43,21 +44,17 @@ public class InicioControlador implements Initializable {
     private TableColumn<Nota, String> colFecha;
 
     @FXML
+    private TableColumn<Nota, Void> editButton;
+
+    @FXML
+    private TableColumn<Nota, Void> deleteButton;
+
+    @FXML
     private TextField txtTitulo;
 
     @FXML
     private TextField txtCategoria;
 
-    /**
-    @FXML
-    private ComboBox<String> boxCategorias;
-
-    @FXML
-    public String obtenerSeleccionCategoria() {
-        String seleccion = boxCategorias.getValue();  // Obtener el valor seleccionado
-        return seleccion;
-    }
-*/
     @FXML
     private TextArea txtNota;
 
@@ -72,8 +69,8 @@ public class InicioControlador implements Initializable {
 
     public void crearNota(ActionEvent e){
         try {
-            // El metodo validar formulario maneja la verificacion de los datos
-            validarFormulario();
+            validarFormulario(); //Validar para crear nueva nota
+
         }catch (Exception ex){
             mostrarAlerta(ex.getMessage(), Alert.AlertType.ERROR);
         }
@@ -94,7 +91,7 @@ public class InicioControlador implements Initializable {
         String titulo = txtTitulo.getText();
         String nota = txtNota.getText();
         String categoria = txtCategoria.getText();
-        Boolean esValido = true;
+        boolean esValido = true;
 
         // ------------ Validaciones -----------
 
@@ -128,7 +125,8 @@ public class InicioControlador implements Initializable {
         }
 
         if(esValido){
-            notaPrincipal.agregarNota(txtTitulo.getText(), txtNota.getText(), txtCategoria.getText());
+            int indice = notaPrincipal.getNotas().size();
+            notaPrincipal.agregarNota(indice, txtTitulo.getText(), txtNota.getText(), txtCategoria.getText());
             mostrarAlerta("Nota creada correctamente", Alert.AlertType.INFORMATION);
             // Si la validación es exitosa, limpiar el mensaje de error
             mensajeErrorTitulo.setText("");
@@ -141,18 +139,97 @@ public class InicioControlador implements Initializable {
             txtCategoria.clear();
             txtNota.clear();
         }
-
-
     }
 
+    private void agregarBotonEditar() {
+        // Usar un CellFactory para crear el botón en cada fila
+        Callback<TableColumn<Nota, Void>, TableCell<Nota, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Nota, Void> call(final TableColumn<Nota, Void> param) {
+                final TableCell<Nota, Void> cell = new TableCell<>() {
+                    private final Button btn = new Button("Editar");
+
+                    {
+                        // Acción del botón Editar
+                        btn.setOnAction((ActionEvent event) -> {
+                            btnNuevaNota.setText("Editar");
+                            Nota nota = getTableView().getItems().get(getIndex());
+                            txtTitulo.setText(nota.getTitulo());
+                            txtCategoria.setText(nota.getCategoria());
+                            txtNota.setText(nota.getNota());
+                            btnNuevaNota.setOnAction((ActionEvent e) -> {
+                                System.out.println("Editando nota: " + nota.getTitulo());
+                                btnNuevaNota.setText("Crear nueva nota");
+                            });
+
+                            // Aquí puedes añadir lógica para editar la nota
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        editButton.setCellFactory(cellFactory);
+    }
+
+    private void agregarBotonEliminar() {
+        // Usar un CellFactory para crear el botón en cada fila
+        Callback<TableColumn<Nota, Void>, TableCell<Nota, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Nota, Void> call(final TableColumn<Nota, Void> param) {
+                final TableCell<Nota, Void> cell = new TableCell<>() {
+                    private final Button btn = new Button("Eliminar");
+
+                    {
+                        // Acción del botón Eliminar
+                        btn.setOnAction((ActionEvent event) -> {
+                            Nota nota = getTableView().getItems().get(getIndex());
+                            notaPrincipal.getNotas().remove(nota.getIdNota());
+                            tablaNotas.getItems().remove(nota.getIdNota());
+                            // Aquí puedes añadir lógica para eliminar la nota
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        deleteButton.setCellFactory(cellFactory);
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //boxCategorias.getItems().addAll("Tarea", "Trabajo", "Examen", "Reunion");
 
-        colId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdNota())));
+        // Agregar el botón de Editar
+        agregarBotonEditar();
 
+        // Agregar el botón de Eliminar
+        agregarBotonEliminar();
+
+        //colId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdNota())));
         colTitulo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitulo()));
         colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
         colTexto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNota()));

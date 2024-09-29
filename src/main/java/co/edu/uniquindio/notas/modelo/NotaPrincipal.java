@@ -10,13 +10,16 @@ public class NotaPrincipal {
         this.notas = new ArrayList<>();  // Inicializa la lista de notas
     }
 
-    public void agregarNota(String titulo, String categoria, String nota) {
+    public void agregarNota(int idNota, String titulo, String categoria, String nota) {
 
-      notas.add(new Nota(titulo, categoria, nota));
+      notas.add(new Nota(idNota, titulo, categoria, nota));
     }
 
     public ArrayList<Nota> listarNotas() {
         return this.notas;
     }
 
+    public ArrayList<Nota> getNotas() {
+        return notas;
+    }
 }

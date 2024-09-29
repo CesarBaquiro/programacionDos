@@ -11,8 +11,8 @@ public class Nota {
     private LocalDateTime fechaCreacion;
 
 
-    public Nota(String titulo, String nota, String categoria) {
-        this.idNota++;
+    public Nota(int idNota, String titulo, String nota, String categoria) {
+        this.idNota = idNota;
         this.titulo = titulo;
         this.Nota = nota;
         this.categoria = categoria;

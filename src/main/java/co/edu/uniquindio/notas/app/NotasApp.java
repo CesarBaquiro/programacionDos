@@ -21,7 +21,6 @@ public class NotasApp extends Application {
         stage.setScene(scene);
         stage.setTitle("Mis Notas");
         stage.show();
-
     }
 
 
