@@ -1,32 +1,31 @@
-package co.edu.uniquindio.notas.app;
+package co.edu.uniquindio.contacts.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 
-public class NotasApp extends Application {
+public class contactsApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
 
 
-        FXMLLoader loader = new FXMLLoader(NotasApp.class.getResource("/inicio.fxml"));
+        FXMLLoader loader = new FXMLLoader(contactsApp.class.getResource("/inicio.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
 
         stage.setScene(scene);
-        stage.setTitle("Mis Notas");
+        stage.setTitle("Contactos");
         stage.show();
     }
 
 
 
     public static void main(String[] args) {
-        launch(NotasApp.class, args);
+        launch(contactsApp.class, args);
 
     }
 }
