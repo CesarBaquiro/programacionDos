@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
 @Getter
 public class ContactController implements Initializable {
 
-
-
     Contact contact; // Contact Instance
     private ArrayList<Contact> contactList; // Contact list
     LocalDateTime now = LocalDateTime.now(); // Current hour
@@ -100,7 +98,7 @@ public class ContactController implements Initializable {
         try {
             validarFormulario();
         }catch (Exception ex){
-            mostrarAlerta(ex.getMessage(), Alert.AlertType.ERROR);
+            showAlert(ex.getMessage(), Alert.AlertType.ERROR);
             System.out.println(ex.getMessage() + Alert.AlertType.ERROR);
         }
     }
@@ -111,8 +109,8 @@ public class ContactController implements Initializable {
     }
 
     // Method for delete contacts
-    public void deleteContact(int index) {
-        contactList.remove(index);
+    public void deleteContact(Contact contact) {
+        contactList.remove(contact);
     }
 
     public ArrayList<Contact> listContacts() {
@@ -132,40 +130,79 @@ public class ContactController implements Initializable {
 
         // ------------ Validaciones -----------
 
-        // Validar que no esté vacío
+        // Validar nombre ----
         if (name == null || name.trim().isEmpty()) {
-            messageErrorName.setText("El nombre no puede estar vacío.");
+            messageErrorName.setText("El nombre no puede estar vacío");
             esValido= false;
         } else if (name.length() < 3) {
             // Validar longitud mínima
-            messageErrorName.setText("El nombre debe tener al menos 3 caracteres.");
+            messageErrorName.setText("El nombre debe tener al menos 3 caracteres");
             esValido= false;
         }else{
             messageErrorName.setText("");
         }
 
+        // Validar apellido ----
         if (lastName == null || lastName.trim().isEmpty()) {
             messageErrorLastname.setText("El apellido no puede estar vacío.");
             esValido= false;
         } else if (lastName.length() < 3) {
-            messageErrorLastname.setText("El apellido debe tener al menos 3 caracteres.");
+            messageErrorLastname.setText("El apellido debe tener al menos 3 caracteres");
             esValido= false;
         }else{
             messageErrorLastname.setText("");
         }
 
+        // Validar telefono ----
         if (phone == null || phone.trim().isEmpty()) {
-            messageErrorPhone.setText("El telefono no puede estar vacío.");
+            messageErrorPhone.setText("El telefono no puede estar vacío");
             esValido= false;
+        }else if (!phone.matches("\\d+")) {  // Verifica si contiene solo números
+            messageErrorPhone.setText("El teléfono solo debe contener números");
+            esValido = false;
+        }else if (phone.length() != 10) { // Verifica tiene 10 caracteres
+            messageErrorPhone.setText("El telefono debe tener 10 caracteres");
+            esValido = false;
         } else {
             messageErrorPhone.setText("");
         }
 
-        if(esValido){
+        // Validar correo electronico
+        if (email == null || email.trim().isEmpty()) {
+            messageErrorEmail.setText("El correo electrónico no puede estar vacío");
+            esValido = false;
+        } else if (!email.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-zA-Z]{2,}$")) {  // Verifica el formato de correo
+            messageErrorEmail.setText("El correo electrónico no tiene un formato válido");
+            esValido = false;
+        } else {
+            messageErrorEmail.setText("");
+        }
 
-//            notaPrincipal.agregarNota(indice, name, lastName, phone, email, birthday);
-            addContact(name, lastName, phone, email, now.toString(), urlPhoto);
-            mostrarAlerta("Contacto guardado correctamente", Alert.AlertType.INFORMATION);
+
+        // Validar fecha de cumpleaños ----
+        if (birthday == null || birthday.trim().isEmpty()) {
+            messageErrorBirthday.setText("La fecha de cumpleaños no puede estar vacia");
+            esValido = false;
+        }
+
+        // Validar URl de foto ----
+        if (urlPhoto == null || urlPhoto.trim().isEmpty()) {
+            messageErrorUrlPhoto.setText("La URL no puede estar vacia");
+            esValido = false;
+        }
+
+        // Verificar que no se repita ----
+        for (Contact c : this.contactList) {
+            System.out.println(c);
+            if (c.getEmail().equals(email) || c.getPhone().equals(phone)) {
+                showAlert("El contacto ya existe", Alert.AlertType.ERROR);
+                esValido = false;
+            }
+        }
+
+        if(esValido){
+            addContact(name, lastName, phone, email, birthday, urlPhoto);
+            showAlert("Contacto guardado correctamente", Alert.AlertType.INFORMATION);
             // Si la validación es exitosa, limpiar el mensaje de error
             messageErrorName.setText("");
             messageErrorLastname.setText("");
@@ -185,21 +222,11 @@ public class ContactController implements Initializable {
         }
     }
 
-
-    public ArrayList<Contact> getContactList() {
-        return contactList;
-    }
-
-    public Contact getContactById(int id) {
-        return contactList.get(id);
-    }
-
-    private void mostrarAlerta(String mensaje, Alert.AlertType tipo){
-
-        Alert alert = new Alert(tipo);
+    private void showAlert(String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
         alert.setTitle("Información");
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+        alert.setContentText(message);
         alert.show();
     }
 
@@ -260,7 +287,7 @@ public class ContactController implements Initializable {
                         // Acción del botón Eliminar
                         btn.setOnAction((ActionEvent event) -> {
                             Contact contact = getTableView().getItems().get(getIndex());
-                            getContactList().remove(contact);
+                            deleteContact(contact);
                             tableContacts.getItems().remove(contact);
                             // Aquí puedes añadir lógica para eliminar la nota
                         });
