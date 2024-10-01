@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Getter
-public class contactController {
+public class ContactController {
 
     Contact contact; // Contact Instance
     private ArrayList<Contact> contactList; // Contact list
     LocalDateTime now = LocalDateTime.now(); // Current hour
 
-    public contactController() {
+    public ContactController() {
         this.contactList = new ArrayList<>();
 
 

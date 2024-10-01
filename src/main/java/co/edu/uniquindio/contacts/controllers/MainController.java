@@ -3,8 +3,8 @@ package co.edu.uniquindio.contacts.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class mainController {
-    public mainController() {
+public class MainController {
+    public MainController() {
 
     }
 

@@ -23,7 +23,7 @@
                 <version>0.0.8</version>
                 <configuration>
                     <executable>C:/Program Files/Java/jdk-21/bin/java</executable>
-                    <mainClass>co.edu.uniquindio.contacts.app.contactsApp</mainClass>
+                    <mainClass>co.edu.uniquindio.contacts.app.ContactsApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
