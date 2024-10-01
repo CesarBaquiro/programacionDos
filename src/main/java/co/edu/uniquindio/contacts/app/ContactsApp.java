@@ -20,9 +20,6 @@ public class ContactsApp extends Application {
         stage.setScene(scene);
         stage.setTitle("Contactos");
         stage.show();
-
-        System.out.println("---CONTACTOS---");
-        new ContactController();
     }
 
     public static void main(String[] args) {

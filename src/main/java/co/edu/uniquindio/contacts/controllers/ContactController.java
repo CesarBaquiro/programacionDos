@@ -15,18 +15,6 @@ public class ContactController {
 
     public ContactController() {
         this.contactList = new ArrayList<>();
-
-
-        /**
-         * DEBUG methods
-         *
-         */
-        addContact("Cesar", "Baquiro", "1456464", "cdcdscsdf", now, "https//");
-        addContact("Camilo", "Baquiro", "1456464", "cdcdscsdf", now, "https//");
-        System.out.println(getContactList().toString());
-        System.out.println(getContactList().get(1).getName());
-        deleteContact(1);
-        System.out.println(getContactList().toString());
     }
 
     // Method for add contacts
