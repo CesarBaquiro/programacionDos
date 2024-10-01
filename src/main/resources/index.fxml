@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="471.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.contacts.controllers.ContactController">
+<AnchorPane prefHeight="503.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.contacts.controllers.ContactController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="678.0" style="-fx-background-color: #F0EDCF;">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="776.0" style="-fx-background-color: #F0EDCF;">
          <left>
-            <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="179.0" style="-fx-background-color: #0B60B0;" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="124.0" style="-fx-background-color: #0B60B0;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="128.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/address-book.png" />
                      </image>
@@ -36,46 +36,52 @@
                </children></VBox>
          </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="471.0" prefWidth="611.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="199.0" prefWidth="499.0">
+                  <Pane prefHeight="274.0" prefWidth="652.0">
                       <!--Name-->
-                      <Label layoutX="27.0" layoutY="35.0" text="Nombre" />
-                      <TextField fx:id="txtName" layoutX="100.0" layoutY="30.0" minWidth="128.0" prefHeight="25.0" prefWidth="152.0" />
-                      <Label fx:id="mensajeErrorName" layoutX="100.0" layoutY="55.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="32.0" layoutY="47.0" text="Nombre" />
+                      <TextField fx:id="txtName" layoutX="105.0" layoutY="42.0" minWidth="128.0" prefHeight="25.0" prefWidth="152.0" />
+                      <Label fx:id="messageErrorName" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
 
                       <!--Lastname-->
-                      <Label layoutX="27.0" layoutY="69.0" text="Apellido" />
-                      <TextField fx:id="txtLastname" layoutX="100.0" layoutY="64.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
-                      <Label fx:id="mensajeErrorLastname" layoutX="100.0" layoutY="89.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="32.0" layoutY="81.0" text="Apellido" />
+                      <TextField fx:id="txtLastname" layoutX="105.0" layoutY="76.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
+                      <Label fx:id="messageErrorLastname" layoutX="105.0" layoutY="101.0" style="-fx-text-fill: red;" text="" />
 
                       <!--Phone-->
-                      <Label layoutX="27.0" layoutY="103.0" text="Telefono" />
-                      <TextField fx:id="txtPhone" layoutX="100.0" layoutY="98.0" minWidth="130.0" prefHeight="25.0" prefWidth="153.0" />
-                      <Label fx:id="mensajeErrorPhone" layoutX="100.0" layoutY="123.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="32.0" layoutY="115.0" text="Telefono" />
+                      <TextField fx:id="txtPhone" layoutX="105.0" layoutY="110.0" minWidth="130.0" prefHeight="25.0" prefWidth="153.0" />
+                      <Label fx:id="messageErrorPhone" layoutX="105.0" layoutY="135.0" style="-fx-text-fill: red;" text="" />
 
                       <!--Phone-->
-                      <Label layoutX="27.0" layoutY="131.0" prefHeight="44.0" prefWidth="59.0" text="Correo electronico" textOverrun="CLIP" wrapText="true" />
-                      <TextField fx:id="txtEmail" layoutX="100.0" layoutY="141.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
-                      <Label fx:id="mensajeErrorEmail" layoutX="100.0" layoutY="165.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="32.0" layoutY="143.0" prefHeight="44.0" prefWidth="59.0" text="Correo electronico" textOverrun="CLIP" wrapText="true" />
+                      <TextField fx:id="txtEmail" layoutX="105.0" layoutY="153.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
+                      <Label fx:id="messageErrorEmail" layoutX="105.0" layoutY="177.0" style="-fx-text-fill: red;" text="" />
 
                       <!--Url photo-->
-                      <Label layoutX="262.0" layoutY="34.0" text="Foto (URL)" />
-                      <TextField fx:id="txtUrlPhoto" layoutX="335.0" layoutY="31.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
-                      <Label fx:id="mensajeErrorUrlPhoto" layoutX="335.0" layoutY="59.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="267.0" layoutY="46.0" text="Foto (URL)" />
+                      <TextField fx:id="txtUrlPhoto" layoutX="340.0" layoutY="43.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
+                      <Label fx:id="messageErrorUrlPhoto" layoutX="340.0" layoutY="71.0" style="-fx-text-fill: red;" text="" />
 
-                      <Label layoutX="262.0" layoutY="70.0" prefHeight="38.0" prefWidth="74.0" text="Fecha de cumpleaños" wrapText="true" />
-                      <TextField fx:id="txtBirthday" layoutX="335.0" layoutY="76.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
-                      <Label fx:id="mensajeErrorBirthday" layoutX="335.0" layoutY="104.0" style="-fx-text-fill: red;" text="" />
+                      <Label layoutX="267.0" layoutY="82.0" prefHeight="38.0" prefWidth="74.0" text="Fecha de cumpleaños" wrapText="true" />
+                      <TextField fx:id="txtBirthday" layoutX="340.0" layoutY="88.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
+                      <Label fx:id="messageErrorBirthday" layoutX="340.0" layoutY="116.0" style="-fx-text-fill: red;" text="" />
 
                       <!--Save button-->
-                      <Button fx:id="btnNewContact" layoutX="318.0" layoutY="141.0" onAction="#addNewContact" text="Guardar nuevo contacto" />
+                      <Button fx:id="btnNewContact" layoutX="323.0" layoutY="153.0" onAction="#addNewContact" text="Guardar nuevo contacto" />
 
                    </Pane>
-                  <TableView prefHeight="274.0" prefWidth="499.0">
+                  <TableView fx:id="tableContacts" prefHeight="306.0" prefWidth="652.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn fx:id="colName" text="Nombre" />
+                        <TableColumn fx:id="colLastname" text="Apellido" />
+                        <TableColumn fx:id="colPhone" text="Telefono" />
+                        <TableColumn fx:id="colEmail" text="Correo" />
+                        <TableColumn fx:id="colBirthday" text="Cumpleaños" />
+                        <TableColumn fx:id="colUrlPhoto" text="Url foto" />
+                        <TableColumn fx:id="editButton" text="Editar" />
+                        <TableColumn fx:id="deleteButton" text="Eliminar" />
                     </columns>
                   </TableView>
                </children>

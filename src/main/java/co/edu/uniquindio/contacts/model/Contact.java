@@ -16,7 +16,7 @@ public class Contact {
     private String lastname;
     private String phone;
     private String email;
-    private LocalDateTime birthday;
+    private String birthday;
     private String urlPhoto;
 
     @Override
