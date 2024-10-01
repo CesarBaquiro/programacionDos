@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 import lombok.Getter;
 
 import java.net.URL;
@@ -202,15 +203,95 @@ public class ContactController implements Initializable {
         alert.show();
     }
 
+    private void addBtnEdit() {
+        // Usar un CellFactory para crear el botón en cada fila
+        Callback<TableColumn<Contact, Void>, TableCell<Contact, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Contact, Void> call(final TableColumn<Contact, Void> param) {
+                final TableCell<Contact, Void> cell = new TableCell<>() {
+                    private final Button btn = new Button("Editar");
+
+                    {
+                        // Acción del botón Editar
+                        btn.setOnAction((ActionEvent event) -> {
+                            btnNewContact.setText("Editar");
+                            Contact contact = getTableView().getItems().get(getIndex());
+                            txtName.setText(contact.getName());
+                            txtLastname.setText(contact.getLastname());
+                            txtPhone.setText(contact.getPhone());
+                            txtEmail.setText(contact.getEmail());
+                            txtBirthday.setText(contact.getBirthday());
+                            txtUrlPhoto.setText(contact.getUrlPhoto());
+                            btnNewContact.setOnAction((ActionEvent e) -> {
+                                System.out.println("Editando a " + contact.getName());
+                                btnNewContact.setText("Guardar nuevo contacto");
+                            });
+
+                            // Aquí puedes añadir lógica para editar la nota
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        editButton.setCellFactory(cellFactory);
+    }
+
+    private void addBtnDelete() {
+        // Usar un CellFactory para crear el botón en cada fila
+        Callback<TableColumn<Contact, Void>, TableCell<Contact, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Contact, Void> call(final TableColumn<Contact, Void> param) {
+                final TableCell<Contact, Void> cell = new TableCell<>() {
+                    private final Button btn = new Button("Eliminar");
+
+                    {
+                        // Acción del botón Eliminar
+                        btn.setOnAction((ActionEvent event) -> {
+                            Contact contact = getTableView().getItems().get(getIndex());
+                            getContactList().remove(contact);
+                            tableContacts.getItems().remove(contact);
+                            // Aquí puedes añadir lógica para eliminar la nota
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        deleteButton.setCellFactory(cellFactory);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //boxCategorias.getItems().addAll("Tarea", "Trabajo", "Examen", "Reunion");
 
         // Agregar el botón de Editar
-        //agregarBotonEditar();
+        addBtnEdit();
 
         // Agregar el botón de Eliminar
-        //agregarBotonEliminar();
+        addBtnDelete();
 
         //colId.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdNota())));
         colName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
