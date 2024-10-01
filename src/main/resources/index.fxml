@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="471.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="471.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.contacts.controllers.ContactController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="678.0" style="-fx-background-color: #F0EDCF;">
          <left>
@@ -36,35 +36,50 @@
                </children></VBox>
          </left>
          <center>
-            <!--<Label prefHeight="355.0" prefWidth="448.0" text="No hay contactos registrados" BorderPane.alignment="CENTER">
-               </graphic></Label>
-               <font>
-                  <Font name="Segoe UI" size="15.0" />
-               </font>
-               <graphic>
-               -->
-                  <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" />
-                      <ColumnConstraints hgrow="SOMETIMES" />
-                      <ColumnConstraints hgrow="SOMETIMES" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
-                    </rowConstraints>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" maxWidth="130.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #40A2D8; -fx-background-radius: 10;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                     </GridPane.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </VBox>
+                  <Pane prefHeight="199.0" prefWidth="499.0">
+                      <!--Name-->
+                      <Label layoutX="27.0" layoutY="35.0" text="Nombre" />
+                      <TextField fx:id="txtName" layoutX="100.0" layoutY="30.0" minWidth="128.0" prefHeight="25.0" prefWidth="152.0" />
+                      <Label fx:id="mensajeErrorName" layoutX="100.0" layoutY="55.0" style="-fx-text-fill: red;" text="" />
+
+                      <!--Lastname-->
+                      <Label layoutX="27.0" layoutY="69.0" text="Apellido" />
+                      <TextField fx:id="txtLastname" layoutX="100.0" layoutY="64.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
+                      <Label fx:id="mensajeErrorLastname" layoutX="100.0" layoutY="89.0" style="-fx-text-fill: red;" text="" />
+
+                      <!--Phone-->
+                      <Label layoutX="27.0" layoutY="103.0" text="Telefono" />
+                      <TextField fx:id="txtPhone" layoutX="100.0" layoutY="98.0" minWidth="130.0" prefHeight="25.0" prefWidth="153.0" />
+                      <Label fx:id="mensajeErrorPhone" layoutX="100.0" layoutY="123.0" style="-fx-text-fill: red;" text="" />
+
+                      <!--Phone-->
+                      <Label layoutX="27.0" layoutY="131.0" prefHeight="44.0" prefWidth="59.0" text="Correo electronico" textOverrun="CLIP" wrapText="true" />
+                      <TextField fx:id="txtEmail" layoutX="100.0" layoutY="141.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
+                      <Label fx:id="mensajeErrorEmail" layoutX="100.0" layoutY="165.0" style="-fx-text-fill: red;" text="" />
+
+                      <!--Url photo-->
+                      <Label layoutX="262.0" layoutY="34.0" text="Foto (URL)" />
+                      <TextField fx:id="txtUrlPhoto" layoutX="335.0" layoutY="31.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
+                      <Label fx:id="mensajeErrorUrlPhoto" layoutX="335.0" layoutY="59.0" style="-fx-text-fill: red;" text="" />
+
+                      <Label layoutX="262.0" layoutY="70.0" prefHeight="38.0" prefWidth="74.0" text="Fecha de cumpleaños" wrapText="true" />
+                      <TextField fx:id="txtBirthday" layoutX="335.0" layoutY="76.0" minWidth="126.0" prefHeight="25.0" prefWidth="126.0" />
+                      <Label fx:id="mensajeErrorBirthday" layoutX="335.0" layoutY="104.0" style="-fx-text-fill: red;" text="" />
+
+                      <!--Save button-->
+                      <Button fx:id="btnNewContact" layoutX="318.0" layoutY="141.0" onAction="#addNewContact" text="Guardar nuevo contacto" />
+
+                   </Pane>
+                  <TableView prefHeight="274.0" prefWidth="499.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
                </children>
-                  </GridPane>
+            </VBox>
          </center></BorderPane>
    </children>
 </AnchorPane>
