@@ -88,15 +88,17 @@ public class ContactController implements Initializable {
     @FXML
     private TableColumn<Contact, Void> deleteButton;
 
+    private boolean editMode;
 
     public ContactController() {
         this.contactList = new ArrayList<>();
         this.tableContacts = new TableView<>();
+        this.editMode = false;
     }
 
     public void addNewContact(ActionEvent e){
         try {
-            validarFormulario();
+            validarFormulario( 0);
         }catch (Exception ex){
             showAlert(ex.getMessage(), Alert.AlertType.ERROR);
             System.out.println(ex.getMessage() + Alert.AlertType.ERROR);
@@ -118,7 +120,7 @@ public class ContactController implements Initializable {
     }
 
     @FXML
-    public void validarFormulario() {
+    public void validarFormulario(int contactIndex) {
         // Obtener el valor del campo de texto
         String name = txtName.getText();
         String lastName = txtLastname.getText();
@@ -192,16 +194,25 @@ public class ContactController implements Initializable {
         }
 
         // Verificar que no se repita ----
-        for (Contact c : this.contactList) {
-            System.out.println(c);
-            if (c.getEmail().equals(email) || c.getPhone().equals(phone)) {
-                showAlert("El contacto ya existe", Alert.AlertType.ERROR);
-                esValido = false;
+        if(editMode == false){
+            for (Contact c : this.contactList) {
+                System.out.println(c);
+                if (c.getEmail().equals(email) || c.getPhone().equals(phone)) {
+                    showAlert("El contacto ya existe", Alert.AlertType.ERROR);
+                    esValido = false;
+                }
             }
         }
 
         if(esValido){
-            addContact(name, lastName, phone, email, birthday, urlPhoto);
+            if (editMode == false){
+                addContact(name, lastName, phone, email, birthday, urlPhoto); // Añadir un contacto nuevo
+            }else {
+                Contact contactEdited = new Contact(name, lastName, phone, email, birthday, urlPhoto); // Editar un contacto
+                contactList.set(contactIndex, contactEdited);
+                editMode = false;
+                btnNewContact.setText("Guardar nuevo contacto");
+            }
             showAlert("Contacto guardado correctamente", Alert.AlertType.INFORMATION);
             // Si la validación es exitosa, limpiar el mensaje de error
             messageErrorName.setText("");
@@ -241,6 +252,7 @@ public class ContactController implements Initializable {
                     {
                         // Acción del botón Editar
                         btn.setOnAction((ActionEvent event) -> {
+                            editMode = true;
                             btnNewContact.setText("Editar");
                             Contact contact = getTableView().getItems().get(getIndex());
                             txtName.setText(contact.getName());
@@ -249,11 +261,6 @@ public class ContactController implements Initializable {
                             txtEmail.setText(contact.getEmail());
                             txtBirthday.setText(contact.getBirthday());
                             txtUrlPhoto.setText(contact.getUrlPhoto());
-                            btnNewContact.setOnAction((ActionEvent e) -> {
-                                System.out.println("Editando a " + contact.getName());
-                                btnNewContact.setText("Guardar nuevo contacto");
-                            });
-
                             // Aquí puedes añadir lógica para editar la nota
                         });
                     }
@@ -284,12 +291,12 @@ public class ContactController implements Initializable {
                     private final Button btn = new Button("Eliminar");
 
                     {
-                        // Acción del botón Eliminar
+                        // Logica de eliminar
                         btn.setOnAction((ActionEvent event) -> {
                             Contact contact = getTableView().getItems().get(getIndex());
                             deleteContact(contact);
                             tableContacts.getItems().remove(contact);
-                            // Aquí puedes añadir lógica para eliminar la nota
+
                         });
                     }
 
@@ -308,6 +315,9 @@ public class ContactController implements Initializable {
         };
 
         deleteButton.setCellFactory(cellFactory);
+    }
+
+    private void addBtnEditConfirmation() {
     }
 
     @Override
