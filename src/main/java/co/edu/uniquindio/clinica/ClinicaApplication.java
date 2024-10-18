@@ -21,6 +21,5 @@ public class ClinicaApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
-
     // VOY EN EL PUNTO 20
 }

@@ -11,6 +11,29 @@
             fx:controller="co.edu.uniquindio.clinica.controladores.RegistroPacienteControlador"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Label text="Registro" />
+<!--    identificacnion nombre correo-->
+
+    <Pane prefHeight="274.0" prefWidth="652.0">
+    <!--Identificacion-->
+    <Label layoutX="32.0" layoutY="47.0" text="Identificacion" />
+    <TextField fx:id="txtIdentificacion" layoutX="105.0" layoutY="42.0" minWidth="128.0" prefHeight="25.0" prefWidth="152.0" />
+    <Label fx:id="messageErrorIdentificacion" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
+
+    <!--Nombre-->
+    <Label layoutX="32.0" layoutY="89.0" text="Nombre" />
+    <TextField fx:id="txtNombre" layoutX="105.0" layoutY="84.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
+    <Label fx:id="messageErrorName" layoutX="105.0" layoutY="109.0" style="-fx-text-fill: red;" text="" />
+
+    <!--Correo-->
+    <Label layoutX="32.0" layoutY="160.0" prefHeight="44.0" prefWidth="59.0" text="Correo electronico" textOverrun="CLIP" wrapText="true" />
+    <TextField fx:id="txtEmail" layoutX="105.0" layoutY="170.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
+    <Label fx:id="messageErrorEmail" layoutX="105.0" layoutY="194.0" style="-fx-text-fill: red;" text="" />
+
+
+    <!--Save button-->
+    <Button fx:id="btnNewPaciente" layoutX="382.0" layoutY="154.0" onAction="#addNewPaciente" text="Guardar nuevo paciente" />
+    </Pane>
+
 
 </VBox>
+
