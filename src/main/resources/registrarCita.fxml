@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.MostrarRegistroCitaControlador">
+
+        <Pane prefHeight="274.0" prefWidth="652.0">
+            <!--Cedula cliente -->
+            <Label layoutX="32.0" layoutY="47.0" text="Identificacion" />
+            <TextField fx:id="txtIdentificacion" layoutX="105.0" layoutY="42.0" minWidth="128.0" prefHeight="25.0" prefWidth="152.0" />
+            <Label fx:id="messageErrorIdentificacion" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
+
+            <!--Servicio comboBox-->
+            <Label layoutX="32.0" layoutY="89.0" text="Servicio" />
+            <TextField fx:id="txtServicio" layoutX="105.0" layoutY="84.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
+            <Label fx:id="messageErrorServicio" layoutX="105.0" layoutY="76.0" style="-fx-text-fill: red;" text="" />
+
+            <!--Fecha fecha-->
+            <Label layoutX="32.0" layoutY="127.0" prefHeight="44.0" prefWidth="59.0" text="Fecha" textOverrun="CLIP" wrapText="true" />
+            <TextField fx:id="txtFecha" layoutX="105.0" layoutY="137.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
+            <Label fx:id="messageErrorFecha" layoutX="105.0" layoutY="211.0" style="-fx-text-fill: red;" text="" />
+
+            <!--Hora-->
+            <Label layoutX="32.0" layoutY="177.0" prefHeight="44.0" prefWidth="59.0" text="Hora" textOverrun="CLIP" wrapText="true" />
+            <TextField fx:id="txtHora" layoutX="105.0" layoutY="187.0" minWidth="154.0" prefHeight="25.0" prefWidth="154.0" />
+            <Label fx:id="messageErrorHora" layoutX="105.0" layoutY="194.0" style="-fx-text-fill: red;" text="" />
+
+            <!--Save button-->
+            <Button fx:id="btnNewCita" layoutX="382.0" layoutY="154.0" onAction="#addNewCita" text="Guardar nueva cita" />
+        </Pane>
+
+
+    </VBox>

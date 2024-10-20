@@ -1,5 +1,7 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import co.edu.uniquindio.clinica.modelo.factory.SuscripcionPremium;
+import co.edu.uniquindio.clinica.utils.EnvioEmail;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -39,6 +41,7 @@ public class RegistroPacienteControlador extends AbstractControlador{
         String email = txtEmail.getText();
 
         System.out.println(identificacion);
+        //EnvioEmail.enviarNotificacion("cesarm.baquirom@uqvirtual.edu.co", "Prueba 1", "Hola " + nombre + " su registro fue exitoso!");
     }
 
     private void showAlert(String message, Alert.AlertType type){

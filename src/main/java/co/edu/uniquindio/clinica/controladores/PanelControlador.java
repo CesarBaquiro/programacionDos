@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
@@ -37,7 +36,7 @@ public class PanelControlador implements Initializable {
 
 
     public void mostrarRegistroPaciente(ActionEvent actionEvent) {
-        Parent node = cargarPanel("/registrosPaciente.fxml");
+        Parent node = cargarPanel("/registrarPaciente.fxml");
 
 
         // Se reemplaza el contenido del panel principal
@@ -54,7 +53,7 @@ public class PanelControlador implements Initializable {
 
     public void mostrarRegistroCita(ActionEvent actionEvent) {
         //Completar
-        Parent node = cargarPanel("/mostrarRegistroCita.fxml");
+        Parent node = cargarPanel("/registrarCita.fxml");
         // Se reemplaza el contenido del panel principal
         panelPrincipal.getChildren().setAll(node);
     }
@@ -62,6 +61,10 @@ public class PanelControlador implements Initializable {
 
     public void mostrarListaCitas(ActionEvent actionEvent) {
         //Completar
+        //Completar
+        Parent node = cargarPanel("/listarCitas.fxml");
+        // Se reemplaza el contenido del panel principal
+        panelPrincipal.getChildren().setAll(node);
     }
 
 
