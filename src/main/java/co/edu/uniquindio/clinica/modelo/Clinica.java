@@ -11,27 +11,53 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Clinica {
     ArrayList<Paciente> pacientes;
     ArrayList<Cita> citas;
     ArrayList<Servicio> servicios;
 
-    private void registrarPaciente(Paciente paciente){}
+    public Clinica(){
+        pacientes = new ArrayList<>();
+        citas = new ArrayList<>();
+        servicios = new ArrayList<>();
+    }
+
+    private void registrarPaciente(Paciente paciente){
+        pacientes.add(paciente);
+    }
 
     private ArrayList<Servicio> getServiciosDisponibles(){
         return null;
     }
 
-    private void registrarServicio(Servicio servicio){}
+    private void registrarServicio(Servicio servicio){
+        servicios.add(servicio);
+    }
 
-    private void registrarCita(Cita cita){}
+    private void registrarCita(Cita cita){
+        citas.add(cita);
+    }
 
     private Factura generarFactura(Paciente paciente, Servicio servicio){
         return null;
     }
 
-    private void getServiciosDisponibles(Suscripcion suscripcion){}
+    private void getServiciosDisponibles(Suscripcion suscripcion){
+        suscripcion.getServiciosDisponibles();
+    }
+
+
+    /**
+     * Lista las categorías disponibles
+     * @return Lista de categorías
+     */
+    public ArrayList<String> listarSuscripciones() {
+        ArrayList<String> suscripciones = new ArrayList<>();
+        suscripciones.add("Basica");
+        suscripciones.add("Premium");
+
+        return suscripciones;
+    }
 
 }

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class MostrarRegistroCitaControlador extends AbstractControlador{
+public class RegistroCitaControlador extends AbstractControlador{
 
     @FXML
     private Button btnNewCita;

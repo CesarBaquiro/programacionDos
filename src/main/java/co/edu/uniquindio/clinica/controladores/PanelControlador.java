@@ -2,37 +2,37 @@ package co.edu.uniquindio.clinica.controladores;
 
 
 import co.edu.uniquindio.clinica.modelo.Clinica;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PanelControlador implements Initializable {
+public class PanelControlador {
 
 
     @FXML
     private Pane panelPrincipal;
 
 
-    private final Clinica clinica;
+    Clinica clinica;
+
+    // Crear un ComboBox
+    @FXML
+    private ComboBox<String> comboBoxSuscripcion;
 
 
     public PanelControlador() {
         this.clinica = new Clinica(); // Se crea una única instancia de la clase Clinica
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-    }
 
 
     public void mostrarRegistroPaciente(ActionEvent actionEvent) {
@@ -79,6 +79,7 @@ public class PanelControlador implements Initializable {
         }
         return null;
     }
+
 
 
 }
