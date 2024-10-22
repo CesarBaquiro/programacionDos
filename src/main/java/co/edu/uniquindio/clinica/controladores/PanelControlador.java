@@ -15,12 +15,12 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PanelControlador {
+import static co.edu.uniquindio.clinica.modelo.Clinica.getInstanciaClinica;
 
+public class PanelControlador {
 
     @FXML
     private Pane panelPrincipal;
-
 
     Clinica clinica;
 
@@ -30,7 +30,8 @@ public class PanelControlador {
 
 
     public PanelControlador() {
-        this.clinica = new Clinica(); // Se crea una única instancia de la clase Clinica
+        this.clinica = getInstanciaClinica();
+        System.out.println("Clinica guardada en el panel: " + clinica.hashCode());
     }
 
 
@@ -73,13 +74,11 @@ public class PanelControlador {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent node = loader.load();
             ((AbstractControlador)loader.getController()).inicializarClinica(clinica);
+            //System.out.println(clinica.hashCode()); // Comprobar el hascode de la clinica instanciada
             return node;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-
-
 }

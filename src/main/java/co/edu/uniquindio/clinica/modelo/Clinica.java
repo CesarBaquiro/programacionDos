@@ -17,10 +17,22 @@ public class Clinica {
     ArrayList<Cita> citas;
     ArrayList<Servicio> servicios;
 
-    public Clinica(){
+    // Constructor privado para evitar la creación de nuevas instancias
+    private Clinica(){
         pacientes = new ArrayList<>();
         citas = new ArrayList<>();
         servicios = new ArrayList<>();
+    }
+
+    private static Clinica instance;
+
+    // Método para obtener la única instancia de Clinica
+    public static Clinica getInstanciaClinica() {
+        if (instance == null) {
+            instance = new Clinica();
+            System.out.println("Clinica creada como: "+ instance.hashCode());
+        }
+        return instance;
     }
 
     public void registrarPaciente(Paciente paciente){

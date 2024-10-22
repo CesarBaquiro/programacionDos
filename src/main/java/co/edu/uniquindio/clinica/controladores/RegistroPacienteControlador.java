@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class RegistroPacienteControlador extends AbstractControlador implements Initializable {
 
+    Clinica clinica = Clinica.getInstanciaClinica();
 
     @FXML
     private TextField txtIdentificacion;
@@ -71,7 +72,7 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
             suscripcion = new SuscripcionPremium();
         }
 
-        getClinica().registrarPaciente(new Paciente(identificacion, nombre, telefono, email, suscripcion));
+        clinica.registrarPaciente(new Paciente(identificacion, nombre, telefono, email, suscripcion));
         //
 
         //EnvioEmail.enviarNotificacion("cesarm.baquirom@uqvirtual.edu.co", "Prueba 1", "Hola " + nombre + " su registro fue exitoso!");
@@ -87,10 +88,7 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(getClinica() == null) {
-            inicializarClinica(new Clinica());
-        }
-        comboBoxSuscripcion.setItems( FXCollections.observableList(getClinica().listarSuscripciones()) );
+        comboBoxSuscripcion.setItems( FXCollections.observableList(clinica.listarSuscripciones()) );
     }
 
 

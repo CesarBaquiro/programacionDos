@@ -12,6 +12,8 @@ import javafx.scene.control.Tab;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static co.edu.uniquindio.clinica.modelo.Clinica.getInstanciaClinica;
+
 
 public class PanelControlador2 implements Initializable {
 
@@ -34,7 +36,7 @@ public class PanelControlador2 implements Initializable {
 
     private final Clinica clinica;
     public PanelControlador2() {
-        this.clinica = new Clinica(); // Se crea una única instancia de la clase Clinica
+        this.clinica = getInstanciaClinica();
     }
 
 
