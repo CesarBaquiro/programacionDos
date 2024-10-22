@@ -68,7 +68,6 @@ public class PanelControlador {
         panelPrincipal.getChildren().setAll(node);
     }
 
-
     private Parent cargarPanel(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
