@@ -71,8 +71,8 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
             suscripcion = new SuscripcionPremium();
         }
 
-        getClinica().setPaciente(new Paciente(identificacion, nombre, telefono, email, suscripcion));
-        // m
+        getClinica().registrarPaciente(new Paciente(identificacion, nombre, telefono, email, suscripcion));
+        //
 
         //EnvioEmail.enviarNotificacion("cesarm.baquirom@uqvirtual.edu.co", "Prueba 1", "Hola " + nombre + " su registro fue exitoso!");
     }

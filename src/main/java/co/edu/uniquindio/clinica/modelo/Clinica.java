@@ -23,7 +23,7 @@ public class Clinica {
         servicios = new ArrayList<>();
     }
 
-    private void registrarPaciente(Paciente paciente){
+    public void registrarPaciente(Paciente paciente){
         pacientes.add(paciente);
     }
 
