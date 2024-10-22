@@ -72,4 +72,20 @@ public class Clinica {
         return suscripciones;
     }
 
+    /**
+     * Lista las categorías disponibles
+     * @return Lista de nombres de servivios
+     */
+
+    public ArrayList<String> listarNombreServicios(){
+        servicios.add(new Servicio(16000.0, "S-001", "Revision general"));
+        servicios.add(new Servicio(1990000.0, "S-002", "Rinoplastia"));
+
+        ArrayList<String> nombres = new ArrayList<>();
+        for (Servicio servicio : servicios) {
+            nombres.add(servicio.getNombre());
+        }
+        return nombres;
+    }
+
 }

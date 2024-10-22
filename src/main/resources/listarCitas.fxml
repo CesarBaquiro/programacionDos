@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.clinica.controladores.ListaPacientesControlador"
+            fx:controller="co.edu.uniquindio.clinica.controladores.ListaCitasControlador"
             prefHeight="400.0" prefWidth="600.0">
 
 
@@ -20,13 +20,13 @@
         </Label>
 
 
-        <TableView fx:id="tablaPacientes" VBox.vgrow="ALWAYS" >
+        <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS" >
             <columns>
-                <TableColumn text="Servicio" />
-                <TableColumn text="Nombre" />
-                <TableColumn text="Fecha"  />
-                <TableColumn text="Hora" />
-                <TableColumn text="Suscripción" />
+                <TableColumn fx:id="colServicio" text="Servicio" />
+                <TableColumn fx:id="colNombre" text="Nombre" />
+                <TableColumn fx:id="colFecha" text="Fecha"  />
+                <TableColumn fx:id="colHora" text="Hora" />
+                <TableColumn fx:id="colSuscripcion" text="Suscripción" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

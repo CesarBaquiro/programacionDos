@@ -12,9 +12,11 @@
             <Label fx:id="messageErrorIdentificacion" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
 
             <!--Servicio comboBox-->
-            <Label layoutX="32.0" layoutY="89.0" text="Servicio" />
-            <TextField fx:id="txtServicio" layoutX="105.0" layoutY="84.0" minWidth="129.0" prefHeight="25.0" prefWidth="153.0" />
-            <Label fx:id="messageErrorServicio" layoutX="105.0" layoutY="76.0" style="-fx-text-fill: red;" text="" />
+            <!--Suscripcion-->
+            <Label layoutX="300.0" layoutY="42.0" prefHeight="44.0" prefWidth="66.0" text="Servicio" textOverrun="CLIP" wrapText="true" />
+            <ComboBox layoutX="378.0" layoutY="52.0" prefWidth="150.0" fx:id="comboBoxServicio"/>
+            <Label fx:id="messageErrorServicio" layoutX="373.0" layoutY="76.0" style="-fx-text-fill: red;" text="" />
+
 
             <!--Fecha fecha-->
             <Label layoutX="32.0" layoutY="127.0" prefHeight="44.0" prefWidth="59.0" text="Fecha" textOverrun="CLIP" wrapText="true" />
