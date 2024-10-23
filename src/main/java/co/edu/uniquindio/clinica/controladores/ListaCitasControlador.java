@@ -32,9 +32,6 @@ public class ListaCitasControlador extends AbstractControlador implements Initia
     @FXML
     private TableColumn<Cita, String> colHora;
 
-    @FXML
-    private TableColumn<Cita, String> colSuscripcion;
-
     private ObservableList<Cita> citasObservable;
 
     private void cargarCitas() {
@@ -45,11 +42,11 @@ public class ListaCitasControlador extends AbstractControlador implements Initia
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Asignar las propiedades de la nota a las columnas de la tabla
-        colServicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().toString()));
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdCita()));
+        colServicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().getIdServicio()));
+        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicio().getNombre()));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
-        colHora.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
-        colSuscripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaciente().getSuscripcion().toString()));
+        colHora.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHora()));
+        //colSuscripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaciente().getSuscripcion().toString()));
 
         citasObservable = FXCollections.observableArrayList();
         cargarCitas();

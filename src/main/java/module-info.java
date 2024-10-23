@@ -4,6 +4,7 @@ module co.edu.uniquindio.clinica {
     requires static lombok;
     requires org.simplejavamail;
     requires org.simplejavamail.core;
+    requires java.sql;
 
     opens co.edu.uniquindio.clinica to javafx.fxml;
     exports co.edu.uniquindio.clinica;

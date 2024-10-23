@@ -22,6 +22,10 @@ public class Clinica {
         pacientes = new ArrayList<>();
         citas = new ArrayList<>();
         servicios = new ArrayList<>();
+
+        servicios.add(new Servicio(10000.0, "SER-001", "Revision general"));
+        servicios.add(new Servicio(1900000.0, "EST-001", "Rinoplastia"));
+        servicios.add(new Servicio(1900000.0, "SER-002", "Excusas medicas"));
     }
 
     private static Clinica instance;
@@ -47,7 +51,7 @@ public class Clinica {
         servicios.add(servicio);
     }
 
-    private void registrarCita(Cita cita){
+    public void registrarCita(Cita cita){
         citas.add(cita);
     }
 
@@ -78,14 +82,10 @@ public class Clinica {
      */
 
     public ArrayList<String> listarNombreServicios(){
-        servicios.add(new Servicio(16000.0, "S-001", "Revision general"));
-        servicios.add(new Servicio(1990000.0, "S-002", "Rinoplastia"));
-
         ArrayList<String> nombres = new ArrayList<>();
         for (Servicio servicio : servicios) {
             nombres.add(servicio.getNombre());
         }
         return nombres;
     }
-
 }
