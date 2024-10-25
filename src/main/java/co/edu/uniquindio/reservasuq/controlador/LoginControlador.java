@@ -2,6 +2,7 @@ package co.edu.uniquindio.reservasuq.controlador;
 
 
 import co.edu.uniquindio.reservasuq.modelo.Persona;
+import co.edu.uniquindio.reservasuq.modelo.Sesion;
 import co.edu.uniquindio.reservasuq.modelo.enums.TipoPersona;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,6 +42,8 @@ public class LoginControlador {
 
             Persona persona = controladorPrincipal.login(email, password);
 
+            Sesion sesion = Sesion.getInstancia();
+            sesion.setPersona(persona);
 
             if(persona.getTipoPersona() != TipoPersona.ADMIN) {
                 controladorPrincipal.navegarVentana("/panelCliente.fxml", "Panel Usuario");
