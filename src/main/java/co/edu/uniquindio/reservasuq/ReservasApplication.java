@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ReservasApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ReservasApplication.class.getResource("/panel.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ReservasApplication.class.getResource("/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -21,5 +21,5 @@ public class ReservasApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
-    // VOY EN EL PUNTO 20
+    // VOY EN EL PUNTO 10
 }
