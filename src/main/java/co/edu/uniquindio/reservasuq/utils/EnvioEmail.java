@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.utils;
+package co.edu.uniquindio.reservasuq.utils;
 
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;

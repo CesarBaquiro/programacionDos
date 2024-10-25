@@ -1,4 +1,4 @@
-module co.edu.uniquindio.clinica {
+module co.edu.uniquindio.reservasuq {
     requires javafx.controls;
     requires javafx.fxml;
     requires static lombok;
@@ -6,8 +6,8 @@ module co.edu.uniquindio.clinica {
     requires org.simplejavamail.core;
     requires java.sql;
 
-    opens co.edu.uniquindio.clinica to javafx.fxml;
-    exports co.edu.uniquindio.clinica;
-    exports co.edu.uniquindio.clinica.controladores;
-    opens co.edu.uniquindio.clinica.controladores to javafx.fxml;
+    opens co.edu.uniquindio.reservasuq to javafx.fxml;
+    exports co.edu.uniquindio.reservasuq;
+    exports co.edu.uniquindio.reservasuq.controlador;
+    opens co.edu.uniquindio.reservasuq.controlador to javafx.fxml;
 }
