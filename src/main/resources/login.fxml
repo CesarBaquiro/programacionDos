@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="center" prefHeight="400.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasuq.controlador.LoginControlador">
 
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.reservasuq.controlador.LoginControlador"
-      prefHeight="400.0" prefWidth="400.0" alignment="center" spacing="30.0" >
-
-
-    <Label text="Iniciar sesión" >
+    <Label text="Iniciar sesión">
         <font>
             <Font size="18.0" />
         </font>
@@ -20,18 +15,26 @@
 
 
     <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
-
-
         <Label text="Correo electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="txtCorreo" GridPane.columnIndex="1" GridPane.rowIndex="0" minHeight="30.0" />
-
+        <TextField fx:id="txtCorreo" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
         <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" minHeight="30.0" />
+        <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
 
+    <Label fx:id="messageErrorCorreo" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
 
-    <Button text="Login" onAction="#login" minHeight="40.0" minWidth="130.0" />
+    <Button minHeight="20.0" minWidth="80.0" onAction="#irARegistro" text="Crear una cuenta" />
+
+    <Button minHeight="40.0" minWidth="130.0" onAction="#login" text="Login" />
 
 
 </VBox>

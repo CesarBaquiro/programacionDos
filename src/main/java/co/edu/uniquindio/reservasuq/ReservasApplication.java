@@ -12,7 +12,7 @@ public class ReservasApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ReservasApplication.class.getResource("/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Sistema de Reservas");
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
@@ -21,5 +21,5 @@ public class ReservasApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
-    // VOY EN EL PUNTO 15
+    // VOY EN EL PUNTO 17
 }

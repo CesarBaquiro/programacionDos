@@ -1,6 +1,7 @@
 package co.edu.uniquindio.reservasuq.modelo;
 
 
+import co.edu.uniquindio.reservasuq.controlador.ControladorPrincipal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +13,10 @@ public class Sesion {
 
     @Getter @Setter
     private Persona persona;
-
+    private final ControladorPrincipal controladorPrincipal;
 
     private Sesion() {
+        this.controladorPrincipal = ControladorPrincipal.getInstancia();
     }
 
 
@@ -28,6 +30,7 @@ public class Sesion {
 
     public void cerrarSesion() {
         persona = null;
+        controladorPrincipal.navegarVentana("/login.fxml", "Iniciar secion");
     }
 
 

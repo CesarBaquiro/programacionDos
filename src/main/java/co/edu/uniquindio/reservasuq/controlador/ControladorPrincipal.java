@@ -23,6 +23,15 @@ public class ControladorPrincipal implements ServiciosReservasUQ {
 
     private ControladorPrincipal() {
         reservasUQ = new ReservasUQ();
+
+        // Datos de prueba
+        try {
+            reservasUQ.registrarPersona( "1234",  "Cesar Administrador", TipoPersona.ADMIN, "cesar@gmail.com", "1212");
+            reservasUQ.registrarPersona("4321", "Cesar Usuario", TipoPersona.ESTUDIANTE, "cesar2@gmail.com", "1212");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 
@@ -31,6 +40,26 @@ public class ControladorPrincipal implements ServiciosReservasUQ {
             INSTANCIA = new ControladorPrincipal();
         }
         return INSTANCIA;
+    }
+
+    public Boolean validarCorreo(String correo) {
+        for(Persona p: reservasUQ.getPersonas()){
+            System.out.println(p.getEmail());
+            if(correo.equals(p.getEmail())){
+                return true;
+            }
+        }
+        System.out.println("No existe ese correo");
+        return false;
+    }
+
+    public Boolean validarContrasena(String contrasena) {
+        for (Persona p : reservasUQ.getPersonas()) {
+            if (p.getPassword().equals(contrasena)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -93,6 +122,7 @@ public class ControladorPrincipal implements ServiciosReservasUQ {
             // Crear un nuevo escenario (ventana)
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.setResizable(false);
             stage.setTitle(tituloVentana);
 

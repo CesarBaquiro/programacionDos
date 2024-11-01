@@ -2,19 +2,34 @@ package co.edu.uniquindio.reservasuq.modelo;
 
 import co.edu.uniquindio.reservasuq.modelo.enums.TipoPersona;
 import co.edu.uniquindio.reservasuq.servicio.ServiciosReservasUQ;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class ReservasUQ implements ServiciosReservasUQ {
+
+    ArrayList<Reserva> reservas =   new ArrayList();
+    ArrayList<Persona> personas =   new ArrayList();
+
+
     @Override
     public Persona login(String correo, String contrasena) throws Exception {
+        for (Persona persona : personas) {
+            if(persona.getEmail().equals(correo) && persona.getPassword().equals(contrasena)){
+                return persona;
+            }
+        }
         return null;
     }
 
     @Override
-    public void registrarPersona(String cedula, String nombre, TipoPersona tipoUsuario, String email, String password) throws Exception {
-
+    public void registrarPersona(String cedula, String nombre, TipoPersona tipoPersona, String email, String password) throws Exception {
+        personas.add(new Persona(cedula, nombre, tipoPersona, email, password));
     }
 
     @Override
