@@ -30,7 +30,7 @@ public class Sesion {
 
     public void cerrarSesion() {
         persona = null;
-        controladorPrincipal.navegarVentana("/login.fxml", "Iniciar secion");
+        controladorPrincipal.navegarVentana("/login.fxml", "Iniciar sesión");
     }
 
 

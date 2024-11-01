@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorPrincipal implements ServiciosReservasUQ {
@@ -62,6 +63,15 @@ public class ControladorPrincipal implements ServiciosReservasUQ {
         return false;
     }
 
+    public ArrayList<String> listarTiposPesonas(){
+        ArrayList<String> tiposPersonas = new ArrayList<>();
+        tiposPersonas.add("Estudiante");
+        tiposPersonas.add("Docente");
+        tiposPersonas.add("Administrativo");
+        tiposPersonas.add("Externo");
+
+        return tiposPersonas;
+    }
 
     @Override
     public Persona login(String correo, String contrasena) throws Exception {

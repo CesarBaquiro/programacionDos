@@ -33,8 +33,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-   <Button onAction="#cerrarSesion" mnemonicParsing="false" text="Cerrar secion" />
-
-
+   <Button onAction="#cerrarSesion" mnemonicParsing="false" text="Cerrar sesión" />
 
 </HBox>
