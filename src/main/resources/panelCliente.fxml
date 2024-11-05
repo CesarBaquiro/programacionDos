@@ -15,6 +15,7 @@
                   <Font size="20.0" />
               </font>
           </Label>
+         <Button onAction="#crearReserva" mnemonicParsing="false" text="Crear reserva" />
       </children>
     </VBox>
 
@@ -33,6 +34,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-   <Button onAction="#cerrarSesion" mnemonicParsing="false" text="Cerrar sesión" />
+   <Button mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar sesión" />
 
 </HBox>

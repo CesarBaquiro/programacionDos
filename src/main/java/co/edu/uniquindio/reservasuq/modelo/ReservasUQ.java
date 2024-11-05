@@ -15,6 +15,7 @@ public class ReservasUQ implements ServiciosReservasUQ {
 
     ArrayList<Reserva> reservas =   new ArrayList();
     ArrayList<Persona> personas =   new ArrayList();
+    ArrayList<Instalacion> instalaciones =   new ArrayList();
 
 
     @Override
@@ -34,11 +35,12 @@ public class ReservasUQ implements ServiciosReservasUQ {
 
     @Override
     public void crearInstalacion(String nombre, int aforo, float costo, List<Horario> horarios) {
-
+        instalaciones.add(new Instalacion(nombre, aforo, costo, horarios));
     }
 
     @Override
     public Reserva crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception {
+        reservas.add(new Reserva(idInstalacion, cedulaPersona, diaReserva, horaReserva));
         return null;
     }
 

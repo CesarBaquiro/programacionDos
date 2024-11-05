@@ -1,15 +1,15 @@
 package co.edu.uniquindio.reservasuq.modelo;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Dialog;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
 public class Horario {
     LocalDate dia;
     String horaInicio;

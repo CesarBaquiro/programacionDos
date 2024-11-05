@@ -1,7 +1,5 @@
 package co.edu.uniquindio.reservasuq.controlador;
 
-import co.edu.uniquindio.reservasuq.modelo.Persona;
-import co.edu.uniquindio.reservasuq.modelo.Sesion;
 import co.edu.uniquindio.reservasuq.modelo.enums.TipoPersona;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
