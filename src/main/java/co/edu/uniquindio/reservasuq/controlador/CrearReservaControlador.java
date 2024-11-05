@@ -103,9 +103,6 @@ public class CrearReservaControlador extends VentanaObservable implements Initia
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOcupado().toString()));
 
         horariosObservable = FXCollections.observableArrayList();
-
-
-
     }
 
 }
