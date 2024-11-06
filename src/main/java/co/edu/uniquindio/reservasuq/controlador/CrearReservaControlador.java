@@ -35,6 +35,9 @@ public class CrearReservaControlador extends VentanaObservable implements Initia
     private TableColumn<Horario, String> colHoraFin;
 
     @FXML
+    private TableColumn<Horario, String> colAforo;
+
+    @FXML
     private ComboBox<String> comboBoxInstalacion;
 
     @FXML
@@ -90,16 +93,21 @@ public class CrearReservaControlador extends VentanaObservable implements Initia
                             String instalacionElegida = comboBoxInstalacion.getValue();
                             LocalDate fechaElegida = txtFecha.getValue();
                             Horario horario = getTableView().getItems().get(getIndex());
+                            Boolean hayEspacio;
 
                             // Cambia el estado de la reserva
-                            horario.setOcupado(true);
+                            hayEspacio = controladorPrincipal.verificarAforoPorHora(instalacionElegida, horario.getHoraInicio());
+                            if (!hayEspacio){
+                                horario.setOcupado(true);
+                            }
 
                             // Registrar la reserva
                             try {
-                                controladorPrincipal.crearReserva(instalacionElegida, sesion.getPersona().getCedula(), fechaElegida, horario.getHoraInicio());
-
-                                // Notificar a los observadores para actualizar la vista de reservas
-                                observador.notificar();
+                                if (hayEspacio){
+                                    controladorPrincipal.crearReserva(instalacionElegida, sesion.getPersona().getCedula(), fechaElegida, horario.getHoraInicio());
+                                    // Notificar a los observadores para actualizar la vista de reservas
+                                    observador.notificar();
+                                }
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             }
@@ -150,7 +158,12 @@ public class CrearReservaControlador extends VentanaObservable implements Initia
         colDia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDia().toString()));
         colHoraInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHoraInicio()));
         colHoraFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHoraFin()));
-        //colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOcupado().toString()));
+        // Mostrar el aforo de la instalación
+        colAforo.setCellValueFactory(cellData -> {
+            Instalacion instalacion = controladorPrincipal.obtenerInstalacionPorNombre(comboBoxInstalacion.getValue());
+            return new SimpleStringProperty(controladorPrincipal.contarReservasPorInstalacionHora(comboBoxInstalacion.getValue(),cellData.getValue().getHoraInicio()) + "/" + String.valueOf(instalacion.getAforo()));
+        });
+
         horariosObservable = FXCollections.observableArrayList();
     }
 

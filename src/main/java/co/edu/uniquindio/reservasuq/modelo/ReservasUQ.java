@@ -17,6 +17,34 @@ public class ReservasUQ implements ServiciosReservasUQ {
     ArrayList<Persona> personas =   new ArrayList();
     ArrayList<Instalacion> instalaciones =   new ArrayList();
 
+    /**
+     * Comprobar si hay espacios disponibles y retornar True si los hay
+     * */
+    public Boolean verificarAforoPorHora(String nombreInstalacion, String hora) {
+        Boolean hayEspacio = false;
+        int cantidadReservas = 0;
+        cantidadReservas = contarReservasPorInstalacionHora(nombreInstalacion, hora);
+        for (Instalacion i: instalaciones){
+            if(nombreInstalacion.equals(i.getNombre())){
+                for (Reserva r : reservas) {
+                    if(nombreInstalacion.equals(r.getNombreInstalacion()) && cantidadReservas < i.getAforo()){
+                        hayEspacio = true;
+                    }
+                }
+            }
+        }
+        return hayEspacio;
+    }
+
+    public int contarReservasPorInstalacionHora(String nombreInstalacion, String hora) {
+        int cantidadReservas = 0;
+        for (Reserva r : reservas) {
+            if(r.getNombreInstalacion().equals(nombreInstalacion) && hora.equals(r.getHoraReserva())){
+                cantidadReservas++;
+            }
+        }
+        return cantidadReservas;
+    }
 
     @Override
     public Persona login(String correo, String contrasena) throws Exception {

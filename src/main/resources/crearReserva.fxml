@@ -42,6 +42,7 @@
              <TableColumn fx:id="colDia" prefWidth="75.0" text="Dia" />
              <TableColumn fx:id="colHoraInicio" prefWidth="145.0" text="Hora de inicio" />
                <TableColumn fx:id="colHoraFin" prefWidth="144.60003662109375" text="Hora de fin" />
+               <TableColumn fx:id="colAforo" prefWidth="144.60003662109375" text="Aforo" />
                <TableColumn fx:id="reservarBtn" text="Estado" />
            </columns>
             <columnResizePolicy>

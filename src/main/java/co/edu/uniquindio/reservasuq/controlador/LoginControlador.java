@@ -58,7 +58,7 @@ public class LoginControlador {
                 messageErrorCorreo.setText("Por favor ingrese su correo");
                 esValido = false;
             }else{
-                System.out.println("correo: " + email);
+
                 esValido = controladorPrincipal.validarCorreo(email);
                 if(!esValido){
                     messageErrorCorreo.setText("El correo ingresado no existe");
@@ -75,9 +75,6 @@ public class LoginControlador {
                 }
             }
 
-
-
-            System.out.println("Es valido? " + esValido);
             if(esValido){
                 Persona persona = controladorPrincipal.login(email, password);
                 Sesion sesion = Sesion.getInstancia();

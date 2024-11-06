@@ -46,7 +46,6 @@ public class RegistroControlador implements Initializable {
             String contrasena = txtPassword.getText();
 
             TipoPersona tipoPersona = TipoPersona.valueOf(tipoPersonaElegida.toUpperCase());
-            System.out.println(tipoPersonaElegida.toUpperCase());
 
             // Cambiar throws a try catch
             controladorPrincipal.registrarPersona(cedula,nombre,tipoPersona,correo,contrasena);

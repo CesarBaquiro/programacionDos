@@ -1,9 +1,6 @@
 package co.edu.uniquindio.reservasuq.controlador;
 
-import co.edu.uniquindio.reservasuq.modelo.Horario;
-import co.edu.uniquindio.reservasuq.modelo.Persona;
-import co.edu.uniquindio.reservasuq.modelo.Reserva;
-import co.edu.uniquindio.reservasuq.modelo.Sesion;
+import co.edu.uniquindio.reservasuq.modelo.*;
 import co.edu.uniquindio.reservasuq.observador.Observador;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -58,6 +55,8 @@ public class PanelClienteControlador implements Observador, Initializable {
         reservasObservable.setAll(controladorPrincipal.listarReservasPorPersona(persona.getCedula()));
         tablaReservas.refresh();  // Refrescar la tabla para mostrar cambios
     }
+
+
 
 
     @Override

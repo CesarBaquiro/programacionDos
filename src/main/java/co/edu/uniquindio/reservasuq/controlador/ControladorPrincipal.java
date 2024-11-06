@@ -79,12 +79,10 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
 
     public Boolean validarCorreo(String correo) {
         for(Persona p: reservasUQ.getPersonas()){
-            System.out.println(p.getEmail());
             if(correo.equals(p.getEmail())){
                 return true;
             }
         }
-        System.out.println("No existe ese correo");
         return false;
     }
 
@@ -101,9 +99,6 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
         ArrayList<String> tiposInstalaciones = new ArrayList<>();
         for(Instalacion i: reservasUQ.getInstalaciones()){
             tiposInstalaciones.add(i.getNombre());
-            System.out.println(
-                    i.getNombre()
-            );
         }
         return tiposInstalaciones;
     }
@@ -133,6 +128,16 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
             }
         }
         return horarios;
+    }
+
+    public Instalacion obtenerInstalacionPorNombre(String nombre) {
+        Instalacion instalacion = null;
+        for (Instalacion i: reservasUQ.getInstalaciones()) {
+            if(nombre.equals(i.getNombre())){
+                instalacion = i;
+            }
+        }
+        return instalacion;
     }
 
     public void navegarVentanaObservable(String nombreFxml, String titulo, Observador observador) {
@@ -187,10 +192,17 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
         reservasUQ.crearInstalacion(nombre, aforo, costo, horarios);
     }
 
-    @Override
-    public void crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception {
+    public Boolean verificarAforoPorHora(String nombreInstalacion, String horaReserva){
+        return reservasUQ.verificarAforoPorHora(nombreInstalacion, horaReserva);
+    }
 
-        reservasUQ.crearReserva(idInstalacion,cedulaPersona,diaReserva,horaReserva);
+    public int contarReservasPorInstalacionHora(String nombreInstalacion, String horaReserva){
+        return reservasUQ.contarReservasPorInstalacionHora(nombreInstalacion, horaReserva);
+    }
+
+    @Override
+    public void crearReserva(String nombreInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception {
+        reservasUQ.crearReserva(nombreInstalacion,cedulaPersona,diaReserva,horaReserva);
     }
 
     @Override
