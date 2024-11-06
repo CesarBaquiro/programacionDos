@@ -15,18 +15,17 @@
                   <Font size="20.0" />
               </font>
           </Label>
-         <Button onAction="#crearReserva" mnemonicParsing="false" text="Crear reserva" />
+         <Button mnemonicParsing="false" onAction="#crearReserva" text="Crear reserva" />
       </children>
     </VBox>
 
 
     <StackPane fx:id="panelPrincipal" HBox.hgrow="ALWAYS" />
 
-   
+
        <TableView fx:id="tablaReservas" prefHeight="400.0" prefWidth="538.0">
         <columns>
-            <TableColumn fx:id="colId" text="ID" />
-            <TableColumn fx:id="colInsatalcion" text="Instalacion" />
+            <TableColumn fx:id="colInstalacion" text="Instalacion" />
             <TableColumn fx:id="colFecha" text="Fecha" />
             <TableColumn fx:id="colHora" text="Hora" />
         </columns>

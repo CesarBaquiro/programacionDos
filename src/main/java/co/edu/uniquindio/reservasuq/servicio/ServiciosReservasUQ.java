@@ -21,7 +21,7 @@ public interface ServiciosReservasUQ {
     void crearInstalacion(String nombre, int aforo, float costo, List<Horario> horarios);
 
 
-    Reserva crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception;
+    void crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception;
 
 
     List<Reserva> listarTodasReservas();

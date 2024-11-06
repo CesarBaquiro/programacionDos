@@ -28,12 +28,15 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
     private ControladorPrincipal() {
         reservasUQ = new ReservasUQ();
         ArrayList<Horario>  horariosPrueba = new ArrayList<Horario>();
+        ArrayList<Horario> horariosGimnasioPrueba  = new ArrayList<Horario>();
+        ArrayList<Horario> horariosCanchaPrueba  = new ArrayList<Horario>();
+
 
         // Datos de prueba
         try {
             // --- Personas de prueba
-            reservasUQ.registrarPersona( "1234",  "Cesar Administrador", TipoPersona.ADMIN, "cesar@gmail.com", "1212");
             reservasUQ.registrarPersona("4321", "Cesar Usuario", TipoPersona.ESTUDIANTE, "cesar2@gmail.com", "1212");
+            reservasUQ.registrarPersona( "1234",  "Cesar Administrador", TipoPersona.ADMIN, "cesar@gmail.com", "1212");
 
             // --- Crear horarios de prueba
             horariosPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
@@ -45,12 +48,21 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
             horariosPrueba.add(new Horario(LocalDate.of(2024, 12, 03), "10AM", "12PM", false));
             horariosPrueba.add(new Horario(LocalDate.of(2024, 12, 03), "12PM", "2PM", false));
             horariosPrueba.add(new Horario(LocalDate.of(2024, 12, 03), "4PM", "6PM", false));
+            horariosGimnasioPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
+            horariosGimnasioPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "12PM", "2PM", false));
+            horariosGimnasioPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "4PM", "6PM", false));
+            horariosCanchaPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
+            horariosCanchaPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "12PM", "2PM", false));
+            horariosCanchaPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "4PM", "6PM", false));
 
             // --- Instalaciones
             reservasUQ.crearInstalacion("Piscina", 20, 2500, horariosPrueba);
-            reservasUQ.crearInstalacion("Gimnasio", 16, 20000, horariosPrueba);
-            reservasUQ.crearInstalacion("Cancha de fútbol", 22, 60000, horariosPrueba);
+            reservasUQ.crearInstalacion("Gimnasio", 16, 20000, horariosGimnasioPrueba);
+            reservasUQ.crearInstalacion("Cancha de fútbol", 22, 60000, horariosCanchaPrueba);
             reservasUQ.crearInstalacion("Auditorio Euclides Jaramillo", 16, 20000, horariosPrueba);
+
+            // --- Reserva de prueba
+            reservasUQ.crearReserva(reservasUQ.getInstalaciones().getFirst().getNombre(), reservasUQ.getPersonas().getFirst().getCedula(), reservasUQ.getInstalaciones().getFirst().getHorarios().getFirst().getDia(), reservasUQ.getInstalaciones().getFirst().getHorarios().getFirst().getHoraInicio());
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -176,8 +188,9 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
     }
 
     @Override
-    public Reserva crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception {
-        return null;
+    public void crearReserva(String idInstalacion, String cedulaPersona, LocalDate diaReserva, String horaReserva) throws Exception {
+
+        reservasUQ.crearReserva(idInstalacion,cedulaPersona,diaReserva,horaReserva);
     }
 
     @Override
@@ -186,8 +199,14 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
     }
 
     @Override
-    public List<Reserva> listarReservasPorPersona(String cedulaPersona) {
-        return List.of();
+    public ArrayList<Reserva> listarReservasPorPersona(String cedulaPersona) {
+        ArrayList<Reserva> listadoReservas = new ArrayList<>();
+        for (Reserva reserva: reservasUQ.getReservas()){
+            if(reserva.getCedulaPersona() == cedulaPersona){
+                listadoReservas.add(reserva);
+            }
+        }
+        return listadoReservas;
     }
 
 
