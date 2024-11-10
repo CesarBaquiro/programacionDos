@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="center" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.reservasuq.controlador.RegistroControlador">
+
+      
+             <Label text="Registro" textAlignment="CENTER">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </Label>
+
+
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+
+        <Label text="Cedula" GridPane.columnIndex="0" />
+        <TextField fx:id="txtCedula" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtNombre" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <!--Tipo de persona-->
+        <Label layoutX="300.0" layoutY="42.0" prefHeight="30.0" prefWidth="105.0" text="Tipo de cuenta" textOverrun="CLIP" wrapText="true" GridPane.rowIndex="3" />
+        <ComboBox fx:id="comboBoxTipoPersona" layoutX="378.0" layoutY="52.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label fx:id="messageErrorTipoPersona" layoutX="373.0" layoutY="76.0" style="-fx-text-fill: red;" text="" />
+
+        <Label text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtCorreo" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Contraseña" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" />
+
+
+      </rowConstraints>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+    </GridPane>
+
+    <Button minHeight="40.0" minWidth="130.0" onAction="#registro" text="Registrar" />
+
+</VBox>
