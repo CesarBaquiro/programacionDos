@@ -11,3 +11,4 @@ module co.edu.uniquindio.reservasuq {
     exports co.edu.uniquindio.reservasuq.controlador;
     opens co.edu.uniquindio.reservasuq.controlador to javafx.fxml;
 }
+
