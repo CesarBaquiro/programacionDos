@@ -35,8 +35,8 @@ public class ControladorPrincipal implements ServiciosReservasUQ{
         // Datos de prueba
         try {
             // --- Personas de prueba
-            reservasUQ.registrarPersona("4321", "Cesar Usuario", TipoPersona.ESTUDIANTE, "cesar2@gmail.com", "1212");
-            reservasUQ.registrarPersona( "1234",  "Cesar Administrador", TipoPersona.ADMIN, "cesar@gmail.com", "1212");
+            reservasUQ.registrarPersona("1234", "Estudiante EMO", TipoPersona.ESTUDIANTE, "est@gmail.com", "1234");
+            reservasUQ.registrarPersona( "1234",  "Admin", TipoPersona.ADMIN, "adm@gmail.com", "1234");
 
             // --- Crear horarios de prueba
             horariosPrueba.add(new Horario(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));

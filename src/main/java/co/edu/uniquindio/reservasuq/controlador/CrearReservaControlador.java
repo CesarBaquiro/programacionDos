@@ -87,7 +87,6 @@ public class CrearReservaControlador extends VentanaObservable implements Initia
             public TableCell<Horario, Void> call(final TableColumn<Horario, Void> param) {
                 return new TableCell<>() {
                     private final Button btn = new Button("Reservar");
-
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             String instalacionElegida = comboBoxInstalacion.getValue();

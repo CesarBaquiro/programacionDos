@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -21,6 +22,12 @@ public class PanelClienteControlador implements Observador, Initializable {
     public PanelClienteControlador() {
         this.controladorPrincipal = ControladorPrincipal.getInstancia();
     }
+
+    @FXML
+    private Label labelNombre;
+
+    @FXML
+    private Label labelTipoUsuario;
 
     @FXML
     private TableView<Reserva>  tablaReservas;
@@ -61,6 +68,9 @@ public class PanelClienteControlador implements Observador, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Asignar nombre y tipo de usuario a los Label
+        labelNombre.setText(persona.getNombre());
+        labelTipoUsuario.setText(persona.getTipoPersona().toString());
 
         // Cargar tabla
         colInstalacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreInstalacion()));

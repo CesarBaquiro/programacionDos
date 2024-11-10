@@ -10,7 +10,7 @@
       
              <Label text="Registro" textAlignment="CENTER">
               <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="28.0" />
               </font>
           </Label>
 
@@ -55,6 +55,9 @@
       </padding>
     </GridPane>
 
-    <Button minHeight="40.0" minWidth="130.0" onAction="#registro" text="Registrar" />
+    <Button minHeight="40.0" minWidth="130.0" onAction="#registro" style="-fx-background-color: #00bf30;" text="Registrar" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Button>
 
 </VBox>
