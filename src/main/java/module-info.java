@@ -1,4 +1,4 @@
-module co.edu.uniquindio.reservasuq {
+module co.edu.uniquindio.bookyourstay {
     requires javafx.controls;
     requires javafx.fxml;
     requires static lombok;
@@ -6,8 +6,8 @@ module co.edu.uniquindio.reservasuq {
     requires org.simplejavamail.core;
     requires java.sql;
 
-    opens co.edu.uniquindio.reservasuq to javafx.fxml;
-    exports co.edu.uniquindio.reservasuq;
-    exports co.edu.uniquindio.reservasuq.controlador;
-    opens co.edu.uniquindio.reservasuq.controlador to javafx.fxml;
+    opens co.edu.uniquindio.bookyourstay to javafx.fxml;
+    exports co.edu.uniquindio.bookyourstay;
+    exports co.edu.uniquindio.bookyourstay.controllers;
+    opens co.edu.uniquindio.bookyourstay.controllers to javafx.fxml;
 }
