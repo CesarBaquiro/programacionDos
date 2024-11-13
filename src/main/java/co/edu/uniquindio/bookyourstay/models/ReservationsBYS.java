@@ -58,9 +58,12 @@ public class ReservationsBYS implements ServicesBookYourStay {
         return null;
     }
 
+
+
+
     @Override
-    public void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password) throws Exception {
-        users.add(new User(iDdocumentation, fullname, phone, role, email, password));
+    public void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception {
+        users.add(new User(iDdocumentation, fullname, phone, role, email, password, activationCode));
     }
 
     @Override

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="center" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.RegisterController">
+<VBox alignment="center" prefHeight="544.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.RegisterController">
 
       
              <Label text="Registro" textAlignment="CENTER">
@@ -15,35 +15,50 @@
           </Label>
 
 
-    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+    <GridPane alignment="CENTER" hgap="10.0" prefHeight="469.0" prefWidth="600.0" vgap="10.0">
 
         <Label text="Cedula" GridPane.columnIndex="0" />
-        <TextField fx:id="txtCedula" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="txtCc" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label fx:id="msgErrorCc" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <TextField fx:id="txtNombre" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <!--Tipo de user-->
-        <Label layoutX="300.0" layoutY="42.0" prefHeight="30.0" prefWidth="105.0" text="Tipo de cuenta" textOverrun="CLIP" wrapText="true" GridPane.rowIndex="3" />
-        <ComboBox fx:id="comboBoxTipoPersona" layoutX="378.0" layoutY="52.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label fx:id="messageErrorTipoPersona" layoutX="373.0" layoutY="76.0" style="-fx-text-fill: red;" text="" />
+        <Label text="Nombre" GridPane.rowIndex="2" />
+        <TextField fx:id="txtName" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label fx:id="msgErrorName" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-        <Label text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-        <TextField fx:id="txtCorreo" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="Telefono" GridPane.rowIndex="4" />
+        <TextField fx:id="txtPhone" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label fx:id="msgErrorPhone" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-        <Label text="Contraseña" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-        <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label text="Correo electrónico" GridPane.rowIndex="6" />
+        <TextField fx:id="txtEmail" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label fx:id="msgErrorEmail" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+        <Label text="Contraseña" GridPane.rowIndex="8" />
+        <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Label fx:id="msgErrorPassword1" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+        <Label text="Confirmar contraseña" GridPane.rowIndex="10" />
+        <PasswordField fx:id="txtPasswordConfirm" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+         <Label fx:id="msgErrorPassword2" style="-fx-text-fill: red;" text="" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+
       <columnConstraints>
          <ColumnConstraints />
          <ColumnConstraints />
       </columnConstraints>
       <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
+         <RowConstraints maxHeight="34.800000000000004" minHeight="11.399999999999997" prefHeight="34.800000000000004" />
+         <RowConstraints maxHeight="30.4" minHeight="11.399999999999997" prefHeight="14.800000000000004" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" />
-         <RowConstraints minHeight="10.0" prefHeight="30.0" />
-         <RowConstraints />
-         <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints maxHeight="21.39999999999999" minHeight="10.0" prefHeight="16.39999999999999" />
+         <RowConstraints maxHeight="36.400000000000006" minHeight="10.0" prefHeight="36.400000000000006" />
+         <RowConstraints maxHeight="36.400000000000006" minHeight="10.0" prefHeight="15.400000000000006" />
+         <RowConstraints maxHeight="37.39999999999998" minHeight="10.0" prefHeight="37.39999999999998" />
+         <RowConstraints maxHeight="37.39999999999998" minHeight="10.0" prefHeight="16.600000000000023" />
+         <RowConstraints maxHeight="49.39999999999998" minHeight="10.0" prefHeight="33.60000000000002" />
+         <RowConstraints maxHeight="49.39999999999998" minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints maxHeight="56.39999999999998" minHeight="10.0" prefHeight="34.80000000000001" />
+         <RowConstraints maxHeight="18.0" minHeight="5.0" prefHeight="18.0" />
 
 
       </rowConstraints>
@@ -51,7 +66,7 @@
          <Insets top="10.0" />
       </VBox.margin>
       <padding>
-         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
     </GridPane>
 

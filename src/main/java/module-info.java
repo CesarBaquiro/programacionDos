@@ -5,6 +5,7 @@ module co.edu.uniquindio.bookyourstay {
     requires org.simplejavamail;
     requires org.simplejavamail.core;
     requires java.sql;
+    requires java.desktop;
 
     opens co.edu.uniquindio.bookyourstay to javafx.fxml;
     exports co.edu.uniquindio.bookyourstay;

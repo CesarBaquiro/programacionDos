@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox alignment="CENTER" prefHeight="287.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.VerifyCodeController">
+   <children>
+      <Label text="Ingrese el codigo de verificacion">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCode">
+         <VBox.margin>
+            <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+         </VBox.margin>
+      </TextField>
+      <Button mnemonicParsing="false" text="Verificar" onAction="#verify">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>

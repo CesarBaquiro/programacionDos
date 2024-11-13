@@ -25,7 +25,23 @@ public class HomeController implements Initializable {
 
     // Método que llena el GridPane con "cards" dinámicas basadas en una lista de habitaciones
     private void llenarGridPaneConCards(List<Room> rooms) {
+
         gridPane.getChildren().clear();
+
+        if (rooms.isEmpty()) {
+            try {
+                // Cargar la vista de la card vacía desde el archivo FXML
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/emptyCard.fxml"));
+                Node emptyCardNode = fxmlLoader.load();
+
+                // Añadir la card vacía al GridPane
+                gridPane.add(emptyCardNode, 0, 0);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return; // Salir del método ya que no hay habitaciones
+        }
 
         int elementosPorFila = 2; // Número de elementos por fila
         int row = 0, col = 0;
@@ -55,7 +71,7 @@ public class HomeController implements Initializable {
             }
         }
     }
-
+    
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,6 +82,7 @@ public class HomeController implements Initializable {
                 new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa),
                 new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa)
         );
+
         llenarGridPaneConCards(rooms);
     }
 }

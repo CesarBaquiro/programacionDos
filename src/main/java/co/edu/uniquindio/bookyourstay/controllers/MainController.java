@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,9 +20,8 @@ import java.util.List;
 
 import static java.util.UUID.randomUUID;
 
+@Getter
 public class MainController implements ServicesBookYourStay {
-
-
     private static MainController INSTANCIA;
     private final ReservationsBYS reservationsBYS;
 
@@ -38,8 +38,8 @@ public class MainController implements ServicesBookYourStay {
         try {
             String UUID = randomUUID().toString();
             // --- Personas de prueba
-            reservationsBYS.registerUser("1234", "Roberto", "313213131", Role.USER,"est@gmail.com", "1234");
-            reservationsBYS.registerUser( "1234",  "Alfonso Admin", "6465464", Role.ADMIN,"adm@gmail.com",  "1234");
+            reservationsBYS.registerUser("1234", "Roberto", "313213131", Role.USER,"est@gmail.com", "1234", "");
+            reservationsBYS.registerUser( "1234",  "Alfonso Admin", "6465464", Role.ADMIN,"adm@gmail.com",  "1234", "");
 
             // --- Crear horarios de prueba
             horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
@@ -101,14 +101,13 @@ public class MainController implements ServicesBookYourStay {
         return tiposInstalaciones;
     }
 
-    public ArrayList<String> listarTiposPesonas(){
-        ArrayList<String> tiposPersonas = new ArrayList<>();
-        tiposPersonas.add("Estudiante");
-        tiposPersonas.add("Docente");
-        tiposPersonas.add("Administrativo");
-        tiposPersonas.add("Externo");
+    public void printUsers(){
+        ArrayList<User> usersList;
+        usersList = reservationsBYS.getUsers();
+        for (User u: usersList) {
+            System.out.println( u.toString());
+        }
 
-        return tiposPersonas;
     }
 
     public ArrayList<Schedule> searchRoomBySchedules(String instalacion, LocalDate fecha){
@@ -180,9 +179,11 @@ public class MainController implements ServicesBookYourStay {
 
 
     @Override
-    public void registerUser(String idDocumentation, String fullname, String phone, Role role, String email, String password) throws Exception {
-        reservationsBYS.registerUser(idDocumentation, fullname, phone, role, email, password);
+    public void registerUser(String idDocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception {
+        reservationsBYS.registerUser(idDocumentation, fullname, phone, role, email, password, activationCode);
     }
+
+
 
 
     @Override

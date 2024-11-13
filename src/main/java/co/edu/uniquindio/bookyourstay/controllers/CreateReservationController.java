@@ -77,9 +77,6 @@ public class CreateReservationController extends ObserverWindow implements Initi
         tablaHoraios.setItems(horariosObservable);
     }
 
-    //crearReserva
-    //    observador.notificar();
-
     private void addBtnReservar() {
         Callback<TableColumn<Schedule, Void>, TableCell<Schedule, Void>> cellFactory = new Callback<>() {
             @Override

@@ -15,4 +15,10 @@ public class User {
     Role role;
     String email;
     String password;
+    String activationCode;
+
+    @Override
+    public String toString() {
+        return "User [iDdocumentation=" + iDdocumentation + ", fullname=" + fullname + ", phone=" + phone + ", role="+ role.toString() + ", email="+email+", password="+password+", activationCode="+activationCode+"]";
+    }
 }

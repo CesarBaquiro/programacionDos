@@ -13,12 +13,9 @@ import java.util.List;
 
 public interface ServicesBookYourStay {
 
-
     User login(String correo, String contrasena) throws Exception;
 
-
-    void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password) throws Exception;
-
+    void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception;
 
     void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms);
 

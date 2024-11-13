@@ -32,7 +32,6 @@ public class LoginController {
 
     private final MainController mainController;
 
-
     public LoginController() {
         this.mainController = MainController.getInstancia();
     }

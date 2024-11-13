@@ -11,7 +11,7 @@
             <HBox spacing="10.0" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" HBox.hgrow="ALWAYS">
                 <children>
                     <!-- Label alineado a la izquierda -->
-                    <Label text="Label">
+                    <Label text="Book Your Stay">
                         <HBox.margin>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                         </HBox.margin>
