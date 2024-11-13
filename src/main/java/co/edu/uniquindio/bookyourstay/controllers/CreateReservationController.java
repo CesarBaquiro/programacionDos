@@ -34,9 +34,6 @@ public class CreateReservationController extends ObserverWindow implements Initi
     private TableColumn<Schedule, String> colHoraFin;
 
     @FXML
-    private TableColumn<Schedule, String> colAforo;
-
-    @FXML
     private ComboBox<String> comboBoxInstalacion;
 
     @FXML

@@ -24,8 +24,8 @@ import static java.util.UUID.randomUUID;
 public class MainController implements ServicesBookYourStay {
     private static MainController INSTANCIA;
     private final ReservationsBYS reservationsBYS;
-
-
+    // Variable para almacenar el controlador de la ventana actual
+    private Object currentController;
 
     private MainController() {
         reservationsBYS = new ReservationsBYS();
@@ -254,13 +254,15 @@ public class MainController implements ServicesBookYourStay {
             // Mostrar la nueva ventana
             stage.show();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
+    public Object getController() {
+        return currentController;
+    }
 
     public void cerrarVentana(Node node){
         Stage stage = (Stage) node.getScene().getWindow();

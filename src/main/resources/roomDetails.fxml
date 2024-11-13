@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.bookyourstay.controllers.RoomDetailsController"
+      prefHeight="400.0" prefWidth="600.0" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+
+    <!-- Nombre de la habitación -->
+    <Label text="Nombre:"/>
+    <Label fx:id="roomName" style="-fx-font-size: 18px;"/>
+
+    <!-- Descripción de la habitación -->
+    <Label text="Descripción:"/>
+    <Label fx:id="roomDescription" text="Room Description" />
+
+
+    <!-- Precio de la habitación -->
+    <Label text="Precio:"/>
+    <Label fx:id="roomPrice"/>
+
+    <!-- Imagen (opcional) -->
+    <Label text="Imagen de la habitación:"/>
+    <ImageView fx:id="roomImage" fitHeight="150" fitWidth="200"/>
+
+</VBox>

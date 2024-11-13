@@ -8,37 +8,50 @@
 <ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.HomeController">
     <content>
         <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #eeeaea;" VBox.vgrow="ALWAYS">
-            <HBox spacing="10.0" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" HBox.hgrow="ALWAYS">
-                <children>
-                    <!-- Label alineado a la izquierda -->
-                    <Label text="Book Your Stay">
-                        <HBox.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                        </HBox.margin>
-                        <font>
-                            <Font name="System Bold" size="26.0" />
-                        </font>
-                    </Label>
+                <HBox spacing="10.0" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Label alineado a la izquierda -->
+                        <Label text="Book Your Stay">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="26.0" />
+                            </font>
+                        </Label>
 
-                    <!-- Región para el espacio flexible -->
-                    <Region HBox.hgrow="ALWAYS" />
+                        <!-- Región para el espacio flexible -->
+                        <Region HBox.hgrow="ALWAYS" />
 
-                    <!-- Botones alineados a la derecha -->
-                    <Button mnemonicParsing="false" text="Iniciar sesion">
-                        <HBox.margin>
-                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                        </HBox.margin>
-                    </Button>
-                    <Button mnemonicParsing="false" text="Registrarse">
-                        <HBox.margin>
-                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                        </HBox.margin>
-                    </Button>
-                </children>
-                <VBox.margin>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                </VBox.margin>
-            </HBox>
+                        <!-- Contenedor cuando el usuario es null -->
+                        <HBox fx:id="boxAnonimo">
+                            <Button onAction="#goLogin" mnemonicParsing="false" text="Iniciar sesion">
+                                <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                </HBox.margin>
+                            </Button>
+                            <Button onAction="#goRegister" mnemonicParsing="false" text="Registrarse">
+                                <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                </HBox.margin>
+                            </Button>
+                        </HBox>
+
+                        <!-- Contenedor cuando el usuario está autenticado -->
+                        <HBox fx:id="boxAutenticado">
+                            <Button onAction="#logout" mnemonicParsing="false" text="Cerrar sesion">
+                                <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                </HBox.margin>
+                            </Button>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </VBox.margin>
+                </HBox>
+
+
 
             <!-- Segunda fila de HBox con expansión horizontal -->
             <HBox alignment="CENTER" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" HBox.hgrow="ALWAYS">

@@ -7,5 +7,9 @@
 <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.RoomCardController">
     <ImageView fx:id="roomImage" fitHeight="100.0" fitWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
     <Label fx:id="roomName" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Room Name" />
+   <Label fx:id="roomPrice" text="Room price" />
     <Label fx:id="roomDescription" text="Room Description" wrapText="true" />
+
+    <!-- Agregar botón "Ver más" -->
+    <Button text="Ver más" onAction="#handleSeeMore" />
 </VBox>

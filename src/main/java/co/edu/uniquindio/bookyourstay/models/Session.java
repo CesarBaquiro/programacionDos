@@ -1,13 +1,9 @@
 package co.edu.uniquindio.bookyourstay.models;
-
-
 import co.edu.uniquindio.bookyourstay.controllers.MainController;
 import lombok.Getter;
 import lombok.Setter;
 
-
 public class Session {
-
 
     public static Session INSTANCIA;
 
@@ -19,7 +15,6 @@ public class Session {
         this.mainController = MainController.getInstancia();
     }
 
-
     public static Session getInstancia() {
         if (INSTANCIA == null) {
             INSTANCIA = new Session();
@@ -27,11 +22,8 @@ public class Session {
         return INSTANCIA;
     }
 
-
     public void cerrarSesion() {
         user = null;
-        mainController.navigateWindow("/login.fxml", "Iniciar sesión");
+        mainController.navigateWindow("/home.fxml", "Iniciar sesión");
     }
-
-
 }

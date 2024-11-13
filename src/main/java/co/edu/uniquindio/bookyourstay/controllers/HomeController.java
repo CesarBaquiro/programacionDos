@@ -1,14 +1,14 @@
 package co.edu.uniquindio.bookyourstay.controllers;
 
-import co.edu.uniquindio.bookyourstay.models.Room;
-import co.edu.uniquindio.bookyourstay.models.Schedule;
-import co.edu.uniquindio.bookyourstay.models.ServicesIncluded;
+import co.edu.uniquindio.bookyourstay.models.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -20,8 +20,39 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
+    private final MainController mainController;
+
+    private final Session session = Session.getInstancia();
+
+    @FXML
+    private HBox boxAnonimo;
+
+    @FXML
+    private HBox boxAutenticado;
+
     @FXML
     private GridPane gridPane; // Asegúrate de tener el GridPane en tu archivo FXML con fx:id="gridPane"
+
+    public HomeController() {
+        this.mainController = MainController.getInstancia();
+    }
+
+    public void goLogin(ActionEvent event) throws IOException {
+
+        mainController.cerrarVentana(gridPane);
+        mainController.navigateWindow("/login.fxml", "Iniciar sesión");
+    }
+
+    public void goRegister(ActionEvent event) throws IOException {
+        mainController.cerrarVentana(gridPane);
+        mainController.navigateWindow("/register.fxml", "Registrarse");
+    }
+
+    @FXML
+    public void logout() {
+        mainController.cerrarVentana(gridPane);
+        session.cerrarSesion();
+    }
 
     // Método que llena el GridPane con "cards" dinámicas basadas en una lista de habitaciones
     private void llenarGridPaneConCards(List<Room> rooms) {
@@ -75,6 +106,20 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Traer el usuario al cargar
+        User user = session.getUser();
+        // Verificar si el usuario está autenticado o no
+        if (user == null) {
+            // Si el usuario no está autenticado, mostrar los botones "Iniciar sesión" y "Registrarse"
+            boxAnonimo.setVisible(true);
+            boxAutenticado.setVisible(false);
+        } else {
+            // Si el usuario está autenticado, mostrar el botón "Cerrar sesión"
+            boxAnonimo.setVisible(false);
+            boxAutenticado.setVisible(true);
+        }
+
+        // Datos de prueba
         ArrayList<Schedule> schedulesMocawa = new ArrayList<Schedule>();
         schedulesMocawa.add(new Schedule(LocalDate.parse("2025-02-28"), "10PM", "9AM", false));
         // Crear una lista de habitaciones de ejemplo

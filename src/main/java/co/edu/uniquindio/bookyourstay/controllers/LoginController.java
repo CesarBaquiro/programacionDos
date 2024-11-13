@@ -81,7 +81,7 @@ public class LoginController {
                 if(user.getRole() == Role.ADMIN) {
                     mainController.navigateWindow("/panelAdmin.fxml", "Panel Administrador");
                 }else{
-                    mainController.navigateWindow("/panelClient.fxml", "Panel Usuario");
+                    mainController.navigateWindow("/home.fxml", "Inicio");
                 }
                 mainController.cerrarVentana(txtCorreo);
             }
