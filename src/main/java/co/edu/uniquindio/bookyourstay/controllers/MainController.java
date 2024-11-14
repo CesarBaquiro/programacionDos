@@ -53,14 +53,16 @@ public class MainController implements ServicesBookYourStay {
             horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 03), "4PM", "6PM", false));
 
             ServicesIncluded servicesIncludedMocawa = new ServicesIncluded(true, true, true,true,false,true,true,true,true);
-            mocawaRooms.add(new Room("Habitacion", 3, "Cama sencilla", 210000, "Habitacion con excelente vista", servicesIncludedMocawa, horariosPrueba));
+            //ArrayList<String> imagesMocawa1 = new ArrayList<String>();
+
+            //mocawaRooms.add(new Room("Habitacion 3", 3, "Cama sencilla", 210000, "Habitacion con excelente vista", servicesIncludedMocawa, horariosPrueba, imagesMocawa1));
 
             // --- Instalaciones
-            reservationsBYS.createAccommodation(UUID, "Mocawa", "El Mocawa plaza, una increible opcion para conocer el Quindio", "Armenia, Quindio", mocawaRooms );
+            //reservationsBYS.createAccommodation(UUID, "Mocawa", "El Mocawa plaza, una increible opcion para conocer el Quindio", "Armenia, Quindio", mocawaRooms );
 
 
             // --- Reserva de prueba
-            reservationsBYS.createReservation(UUID, reservationsBYS.getAccommodation().getFirst().getName(), reservationsBYS.getUsers().getFirst().getRole().toString(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getIdRoom(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getDia(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getHoraInicio());
+            //reservationsBYS.createReservation(UUID, reservationsBYS.getAccommodation().getFirst().getName(), reservationsBYS.getUsers().getFirst().getRole().toString(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getIdRoom(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getDia(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getHoraInicio());
 
         } catch (Exception e) {
             throw new RuntimeException(e);

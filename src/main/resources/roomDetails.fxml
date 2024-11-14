@@ -1,29 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.bookyourstay.controllers.RoomDetailsController"
-      prefHeight="400.0" prefWidth="600.0" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+<ScrollPane prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.RoomDetailsController">
+    <content>
+        <VBox alignment="TOP_CENTER" prefHeight="740.0" prefWidth="1564.0" spacing="10">
+            <VBox>
+                <children>
+                    <!-- Título del hotel -->
+                    <Label fx:id="hotelName" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Hotel" />
 
-    <!-- Nombre de la habitación -->
-    <Label text="Nombre:"/>
-    <Label fx:id="roomName" style="-fx-font-size: 18px;"/>
+                    <!-- Ubicación -->
+                    <Label fx:id="roomTitle" style="-fx-font-size: 16px;" text="Habitacion" />
+                </children>
+            </VBox>
 
-    <!-- Descripción de la habitación -->
-    <Label text="Descripción:"/>
-    <Label fx:id="roomDescription" text="Room Description" />
+            <!-- Calificación y botón de reserva -->
+            <HBox alignment="CENTER_LEFT" prefHeight="610.0" spacing="10">
 
+                <!-- Sección de imágenes -->
+                <GridPane hgap="10" vgap="10">
+                    <!-- Fila 1 de imágenes -->
+                    <ImageView fx:id="image1" fitHeight="300.0" fitWidth="550.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <ImageView fx:id="image2" fitHeight="300.0" fitWidth="550.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <!-- Fila 2 de imágenes -->
+                    <ImageView fx:id="image3" fitHeight="300.0" fitWidth="550.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <ImageView fx:id="image4" fitHeight="300.0" fitWidth="550.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                </GridPane>
 
-    <!-- Precio de la habitación -->
-    <Label text="Precio:"/>
-    <Label fx:id="roomPrice"/>
+                <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="293.0">
+                    <children>
+                        <Label fx:id="roomPrice" prefHeight="27.0" prefWidth="233.0" style="-fx-font-size: 18px;" text="Precio por noche" textAlignment="CENTER" />
+                        <Button fx:id="reserveButton" text="Reserva ahora" />
+                    </children>
+                </VBox>
+            </HBox>
 
-    <!-- Imagen (opcional) -->
-    <Label text="Imagen de la habitación:"/>
-    <ImageView fx:id="roomImage" fitHeight="150" fitWidth="200"/>
+            <!-- Información de descripción -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label fx:id="roomDescription" style="-fx-font-size: 18px;" text="Descripcion" />
+            </HBox>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
 
-</VBox>
+        </VBox>
+    </content>
+</ScrollPane>

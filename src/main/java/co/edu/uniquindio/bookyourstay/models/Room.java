@@ -18,8 +18,9 @@ public class Room{
     private String description;
     private ServicesIncluded servicesIncluded;
     private ArrayList<Schedule> schedules;
+    private ArrayList<String> images;
 
-    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules){
+    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules, ArrayList<String> images){
         this.idRoom = UUID.randomUUID().toString();
         this.name=name;
         this.capacity = capacity;
@@ -28,6 +29,7 @@ public class Room{
         this.description = description;
         this.servicesIncluded = servicesIncluded;
         this.schedules = schedules;
+        this.images = images;
     }
 
 
