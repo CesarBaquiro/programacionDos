@@ -55,6 +55,32 @@ public class MainController implements ServicesBookYourStay {
             ServicesIncluded servicesIncludedMocawa = new ServicesIncluded(true, true, true,true,false,true,true,true,true);
             //ArrayList<String> imagesMocawa1 = new ArrayList<String>();
 
+            // Datos de prueba
+            ArrayList<Schedule> schedulesMocawa = new ArrayList<Schedule>();
+            schedulesMocawa.add(new Schedule(LocalDate.parse("2025-02-28"), "10PM", "9AM", false));
+            // Crear una lista de habitaciones de ejemplo
+            ArrayList<String> imagesMocawa1 = new ArrayList<>();
+            imagesMocawa1.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
+            imagesMocawa1.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
+            imagesMocawa1.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
+            imagesMocawa1.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
+
+            ArrayList<String> imagesMocawa2 = new ArrayList<>();
+            imagesMocawa2.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
+            imagesMocawa2.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
+            imagesMocawa2.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
+            imagesMocawa2.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
+
+            ArrayList<Room> roomsMocawa = new ArrayList<>();
+
+            // --- Crear acomodacion de prueba
+            reservationsBYS.createAccommodation("1", "Hotel Mocawa", "Descripción del alojamiento", "Armenia, Colombia", roomsMocawa);
+
+            roomsMocawa.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1, reservationsBYS.getAccommodations().get(0).getIdAccommodation()));
+            roomsMocawa.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2, reservationsBYS.getAccommodations().get(0).getIdAccommodation()));
+
+
+
             //mocawaRooms.add(new Room("Habitacion 3", 3, "Cama sencilla", 210000, "Habitacion con excelente vista", servicesIncludedMocawa, horariosPrueba, imagesMocawa1));
 
             // --- Instalaciones
@@ -62,7 +88,7 @@ public class MainController implements ServicesBookYourStay {
 
 
             // --- Reserva de prueba
-            //reservationsBYS.createReservation(UUID, reservationsBYS.getAccommodation().getFirst().getName(), reservationsBYS.getUsers().getFirst().getRole().toString(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getIdRoom(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getDia(), reservationsBYS.getAccommodation().getFirst().getRooms().getFirst().getSchedules().getFirst().getHoraInicio());
+            //reservationsBYS.createReservation(UUID, reservationsBYS.getAccommodations().getFirst().getName(), reservationsBYS.getUsers().getFirst().getRole().toString(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getIdRoom(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getSchedules().getFirst().getDia(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getSchedules().getFirst().getHoraInicio());
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -97,7 +123,7 @@ public class MainController implements ServicesBookYourStay {
 
     public ArrayList<String> listarInstalaciones(){
         ArrayList<String> tiposInstalaciones = new ArrayList<>();
-        for(Accommodation i: reservationsBYS.getAccommodation()){
+        for(Accommodation i: reservationsBYS.getAccommodations()){
             tiposInstalaciones.add(i.getName());
         }
         return tiposInstalaciones;
@@ -116,7 +142,7 @@ public class MainController implements ServicesBookYourStay {
         ArrayList<Schedule> schedules = new ArrayList<>();
 
         // Encontrar la instalacion buscada
-        for (Accommodation i: reservationsBYS.getAccommodation()) {
+        for (Accommodation i: reservationsBYS.getAccommodations()) {
             if(instalacion.equals(i.getName())){
                 // Encontrar los horarios con la fecha buscada
                 for(Schedule h: i.getRooms().get(0).getSchedules()){
@@ -129,9 +155,24 @@ public class MainController implements ServicesBookYourStay {
         return schedules;
     }
 
+    public ArrayList<Room> getAllRooms(){
+        ArrayList<Room> rooms = new ArrayList<>();
+
+        for(Accommodation ac: reservationsBYS.getAccommodations()){
+            for (int i = 0; i< ac.getRooms().size(); i++) {
+                rooms.add(ac.getRooms().get(i));
+            }
+        }
+        return rooms;
+    }
+
+    public ArrayList<Accommodation> getAllAccommodations(){
+        return reservationsBYS.getAccommodations();
+    }
+
     public Accommodation obtenerInstalacionPorNombre(String nombre) {
         Accommodation accommodation = null;
-        for (Accommodation i: reservationsBYS.getAccommodation()) {
+        for (Accommodation i: reservationsBYS.getAccommodations()) {
             if(nombre.equals(i.getName())){
                 accommodation = i;
             }
@@ -194,8 +235,8 @@ public class MainController implements ServicesBookYourStay {
     }
 
     @Override
-    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate reservationDate, String reservationHour) throws Exception {
-        reservationsBYS.createReservation(idInstalacion, idDocumentationUser, idAccommodation, idRoom,reservationDate,reservationHour);
+    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate startDate, LocalDate endDate) throws Exception {
+        reservationsBYS.createReservation(idInstalacion, idDocumentationUser, idAccommodation, idRoom,startDate,endDate);
     }
 
     public Boolean verificarAforoPorHora(String nombreInstalacion, String horaReserva){

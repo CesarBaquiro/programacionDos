@@ -18,7 +18,7 @@ public class RoomDetailsController {
     private Label roomTitle;
 
     @FXML
-    private Label roomLocation;
+    private Label hotelLocation;
 
     @FXML
     private Label roomPrice;
@@ -54,10 +54,11 @@ public class RoomDetailsController {
 
         if (room != null) {
             // Asignar los datos a los elementos de la interfaz
-            hotelName.setText(room.getIdRoom());
+            hotelName.setText(room.getAccommodationByIdAccommodation().getName());
             roomTitle.setText(room.getName());
+            hotelLocation.setText(room.getAccommodationByIdAccommodation().getLocation());
             //roomLocation.setText(room.getLocation());
-            roomPrice.setText("Precio por noche: $" + room.getPrice());
+            roomPrice.setText(String.valueOf(room.getPrice()));
             roomDescription.setText(room.getDescription());
 
             // Cargar las imágenes
@@ -76,6 +77,7 @@ public class RoomDetailsController {
     private void handleReservation(Room room) {
         // Lógica para manejar la reserva de la habitación
         System.out.println("Reservando habitación: " + room.getName());
+
         // Aquí podrías navegar a una pantalla de confirmación de reserva
     }
 }

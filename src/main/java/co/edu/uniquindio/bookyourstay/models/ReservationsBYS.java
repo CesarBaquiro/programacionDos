@@ -15,7 +15,7 @@ public class ReservationsBYS implements ServicesBookYourStay {
 
     ArrayList<Reservation> reservations =   new ArrayList();
     ArrayList<User> users =   new ArrayList();
-    ArrayList<Accommodation> accommodation =   new ArrayList();
+    ArrayList<Accommodation> accommodations =   new ArrayList();
 
     /**
      * Comprobar si hay espacios disponibles y retornar True si los hay
@@ -25,7 +25,7 @@ public class ReservationsBYS implements ServicesBookYourStay {
         int cantidadReservas = 0;
         cantidadReservas = contarReservasPorInstalacionHora(nombreInstalacion, hora);
         /*
-        for (Accommodation i: accommodation){
+        for (Accommodation i: accommodations){
             if(nombreInstalacion.equals(i.getName())){
                 for (Reservation r : reservations) {
                     if(nombreInstalacion.equals(r.getIdReservation()) && cantidadReservas < i.getAforo()){
@@ -40,11 +40,7 @@ public class ReservationsBYS implements ServicesBookYourStay {
 
     public int contarReservasPorInstalacionHora(String nombreInstalacion, String hora) {
         int cantidadReservas = 0;
-        for (Reservation r : reservations) {
-            if(r.getIdReservation().equals(nombreInstalacion) && hora.equals(r.getReservationHour())){
-                cantidadReservas++;
-            }
-        }
+        // Logica de contar
         return cantidadReservas;
     }
 
@@ -68,12 +64,12 @@ public class ReservationsBYS implements ServicesBookYourStay {
 
     @Override
     public void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms) {
-        accommodation.add(new Accommodation(idAccommodation, name, description, location, rooms));
+        accommodations.add(new Accommodation(idAccommodation, name, description, location, rooms));
     }
 
     @Override
-    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate reservationDate, String reservationHour) throws Exception {
-        reservations.add(new Reservation(idInstalacion, idDocumentationUser,  idAccommodation,  idRoom, reservationDate, reservationHour));
+    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate startDate, LocalDate endDate) throws Exception {
+        reservations.add(new Reservation(idInstalacion, idDocumentationUser,  idAccommodation,  idRoom, startDate, endDate));
 
     }
 

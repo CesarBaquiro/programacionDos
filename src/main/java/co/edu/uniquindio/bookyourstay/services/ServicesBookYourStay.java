@@ -19,9 +19,7 @@ public interface ServicesBookYourStay {
 
     void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms);
 
-
-    void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate reservationDate, String reservationHour) throws Exception;
-
+    void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate startDate, LocalDate endDate) throws Exception;
 
     List<Reservation> listAllReservations();
 

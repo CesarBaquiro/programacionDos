@@ -7,9 +7,13 @@
 <HBox spacing="20.0" style="-fx-padding: 30px" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.PanelClientController">
 
 
-    <VBox alignment="TOP_CENTER" minWidth="161.0" prefHeight="400.0" prefWidth="161.0" spacing="20.0">
+    <VBox minWidth="161.0" prefHeight="400.0" prefWidth="161.0" spacing="20.0">
       <children>
-      
+          <Button alignment="CENTER" mnemonicParsing="false" onAction="#goHome" style="-fx-background-color: #3d3d3d;" text="Volver" textFill="WHITE">
+              <font>
+                  <Font name="System Bold" size="12.0" />
+              </font>
+          </Button>
           <Label alignment="CENTER" prefHeight="30.0" prefWidth="156.0" text="Perfil" textAlignment="CENTER" textFill="#0f0f0f">
               <font>
                   <Font name="System Bold" size="30.0" />
@@ -20,10 +24,11 @@
                <Font name="System Bold Italic" size="12.0" />
             </font></Label>
           <Label fx:id="labelNombre" alignment="CENTER" prefHeight="30.0" prefWidth="156.0" />
-         <Button alignment="CENTER" mnemonicParsing="false" onAction="#crearReserva" style="-fx-background-color: #00bf30;" text="Crear reservation" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="20.0" />
-            </font></Button>
+<!--         <Button alignment="CENTER" mnemonicParsing="false" onAction="#crearReserva" style="-fx-background-color: #00bf30;" text="Crear reservation" textFill="WHITE">-->
+<!--            <font>-->
+<!--               <Font name="System Bold" size="20.0" />-->
+<!--            </font>-->
+<!--         </Button>-->
       </children>
     </VBox>
 
@@ -44,6 +49,7 @@
    <Button mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: #ff4242;" text="Cerrar sesión" textFill="WHITE">
       <font>
          <Font name="System Bold" size="12.0" />
-      </font></Button>
+      </font>
+   </Button>
 
 </HBox>

@@ -18,4 +18,9 @@ public class Accommodation {
     String description;
     String location;
     ArrayList<Room> rooms;
+
+    // Method to bring all rooms
+    public ArrayList<Room> getRooms(){
+        return new ArrayList<>(rooms);
+    }
 }

@@ -48,6 +48,14 @@ public class HomeController implements Initializable {
         mainController.navigateWindow("/register.fxml", "Registrarse");
     }
 
+    public void search(ActionEvent event) throws IOException {
+
+    }
+
+    public void goProfile(ActionEvent event) throws IOException {
+        mainController.navigateWindow("/panelClient.fxml", "Perfil");
+    }
+
     @FXML
     public void logout() {
         mainController.cerrarVentana(gridPane);
@@ -106,9 +114,11 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<Room> rooms = new ArrayList<>();
+
         // Traer el usuario al cargar
         User user = session.getUser();
-        // Verificar si el usuario está autenticado o no
+        // Verificar si el usuario está autenticado o no para mostrar un bloque de botones
         if (user == null) {
             // Si el usuario no está autenticado, mostrar los botones "Iniciar sesión" y "Registrarse"
             boxAnonimo.setVisible(true);
@@ -119,26 +129,7 @@ public class HomeController implements Initializable {
             boxAutenticado.setVisible(true);
         }
 
-        // Datos de prueba
-        ArrayList<Schedule> schedulesMocawa = new ArrayList<Schedule>();
-        schedulesMocawa.add(new Schedule(LocalDate.parse("2025-02-28"), "10PM", "9AM", false));
-        // Crear una lista de habitaciones de ejemplo
-        ArrayList<String> imagesMocawa1 = new ArrayList<>();
-        imagesMocawa1.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
-        imagesMocawa1.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
-        imagesMocawa1.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
-        imagesMocawa1.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
-
-        ArrayList<String> imagesMocawa2 = new ArrayList<>();
-        imagesMocawa2.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
-        imagesMocawa2.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
-        imagesMocawa2.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
-        imagesMocawa2.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
-
-        List<Room> rooms = List.of(
-                new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1),
-                new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2)
-        );
+        rooms = mainController.getAllRooms();
 
         llenarGridPaneConCards(rooms);
     }

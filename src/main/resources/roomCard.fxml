@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.RoomCardController">
-    <ImageView fx:id="roomImage" fitHeight="100.0" fitWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" />
-    <Label fx:id="roomName" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Room Name" />
-   <Label fx:id="roomPrice" text="Room price" />
-    <Label fx:id="roomDescription" text="Room Description" wrapText="true" />
 
-    <!-- Agregar botón "Ver más" -->
-    <Button text="Ver más" onAction="#handleSeeMore" />
+    <!-- Imagen con bordes redondeados -->
+    <ImageView fx:id="roomImage" fitHeight="150.0" fitWidth="300.0" preserveRatio="false" smooth="true" style="-fx-background-radius: 15; -fx-border-radius: 15;">
+        <VBox.margin>
+            <Insets bottom="10" left="0" right="0" top="0" />
+        </VBox.margin>
+    </ImageView>
+
+    <Label fx:id="roomName" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Room Name" />
+
+    <Label fx:id="roomAccommodationName" text="Room accommodation name" wrapText="true" />
+
+    <Label fx:id="roomPrice" text="Room price" />
+
+
+    <!-- Botón "Reservar ahora" con estilo personalizado -->
+    <Button onAction="#handleSeeMore" style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Reservar ahora">
+        <VBox.margin>
+            <Insets bottom="0" left="0" right="0" top="10" />
+        </VBox.margin>
+    </Button>
 </VBox>

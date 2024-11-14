@@ -48,8 +48,8 @@ public class PanelClientController implements Observer, Initializable {
         session.cerrarSesion();
     }
 
-    public void crearReserva(ActionEvent actionEvent) {
-        mainController.navegarVentanaObservable("/createReservation.fxml", "Crear Reserva", this);
+    public void goHome(ActionEvent actionEvent) {
+        mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
     private void cargarReservas() {
@@ -75,7 +75,7 @@ public class PanelClientController implements Observer, Initializable {
         // Cargar tabla
         colInstalacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdReservation()));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdRoom()));
-        colHora.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReservationHour().toString()));
+        //colHora.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReservationHour().toString()));
 
         // Cargar las reservas en la tabla
         cargarReservas();

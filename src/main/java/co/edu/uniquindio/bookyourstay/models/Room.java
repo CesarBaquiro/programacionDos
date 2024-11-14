@@ -1,5 +1,6 @@
 package co.edu.uniquindio.bookyourstay.models;
 
+import co.edu.uniquindio.bookyourstay.controllers.MainController;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +20,10 @@ public class Room{
     private ServicesIncluded servicesIncluded;
     private ArrayList<Schedule> schedules;
     private ArrayList<String> images;
+    // Nueva referencia al alojamiento
+    private String idAccommodation;
 
-    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules, ArrayList<String> images){
+    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules, ArrayList<String> images, String idAccommodation) {
         this.idRoom = UUID.randomUUID().toString();
         this.name=name;
         this.capacity = capacity;
@@ -30,7 +33,17 @@ public class Room{
         this.servicesIncluded = servicesIncluded;
         this.schedules = schedules;
         this.images = images;
+        this.idAccommodation = idAccommodation;
     }
 
-
+    public Accommodation getAccommodationByIdAccommodation() {
+        MainController mainController = MainController.getInstancia();
+        Accommodation accommodation = null;
+        for (Accommodation ac : mainController.getAllAccommodations()){
+            if (ac.getIdAccommodation().equals(idAccommodation)){
+                accommodation = ac;
+            }
+        }
+        return accommodation;
+    }
 }

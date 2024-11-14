@@ -5,6 +5,7 @@ import co.edu.uniquindio.bookyourstay.models.RoomSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -17,7 +18,7 @@ public class RoomCardController {
     private Label roomName;
 
     @FXML
-    private Label roomDescription;
+    private Label roomAccommodationName;
 
     @FXML
     private Label roomPrice;
@@ -34,9 +35,9 @@ public class RoomCardController {
     public void setRoomData(Room room) {
         this.room = room;
         roomName.setText(room.getName());
-        roomDescription.setText(room.getDescription());
+        roomAccommodationName.setText(room.getAccommodationByIdAccommodation().getName());
         roomPrice.setText(String.valueOf(room.getPrice()));
-        // roomImage.setImage(new Image(room.getImage()));
+        roomImage.setImage(new Image(room.getImages().get(0))); // Trae siempre la primer imagen en la lista
     }
 
     // Método que se llama cuando el usuario hace clic en "Ver más"
