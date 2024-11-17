@@ -88,7 +88,7 @@ public class LoginController {
 
 
         } catch (Exception e) {
-            mainController.mostrarAlerta(e.getMessage(), "Error", Alert.AlertType.ERROR);
+            mainController.showAlert(e.getMessage(), "Error", Alert.AlertType.ERROR);
         }
     }
 

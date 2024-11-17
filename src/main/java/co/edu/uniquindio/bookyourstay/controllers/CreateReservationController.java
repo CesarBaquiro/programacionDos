@@ -36,10 +36,7 @@ public class CreateReservationController extends ObserverWindow implements Initi
     @FXML
     private ComboBox<String> comboBoxInstalacion;
 
-    @FXML
-    private DatePicker startDatePicker;
-    @FXML
-    private DatePicker endDatePicker;
+
 
     private ObservableList<Schedule> horariosObservable;
 
@@ -59,6 +56,7 @@ public class CreateReservationController extends ObserverWindow implements Initi
         this.observer = observer;
     }
 
+    /**
     public void buscarHorarios(ActionEvent event) {
         String instalacionElegida = comboBoxInstalacion.getValue();
         LocalDate fechaElegida = startDatePicker.getValue();
@@ -66,15 +64,14 @@ public class CreateReservationController extends ObserverWindow implements Initi
         tablaHoraios.setItems(horariosObservable);
     }
 
-    /**
      * Actualiza la lista observable de notas
-     */
     public void actualizarHorarios() {
         String instalacionElegida = comboBoxInstalacion.getValue();
         LocalDate fechaElegida = startDatePicker.getValue();
         horariosObservable.setAll(mainController.searchRoomBySchedules(instalacionElegida, fechaElegida));
         tablaHoraios.setItems(horariosObservable);
     }
+     */
 
     private void addBtnReservar() {
         Callback<TableColumn<Schedule, Void>, TableCell<Schedule, Void>> cellFactory = new Callback<>() {
@@ -85,8 +82,8 @@ public class CreateReservationController extends ObserverWindow implements Initi
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             String instalacionElegida = comboBoxInstalacion.getValue();
-                            LocalDate startDate = startDatePicker.getValue();
-                            LocalDate endDate = endDatePicker.getValue();
+                           // LocalDate startDate = startDatePicker.getValue();
+                            //LocalDate endDate = endDatePicker.getValue();
                             Schedule schedule = getTableView().getItems().get(getIndex());
                             Boolean hayEspacio;
                             String idAccomodation = "";
@@ -101,7 +98,7 @@ public class CreateReservationController extends ObserverWindow implements Initi
                             // Registrar la reserva
                             try {
                                 if (hayEspacio){
-                                    mainController.createReservation(instalacionElegida, session.getUser().getIDdocumentation(), idAccomodation, idRoom, startDate, endDate);
+                                   // mainController.createReservation(instalacionElegida, session.getUser().getIDdocumentation(), idAccomodation, idRoom, startDate, endDate);
                                     // Notificar a los observadores para actualizar la vista de reservas
                                     observer.notificar();
                                 }

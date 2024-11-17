@@ -8,16 +8,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/CreateReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/CreateReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/PanelClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/PanelClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Accommodation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Accommodation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Accommodation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Hotel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/ReservationsBYS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/ReservationsBYS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/services/ServicesBookYourStay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/services/ServicesBookYourStay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/home.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/panelClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/panelClient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/roomCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/roomCard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/roomDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/roomDetails.fxml" afterDir="false" />
@@ -99,7 +100,8 @@
       <workItem from="1731264886507" duration="24630000" />
       <workItem from="1731455347833" duration="7552000" />
       <workItem from="1731514724011" duration="24975000" />
-      <workItem from="1731544334337" duration="11879000" />
+      <workItem from="1731544334337" duration="11973000" />
+      <workItem from="1731796720021" duration="14698000" />
     </task>
     <servers />
   </component>

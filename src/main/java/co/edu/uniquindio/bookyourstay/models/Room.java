@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -21,9 +20,9 @@ public class Room{
     private ArrayList<Schedule> schedules;
     private ArrayList<String> images;
     // Nueva referencia al alojamiento
-    private String idAccommodation;
+    private String idHotel;
 
-    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules, ArrayList<String> images, String idAccommodation) {
+    public Room( String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, ArrayList<Schedule> schedules, ArrayList<String> images, String idHotel) {
         this.idRoom = UUID.randomUUID().toString();
         this.name=name;
         this.capacity = capacity;
@@ -33,17 +32,17 @@ public class Room{
         this.servicesIncluded = servicesIncluded;
         this.schedules = schedules;
         this.images = images;
-        this.idAccommodation = idAccommodation;
+        this.idHotel = idHotel;
     }
 
-    public Accommodation getAccommodationByIdAccommodation() {
+    public Hotel getAccommodationByIdAccommodation() {
         MainController mainController = MainController.getInstancia();
-        Accommodation accommodation = null;
-        for (Accommodation ac : mainController.getAllAccommodations()){
-            if (ac.getIdAccommodation().equals(idAccommodation)){
-                accommodation = ac;
+        Hotel hotel = null;
+        for (Hotel ac : mainController.getAllHotels()){
+            if (ac.getIdHotel().equals(idHotel)){
+                hotel = ac;
             }
         }
-        return accommodation;
+        return hotel;
     }
 }

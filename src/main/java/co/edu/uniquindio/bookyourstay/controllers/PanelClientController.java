@@ -30,41 +30,45 @@ public class PanelClientController implements Observer, Initializable {
     private Label labelTipoUsuario;
 
     @FXML
-    private TableView<Reservation>  tablaReservas;
+    private TableView<Reservation> reservationsTable;
 
     @FXML
-    private TableColumn<Reservation, String> colInstalacion;
+    private TableColumn<Reservation, String> colIdHotel;
 
     @FXML
-    private TableColumn<Reservation, String> colFecha;
+    private TableColumn<Reservation, String> colRoomName;
 
     @FXML
-    private TableColumn<Reservation, String> colHora;
+    private TableColumn<Reservation, String> colInitDate;
 
-    private ObservableList<Reservation> reservasObservable;
+    @FXML
+    private TableColumn<Reservation, String> colEndDate;
+
+    @FXML
+    private TableColumn<Reservation, String> colNightsReserved;
+
+    private ObservableList<Reservation> observableReserves;
 
     public void cerrarSesion(ActionEvent actionEvent) {
-        mainController.cerrarVentana(tablaReservas);
+        mainController.cerrarVentana(reservationsTable);
         session.cerrarSesion();
     }
 
     public void goHome(ActionEvent actionEvent) {
+        mainController.cerrarVentana(reservationsTable);
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
-    private void cargarReservas() {
-        reservasObservable = FXCollections.observableArrayList(mainController.listReservationsByUser(session.getUser().getIDdocumentation()));
-        tablaReservas.setItems(reservasObservable);  // Vincula las reservas con la tabla
+    private void loadReservations() {
+        observableReserves = FXCollections.observableArrayList(mainController.listReservationsByUser(session.getUser().getIDdocumentation()));
+        reservationsTable.setItems(observableReserves);  // Vincula las reservas con la tabla
     }
 
     @Override
     public void notificar() {
-        reservasObservable.setAll(mainController.listReservationsByUser(user.getIDdocumentation()));
-        tablaReservas.refresh();  // Refrescar la tabla para mostrar cambios
+        observableReserves.setAll(mainController.listReservationsByUser(user.getIDdocumentation()));
+        reservationsTable.refresh();  // Refrescar la tabla para mostrar cambios
     }
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,11 +77,15 @@ public class PanelClientController implements Observer, Initializable {
         labelTipoUsuario.setText(user.getRole().toString());
 
         // Cargar tabla
-        colInstalacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdReservation()));
-        colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdRoom()));
+        colIdHotel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHotel().getName()));
+        colRoomName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRoom().getName()));
+        colInitDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStartDate().toString()));
+        colEndDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEndDate().toString()));
+        colNightsReserved.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNumberNightsReserved())));
+
         //colHora.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getReservationHour().toString()));
 
         // Cargar las reservas en la tabla
-        cargarReservas();
+        loadReservations();
     }
 }

@@ -16,7 +16,7 @@
 
     <Label fx:id="roomName" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Room Name" />
 
-    <Label fx:id="roomAccommodationName" text="Room accommodation name" wrapText="true" />
+    <Label fx:id="roomAccommodationName" text="Room hotel name" wrapText="true" />
 
     <Label fx:id="roomPrice" text="Room price" />
 

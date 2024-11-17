@@ -38,8 +38,8 @@ public class MainController implements ServicesBookYourStay {
         try {
             String UUID = randomUUID().toString();
             // --- Personas de prueba
-            reservationsBYS.registerUser("1234", "Roberto", "313213131", Role.USER,"est@gmail.com", "1234", "");
-            reservationsBYS.registerUser( "1234",  "Alfonso Admin", "6465464", Role.ADMIN,"adm@gmail.com",  "1234", "");
+            reservationsBYS.registerUser("1234", "Roberto", "313213131", Role.USER,"usuario@gmail.com", "1234", "");
+            reservationsBYS.registerUser( "1234",  "Alfonso Admin", "6465464", Role.ADMIN,"admin@gmail.com",  "1234", "");
 
             // --- Crear horarios de prueba
             horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
@@ -76,8 +76,8 @@ public class MainController implements ServicesBookYourStay {
             // --- Crear acomodacion de prueba
             reservationsBYS.createAccommodation("1", "Hotel Mocawa", "Descripción del alojamiento", "Armenia, Colombia", roomsMocawa);
 
-            roomsMocawa.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1, reservationsBYS.getAccommodations().get(0).getIdAccommodation()));
-            roomsMocawa.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2, reservationsBYS.getAccommodations().get(0).getIdAccommodation()));
+            roomsMocawa.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1, reservationsBYS.getHotels().get(0).getIdHotel()));
+            roomsMocawa.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2, reservationsBYS.getHotels().get(0).getIdHotel()));
 
 
 
@@ -123,7 +123,7 @@ public class MainController implements ServicesBookYourStay {
 
     public ArrayList<String> listarInstalaciones(){
         ArrayList<String> tiposInstalaciones = new ArrayList<>();
-        for(Accommodation i: reservationsBYS.getAccommodations()){
+        for(Hotel i: reservationsBYS.getHotels()){
             tiposInstalaciones.add(i.getName());
         }
         return tiposInstalaciones;
@@ -142,7 +142,7 @@ public class MainController implements ServicesBookYourStay {
         ArrayList<Schedule> schedules = new ArrayList<>();
 
         // Encontrar la instalacion buscada
-        for (Accommodation i: reservationsBYS.getAccommodations()) {
+        for (Hotel i: reservationsBYS.getHotels()) {
             if(instalacion.equals(i.getName())){
                 // Encontrar los horarios con la fecha buscada
                 for(Schedule h: i.getRooms().get(0).getSchedules()){
@@ -158,7 +158,7 @@ public class MainController implements ServicesBookYourStay {
     public ArrayList<Room> getAllRooms(){
         ArrayList<Room> rooms = new ArrayList<>();
 
-        for(Accommodation ac: reservationsBYS.getAccommodations()){
+        for(Hotel ac: reservationsBYS.getHotels()){
             for (int i = 0; i< ac.getRooms().size(); i++) {
                 rooms.add(ac.getRooms().get(i));
             }
@@ -166,18 +166,18 @@ public class MainController implements ServicesBookYourStay {
         return rooms;
     }
 
-    public ArrayList<Accommodation> getAllAccommodations(){
-        return reservationsBYS.getAccommodations();
+    public ArrayList<Hotel> getAllHotels(){
+        return reservationsBYS.getHotels();
     }
 
-    public Accommodation obtenerInstalacionPorNombre(String nombre) {
-        Accommodation accommodation = null;
-        for (Accommodation i: reservationsBYS.getAccommodations()) {
-            if(nombre.equals(i.getName())){
-                accommodation = i;
+    public Hotel getHotelByName(String hotelName) {
+        Hotel hotel = null;
+        for (Hotel i: reservationsBYS.getHotels()) {
+            if(hotelName.equals(i.getName())){
+                hotel = i;
             }
         }
-        return accommodation;
+        return hotel;
     }
 
     public void navegarVentanaObservable(String nombreFxml, String titulo, Observer observer) {
@@ -235,8 +235,8 @@ public class MainController implements ServicesBookYourStay {
     }
 
     @Override
-    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate startDate, LocalDate endDate) throws Exception {
-        reservationsBYS.createReservation(idInstalacion, idDocumentationUser, idAccommodation, idRoom,startDate,endDate);
+    public void createReservation(String idAccommodation, String idRoom, String idDocumentationUser, LocalDate startDate, LocalDate endDate) throws Exception {
+        reservationsBYS.createReservation(idAccommodation, idRoom, idDocumentationUser,startDate,endDate);
     }
 
     public Boolean verificarAforoPorHora(String nombreInstalacion, String horaReserva){
@@ -264,8 +264,8 @@ public class MainController implements ServicesBookYourStay {
     }
 
 
-    //TODO Completar con el resto de métodos necesarios para la aplicación
-    public void mostrarAlerta(String mensaje, String titulo, Alert.AlertType tipo) {
+    // Show alerts messages
+    public void showAlert(String mensaje, String titulo, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
         alert.setHeaderText(null);

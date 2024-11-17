@@ -2,12 +2,18 @@ package co.edu.uniquindio.bookyourstay.controllers;
 
 import co.edu.uniquindio.bookyourstay.models.Room;
 import co.edu.uniquindio.bookyourstay.models.RoomSession;
+import co.edu.uniquindio.bookyourstay.models.Session;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+
+import java.time.LocalDate;
 
 public class RoomDetailsController {
 
@@ -27,6 +33,12 @@ public class RoomDetailsController {
     private Label roomDescription;
 
     @FXML
+    private Label msgErrorLbl1;
+
+    @FXML
+    private Label msgErrorLbl2;
+
+    @FXML
     private ImageView image1;
 
     @FXML
@@ -42,10 +54,25 @@ public class RoomDetailsController {
     private Button reserveButton;
 
     @FXML
-    private VBox rootVBox;
+    private DatePicker startDatePicker;
+    @FXML
+    private DatePicker endDatePicker;
+
+    private MainController mainController;
+
+    private final Session session = Session.getInstancia();
+
+    public RoomDetailsController() {
+        this.mainController = MainController.getInstancia();
+    }
 
     public void initialize() {
         loadRoomData();
+    }
+
+    public void goHome(ActionEvent actionEvent) {
+        mainController.cerrarVentana(msgErrorLbl1);
+        mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
     // Cargar los datos de la habitación seleccionada desde la sesión
@@ -75,9 +102,47 @@ public class RoomDetailsController {
     }
 
     private void handleReservation(Room room) {
-        // Lógica para manejar la reserva de la habitación
-        System.out.println("Reservando habitación: " + room.getName());
+        Boolean save = true;
 
-        // Aquí podrías navegar a una pantalla de confirmación de reserva
+        LocalDate initDate = startDatePicker.getValue();
+        LocalDate endDate = endDatePicker.getValue();
+
+        if (session.getUser() == null) {
+            save = false;
+            mainController.showAlert("Por favor primero inicie sesión", "Queremos saber quien eres!", Alert.AlertType.WARNING);
+        }
+
+        if(initDate == null) {
+            save = false;
+            msgErrorLbl1.setText("Por favor ingrese la fecha de inicio");
+        }else {
+            msgErrorLbl1.setText("");
+        }
+
+        if(endDate == null) {
+            save = false;
+            msgErrorLbl2.setText("Por favor ingrese la fecha de fin");
+        }else {
+            msgErrorLbl2.setText("");
+        }
+
+        // Conditional to check if endDate is a day after initDate
+        if (endDate != null && initDate != null) {
+            if (!endDate.isAfter(initDate)) {
+                save = false;
+                msgErrorLbl2.setText("La fecha de fin debe ser mayor");
+            }
+        }
+        if(save && session.getUser() != null) {
+            // Logic to handle room reservation
+            try {
+                mainController.createReservation(room.getAccommodationByIdAccommodation().getIdHotel(), room.getIdRoom(),session.getUser().getIDdocumentation(), initDate,endDate);
+                mainController.showAlert("La reserva se creo exitosamente", "Reserva guardada", Alert.AlertType.CONFIRMATION);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        mainController.cerrarVentana(image1);
+        mainController.navigateWindow("/home.fxml", "Inicio");
     }
 }

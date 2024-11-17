@@ -3,7 +3,6 @@ package co.edu.uniquindio.bookyourstay.controllers;
 import co.edu.uniquindio.bookyourstay.models.enums.Role;
 import co.edu.uniquindio.bookyourstay.observer.Observer;
 import co.edu.uniquindio.bookyourstay.utils.EnvioEmail;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -99,7 +98,7 @@ public class RegisterController implements Observer, Initializable {
                 mainController.navegarVentanaObservable("/verifyCode.fxml", "Verificar código de autenticación", this);
             }
         } catch (Exception e) {
-            mainController.mostrarAlerta(e.getMessage(), "Error", Alert.AlertType.ERROR);
+            mainController.showAlert(e.getMessage(), "Error", Alert.AlertType.ERROR);
             System.out.println(e.getMessage());
         }
     }

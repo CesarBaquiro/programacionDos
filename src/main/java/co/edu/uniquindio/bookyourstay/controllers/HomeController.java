@@ -53,6 +53,7 @@ public class HomeController implements Initializable {
     }
 
     public void goProfile(ActionEvent event) throws IOException {
+        mainController.cerrarVentana(gridPane);
         mainController.navigateWindow("/panelClient.fxml", "Perfil");
     }
 

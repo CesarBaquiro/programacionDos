@@ -15,7 +15,7 @@ public class ReservationsBYS implements ServicesBookYourStay {
 
     ArrayList<Reservation> reservations =   new ArrayList();
     ArrayList<User> users =   new ArrayList();
-    ArrayList<Accommodation> accommodations =   new ArrayList();
+    ArrayList<Hotel> hotels =   new ArrayList();
 
     /**
      * Comprobar si hay espacios disponibles y retornar True si los hay
@@ -64,13 +64,12 @@ public class ReservationsBYS implements ServicesBookYourStay {
 
     @Override
     public void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms) {
-        accommodations.add(new Accommodation(idAccommodation, name, description, location, rooms));
+        hotels.add(new Hotel(idAccommodation, name, description, location, rooms));
     }
 
     @Override
-    public void createReservation(String idInstalacion, String idDocumentationUser, String idAccommodation, String idRoom, LocalDate startDate, LocalDate endDate) throws Exception {
-        reservations.add(new Reservation(idInstalacion, idDocumentationUser,  idAccommodation,  idRoom, startDate, endDate));
-
+    public void createReservation(String idAccommodation, String idRoom, String idDocumentationUser, LocalDate startDate, LocalDate endDate) throws Exception {
+        reservations.add(new Reservation(idAccommodation,  idRoom, idDocumentationUser, startDate, endDate));
     }
 
     @Override
