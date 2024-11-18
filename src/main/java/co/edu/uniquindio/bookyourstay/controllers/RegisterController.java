@@ -74,7 +74,7 @@ public class RegisterController implements Observer, Initializable {
     public void registro(ActionEvent actionEvent) {
 
         try {
-            // Guardar los datos del formulario en atributos de la clase
+            // Save the form data in class attributes
             idDocumentation = txtCc.getText();
             fullname = txtName.getText();
             phone = txtPhone.getText(); // Placeholder para el campo de teléfono
@@ -87,11 +87,11 @@ public class RegisterController implements Observer, Initializable {
             Boolean isValid = validateFormRegister(idDocumentation, fullname, phone, email, password, passwordConfirm);
 
             if(isValid){
-                // Generar el código de activación
+                // Generate the activation code
                 generatedCode = EnvioEmail.createCodeActivation();
 
-                // Evniar el codigo al correo registrado
-                EnvioEmail.enviarNotificacion(email, "Codigo de verificacion Book Your Stay", "Hola! Te enviamos tu codigo de verificación "+generatedCode);
+                // Send the code to the registered email
+                //EnvioEmail.enviarNotificacion(email, "Codigo de verificacion Book Your Stay", "Hola! Te enviamos tu codigo de verificación "+generatedCode);
                 System.out.println("Código generado: " + generatedCode);
 
                 // Abrir la ventana verifyCode.fxml para que el usuario ingrese el código
@@ -150,7 +150,7 @@ public class RegisterController implements Observer, Initializable {
         if (email == null || email.trim().isEmpty()) {
             msgErrorEmail.setText("El correo electrónico no puede estar vacío");
             isValidForm = false;
-        } else if (!email.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-zA-Z]{2,}$")) {  // Verifica el formato de correo
+        } else if (!email.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-zA-Z]{2,}$")) {  // Check the mail format
             msgErrorEmail.setText("El correo electrónico no tiene un formato válido");
             isValidForm = false;
         } else {
@@ -177,7 +177,7 @@ public class RegisterController implements Observer, Initializable {
             isValidForm = false;
         }
 
-        // Si la validación es exitosa, limpiar el mensaje de error
+        // If validation is successful, clear the error message
         if(isValidForm){
             msgErrorCc.setText("");
             msgErrorName.setText("");
@@ -200,29 +200,29 @@ public class RegisterController implements Observer, Initializable {
         System.out.println("Código ingresado: " + codeInput);
         System.out.println("Código generado: " + generatedCode);
 
-        // Verificar el código ingresado con el generado
+        // Verify the entered code with the generated one
         boolean codigoVerificado = verifyActivationCode(codeInput, generatedCode);
         System.out.println("Resultado comprobación: " + codigoVerificado);
 
-        // Verificar si el código fue correcto y continuar el registro
+        // Check if the code was correct and continue registration
         if (codigoVerificado) {
-            continuarRegistro(); // Continuar con el registro
+            continuarRegistro(); // Continue with registration
         } else {
             System.out.println("CODIGO INCORRECTO");
-            // Aquí podrías manejar un mensaje de error o reintento
+           // Here you could handle an error or retry message
         }
     }
 
-    // Método para continuar el registro después de verificar el código
+    //Method to continue registration after verifying the code
     public void continuarRegistro() {
         System.out.println("Código verificado correctamente. Continuando con el registro...");
 
-        // Registrar el usuario con los datos almacenados
+      // Register the user with the stored data
         try {
             mainController.registerUser(idDocumentation, fullname, phone, role, email, password, generatedCode);
-            // Cerrar la ventana actual (asumiendo que txtCorreo pertenece a la ventana que debe cerrarse)
-            mainController.cerrarVentana(txtEmail);
-            // Navegar a la ventana de inicio de sesión
+            // Close the current window (assuming that txtMail belongs to the window that should be closed)
+            mainController.closeWindow(txtEmail);
+            // Navigate to the login window
             mainController.navigateWindow("/login.fxml", "Iniciar sesión");
             mainController.printUsers();
         } catch (Exception e) {

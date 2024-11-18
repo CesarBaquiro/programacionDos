@@ -18,77 +18,49 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.UUID.randomUUID;
-
 @Getter
 public class MainController implements ServicesBookYourStay {
     private static MainController INSTANCIA;
     private final ReservationsBYS reservationsBYS;
-    // Variable para almacenar el controlador de la ventana actual
-    private Object currentController;
 
     private MainController() {
         reservationsBYS = new ReservationsBYS();
-        ArrayList<Schedule>  horariosPrueba = new ArrayList<Schedule>();
 
-        ArrayList<Room> mocawaRooms = new ArrayList<>();
-
-
-        // Datos de prueba
+        // Test data
         try {
-            String UUID = randomUUID().toString();
-            // --- Personas de prueba
-            reservationsBYS.registerUser("1234", "Roberto", "313213131", Role.USER,"usuario@gmail.com", "1234", "");
-            reservationsBYS.registerUser( "1234",  "Alfonso Admin", "6465464", Role.ADMIN,"admin@gmail.com",  "1234", "");
-
-            // --- Crear horarios de prueba
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 01), "10AM", "12PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 01), "12PM", "2PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 01), "4PM", "6PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 02), "10AM", "12PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 02), "12PM", "2PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 02), "4PM", "6PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 03), "10AM", "12PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 03), "12PM", "2PM", false));
-            horariosPrueba.add(new Schedule(LocalDate.of(2024, 12, 03), "4PM", "6PM", false));
+            // --- Test people
+            reservationsBYS.registerUser("1234567", "Usuario de prueba", "311213131", Role.USER,"usuario@gmail.com", "1234", "");
+            reservationsBYS.registerUser("12345678", "Hotelero de prueba", "313213731", Role.HOTELIER,"hotelero@gmail.com", "1234", "");
+            reservationsBYS.registerUser( "123456789",  "Alfonso Admin", "3145267942", Role.ADMIN,"admin@gmail.com",  "1234", "");
 
             ServicesIncluded servicesIncludedMocawa = new ServicesIncluded(true, true, true,true,false,true,true,true,true);
-            //ArrayList<String> imagesMocawa1 = new ArrayList<String>();
 
-            // Datos de prueba
-            ArrayList<Schedule> schedulesMocawa = new ArrayList<Schedule>();
-            schedulesMocawa.add(new Schedule(LocalDate.parse("2025-02-28"), "10PM", "9AM", false));
-            // Crear una lista de habitaciones de ejemplo
-            ArrayList<String> imagesMocawa1 = new ArrayList<>();
-            imagesMocawa1.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
-            imagesMocawa1.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
-            imagesMocawa1.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
-            imagesMocawa1.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
+            // --- Rooms test
+            ArrayList<String> imagesMocawi1 = new ArrayList<>();
+            imagesMocawi1.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
+            imagesMocawi1.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
+            imagesMocawi1.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
+            imagesMocawi1.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
 
-            ArrayList<String> imagesMocawa2 = new ArrayList<>();
-            imagesMocawa2.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
-            imagesMocawa2.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
-            imagesMocawa2.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
-            imagesMocawa2.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
+            ArrayList<String> imagesMocawi2 = new ArrayList<>();
+            imagesMocawi2.add(getClass().getResource("/img/dormitorio1Vista.jpg").toExternalForm());
+            imagesMocawi2.add(getClass().getResource("/img/almohada1Basico.jpg").toExternalForm());
+            imagesMocawi2.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
+            imagesMocawi2.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
 
-            ArrayList<Room> roomsMocawa = new ArrayList<>();
+            ArrayList<Room> roomsMocawi = new ArrayList<>();
 
-            // --- Crear acomodacion de prueba
-            reservationsBYS.createHotel( "Mocawa", "Descripción del alojamiento", "Armenia, Quindío", roomsMocawa);
+            // --- Test hotels
+            reservationsBYS.createHotel( "Mocawi", "Ubicado en la vibrante ciudad de Armenia, Hotel Mocawi redefine la experiencia hotelera con un concepto que fusiona lujo, comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable en el centro de la ciudad, rodeado de modernas comodidades y un ambiente acogedor.", "Armenia, Quindío", roomsMocawi);
 
-            roomsMocawa.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1, reservationsBYS.getHotels().get(0).getIdHotel()));
-            roomsMocawa.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2, reservationsBYS.getHotels().get(0).getIdHotel()));
+            // --- Add mocawa hotels to test hotelier 1
+            ArrayList<String> idMocawisHotels = new ArrayList<>();
+            idMocawisHotels.add(reservationsBYS.getHotels().get(0).getIdHotel());
+            reservationsBYS.getUsers().get(1).setMyHotelsId(idMocawisHotels);
 
-
-
-            //mocawaRooms.add(new Room("Habitacion 3", 3, "Cama sencilla", 210000, "Habitacion con excelente vista", servicesIncludedMocawa, horariosPrueba, imagesMocawa1));
-
-            // --- Instalaciones
-            //reservationsBYS.createAccommodation(UUID, "Mocawa", "El Mocawa plaza, una increible opcion para conocer el Quindio", "Armenia, Quindio", mocawaRooms );
-
-
-            // --- Reserva de prueba
-            //reservationsBYS.createReservation(UUID, reservationsBYS.getAccommodations().getFirst().getName(), reservationsBYS.getUsers().getFirst().getRole().toString(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getIdRoom(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getSchedules().getFirst().getDia(), reservationsBYS.getAccommodations().getFirst().getRooms().getFirst().getSchedules().getFirst().getHoraInicio());
+            // --- Test rooms
+            roomsMocawi.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi1, reservationsBYS.getHotels().get(0).getIdHotel()));
+            roomsMocawi.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi2, reservationsBYS.getHotels().get(0).getIdHotel()));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -185,23 +157,6 @@ public class MainController implements ServicesBookYourStay {
 
     }
 
-    public ArrayList<Schedule> searchRoomBySchedules(String instalacion, LocalDate fecha){
-        ArrayList<Schedule> schedules = new ArrayList<>();
-
-        // Encontrar la instalacion buscada
-        for (Hotel i: reservationsBYS.getHotels()) {
-            if(instalacion.equals(i.getName())){
-                // Encontrar los horarios con la fecha buscada
-                for(Schedule h: i.getRooms().get(0).getSchedules()){
-                    if (h.getDia().equals(fecha)){
-                        schedules.add(h);
-                    }
-                }
-            }
-        }
-        return schedules;
-    }
-
     public ArrayList<Room> getAllRooms(){
         ArrayList<Room> rooms = new ArrayList<>();
 
@@ -267,14 +222,10 @@ public class MainController implements ServicesBookYourStay {
         return reservationsBYS.login(correo, contrasena);
     }
 
-
     @Override
     public void registerUser(String idDocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception {
         reservationsBYS.registerUser(idDocumentation, fullname, phone, role, email, password, activationCode);
     }
-
-
-
 
     @Override
     public void createHotel(String name, String description, String location, ArrayList<Room> rooms) {
@@ -284,14 +235,6 @@ public class MainController implements ServicesBookYourStay {
     @Override
     public void createReservation(String idAccommodation, String idRoom, String idDocumentationUser, LocalDate startDate, LocalDate endDate) throws Exception {
         reservationsBYS.createReservation(idAccommodation, idRoom, idDocumentationUser,startDate,endDate);
-    }
-
-    public Boolean verificarAforoPorHora(String nombreInstalacion, String horaReserva){
-        return reservationsBYS.verificarAforoPorHora(nombreInstalacion, horaReserva);
-    }
-
-    public int contarReservasPorInstalacionHora(String nombreInstalacion, String horaReserva){
-        return reservationsBYS.contarReservasPorInstalacionHora(nombreInstalacion, horaReserva);
     }
 
     @Override
@@ -310,6 +253,18 @@ public class MainController implements ServicesBookYourStay {
         return listadoReservations;
     }
 
+    //@Override
+    public ArrayList<Hotel> listHotelsByIdHotel(ArrayList<String> listIdsHotels) {
+        ArrayList<Hotel> listHotels = new ArrayList<>();
+        for (Hotel h : reservationsBYS.getHotels()){
+            for(int i = 0; i < listIdsHotels.size(); i++){
+                if(h.getIdHotel().equals(listIdsHotels.get(i))){
+                    listHotels.add(h);
+                }
+            }
+        }
+        return listHotels;
+    }
 
     // Show alerts messages
     public void showAlert(String mensaje, String titulo, Alert.AlertType tipo) {
@@ -320,28 +275,24 @@ public class MainController implements ServicesBookYourStay {
         alert.showAndWait();
     }
 
-
     public void navigateWindow(String nombreArchivoFxml, String tituloVentana) {
         try {
 
-            // Cargar la vista
+            // Load the view
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
             Parent root = loader.load();
 
-
-            // Crear la escena
+            // Create the scene
             Scene scene = new Scene(root);
 
-
-            // Crear un nuevo escenario (ventana)
+            // Create a new scenario (window)
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.setResizable(false);
             stage.setTitle(tituloVentana);
 
-
-            // Mostrar la nueva ventana
+            // Show the new window
             stage.show();
 
         } catch (Exception e) {
@@ -350,11 +301,7 @@ public class MainController implements ServicesBookYourStay {
 
     }
 
-    public Object getController() {
-        return currentController;
-    }
-
-    public void cerrarVentana(Node node){
+    public void closeWindow(Node node){
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
     }

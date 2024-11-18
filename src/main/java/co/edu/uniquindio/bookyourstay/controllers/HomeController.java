@@ -1,8 +1,6 @@
 package co.edu.uniquindio.bookyourstay.controllers;
 
 import co.edu.uniquindio.bookyourstay.models.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +41,7 @@ public class HomeController implements Initializable {
     private ArrayList<Room> roomsFiltred = new ArrayList<>();
 
     @FXML
-    private GridPane gridPane; // Asegúrate de tener el GridPane en tu archivo FXML con fx:id="gridPane"
+    private GridPane gridPane;
 
     public HomeController() {
         this.mainController = MainController.getInstancia();
@@ -51,35 +49,34 @@ public class HomeController implements Initializable {
 
     public void goLogin(ActionEvent event) throws IOException {
 
-        mainController.cerrarVentana(gridPane);
+        mainController.closeWindow(gridPane);
         mainController.navigateWindow("/login.fxml", "Iniciar sesión");
     }
 
     public void goRegister(ActionEvent event) throws IOException {
-        mainController.cerrarVentana(gridPane);
+        mainController.closeWindow(gridPane);
         mainController.navigateWindow("/register.fxml", "Registrarse");
     }
 
     public void goProfile(ActionEvent event) throws IOException {
-        mainController.cerrarVentana(gridPane);
+        mainController.closeWindow(gridPane);
         mainController.navigateWindow("/panelClient.fxml", "Perfil");
     }
 
     @FXML
     public void logout() {
-        mainController.cerrarVentana(gridPane);
+        mainController.closeWindow(gridPane);
         session.cerrarSesion();
     }
 
-    // Lógica para sincronizar la propiedad con la lista de filtros
+    // Logic to sync property with filter list
     public void cleanFilters(ActionEvent event) {
         comboBoxHotel.setValue(null);
         comboBoxCity.setValue(null);
         comboBoxPrice.setValue(null);
     }
 
-// Llama a este método después de cualquier acción de filtrado
-
+    // Call this method after any filter action
 
     public void search(ActionEvent event) throws IOException {
         ArrayList<Room> allRooms = mainController.getAllRooms();
@@ -89,10 +86,10 @@ public class HomeController implements Initializable {
         String hotel = comboBoxHotel.valueProperty().get();
         String price = comboBoxPrice.valueProperty().get();
 
-        // Usar roomsFiltred si ya tiene resultados, de lo contrario, usar allRooms
+        // Use roomsFiltred if you already have results, otherwise use allRooms
         ArrayList<Room> filtreByList = roomsFiltred.isEmpty() ? allRooms : roomsFiltred;
 
-        // Filtrar por ciudad
+        // Filter by city
         if (city != null) {
             for (Room r : filtreByList) {
                 if (r.getHotel().getLocation().equals(city)) {
@@ -105,7 +102,7 @@ public class HomeController implements Initializable {
             roomsFilteredTemp.clear();
         }
 
-        // Filtrar por nombre del hotel
+        // Filter by hotel name
         if (hotel != null) {
             for (Room r : filtreByList) {
                 if (r.getHotel().getName().equals(hotel)) {
@@ -118,7 +115,7 @@ public class HomeController implements Initializable {
             roomsFilteredTemp.clear();
         }
 
-        // Filtrar por rango de precios
+        // Filter by price range
         if (price != null) {
             for (Room r : filtreByList) {
                 boolean matches = switch (price) {
@@ -138,10 +135,10 @@ public class HomeController implements Initializable {
             roomsFilteredTemp.clear();
         }
 
-        // Actualizar la lista global de habitaciones filtradas
+        // Update the global list of filtered rooms
         roomsFiltred = filtreByList;
 
-        // Actualizar la interfaz
+        // Update the interface
         if (hotel == null && price == null && city == null) {
             llenarGridPaneConCards(allRooms);
         } else {
@@ -160,7 +157,7 @@ public class HomeController implements Initializable {
 
         if (rooms.isEmpty()) {
             try {
-                // Cargar la vista de la card vacía desde el archivo FXML
+                // Load empty card view from FXML file
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/emptyCard.fxml"));
                 Node emptyCardNode = fxmlLoader.load();
 
@@ -170,19 +167,19 @@ public class HomeController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return; // Salir del método ya que no hay habitaciones
+            return; // Exit method since there are no rooms
         }
 
-        int elementosPorFila = 2; // Número de elementos por fila
+        int elementosPorFila = 2; // Number of elements per row
         int row = 0, col = 0;
 
         for (Room room : rooms) {
             try {
-                // Cargar la vista de la card desde el archivo FXML
+                // Load card view from FXML file
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/roomCard.fxml"));
                 Node cardNode = fxmlLoader.load();  // Carga el archivo FXML
 
-// Obtén el controlador para poder configurarlo
+                // Obtén el controlador para poder configurarlo
                 RoomCardController cardController = fxmlLoader.getController();
                 if (cardController != null) {
                     cardController.setRoomData(room);  // Asegúrate de que no sea nulo
@@ -201,27 +198,24 @@ public class HomeController implements Initializable {
             }
         }
     }
-    
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<Room> rooms = new ArrayList<>();
+        ArrayList<Room> rooms;
 
-        // Traer el usuario al cargar
+        // Bring user on load
         User user = session.getUser();
-        // Verificar si el usuario está autenticado o no para mostrar un bloque de botones
+        // Check if the user is authenticated or not to display a button block
         if (user == null) {
-            // Si el usuario no está autenticado, mostrar los botones "Iniciar sesión" y "Registrarse"
+        // If the user is not authenticated, show the "Login" and "Register" buttons
             boxAnonimo.setVisible(true);
             boxAutenticado.setVisible(false);
         } else {
-            // Si el usuario está autenticado, mostrar el botón "Cerrar sesión"
+        // If the user is authenticated, show the "Logout" button
             boxAnonimo.setVisible(false);
             boxAutenticado.setVisible(true);
         }
-
         rooms = mainController.getAllRooms();
-
         llenarGridPaneConCards(rooms);
     }
 }

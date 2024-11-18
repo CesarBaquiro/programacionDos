@@ -45,7 +45,7 @@ public class RoomCardController {
         // Guardamos la habitación seleccionada en RoomSession
         RoomSession.getInstancia().setSelectedRoom(room);
 
-        mainController.cerrarVentana(roomImage);
+        mainController.closeWindow(roomImage);
         mainController.navigateWindow("/roomDetails.fxml", "Detalles de la Habitación");
     }
 }

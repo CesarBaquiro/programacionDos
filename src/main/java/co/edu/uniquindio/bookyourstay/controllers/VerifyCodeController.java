@@ -4,7 +4,6 @@ import co.edu.uniquindio.bookyourstay.observer.Observer;
 import co.edu.uniquindio.bookyourstay.observer.ObserverWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 public class VerifyCodeController extends ObserverWindow{
@@ -31,7 +30,7 @@ public class VerifyCodeController extends ObserverWindow{
         // Notificar al observador (RegisterController) con el código ingresado
         if (observer != null) {
             observer.storeReceivedCode(codeInput);
-            mainController.cerrarVentana(txtCode); // Cerrar la ventana después de la verificación
+            mainController.closeWindow(txtCode); // Cerrar la ventana después de la verificación
         }
     }
 

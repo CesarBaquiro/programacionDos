@@ -50,12 +50,12 @@ public class PanelClientController implements Observer, Initializable {
     private ObservableList<Reservation> observableReserves;
 
     public void cerrarSesion(ActionEvent actionEvent) {
-        mainController.cerrarVentana(reservationsTable);
+        mainController.closeWindow(reservationsTable);
         session.cerrarSesion();
     }
 
     public void goHome(ActionEvent actionEvent) {
-        mainController.cerrarVentana(reservationsTable);
+        mainController.closeWindow(reservationsTable);
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 

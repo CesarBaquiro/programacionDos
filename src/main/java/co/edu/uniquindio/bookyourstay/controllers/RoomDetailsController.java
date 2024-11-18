@@ -70,7 +70,7 @@ public class RoomDetailsController {
     }
 
     public void goHome(ActionEvent actionEvent) {
-        mainController.cerrarVentana(msgErrorLbl1);
+        mainController.closeWindow(msgErrorLbl1);
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
@@ -141,7 +141,7 @@ public class RoomDetailsController {
                 throw new RuntimeException(e);
             }
         }
-        mainController.cerrarVentana(image1);
+        mainController.closeWindow(image1);
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 }

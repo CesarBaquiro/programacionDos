@@ -5,18 +5,15 @@
 <?import javafx.scene.text.*?>
 
 <VBox alignment="center" prefHeight="400.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.bookyourstay.controllers.LoginController">
-
-
     <Label text="Iniciar sesión">
         <font>
             <Font name="System Bold" size="28.0" />
         </font>
     </Label>
 
-
     <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
         <Label text="Correo electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="txtCorreo" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="txtEmail" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
         <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -31,13 +28,9 @@
     </GridPane>
 
     <Label fx:id="messageErrorCorreo" layoutX="105.0" layoutY="67.0" style="-fx-text-fill: red;" text="" />
-
-    <Button minHeight="20.0" minWidth="80.0" onAction="#irARegistro" text="Crear una cuenta" textFill="#464646" underline="true" />
-
+    <Button minHeight="20.0" minWidth="80.0" onAction="#goRegister" text="Crear una cuenta" textFill="#464646" underline="true" />
     <Button minHeight="40.0" minWidth="130.0" onAction="#login" style="-fx-background-color: #00bf30;" text="Login" textFill="WHITE">
       <font>
          <Font name="System Bold" size="16.0" />
       </font></Button>
-
-
 </VBox>

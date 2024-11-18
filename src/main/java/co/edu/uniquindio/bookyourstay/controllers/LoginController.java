@@ -18,7 +18,7 @@ public class LoginController {
 
 
     @FXML
-    public TextField txtCorreo;
+    public TextField txtEmail;
 
 
     @FXML
@@ -27,7 +27,7 @@ public class LoginController {
     @FXML
     public Label messageErrorCorreo;
 
-    private Boolean esValido = false;
+    private Boolean isValid = false;
 
 
     private final MainController mainController;
@@ -36,57 +36,53 @@ public class LoginController {
         this.mainController = MainController.getInstancia();
     }
 
-
-
-    public void irARegistro(ActionEvent actionEvent) {
+    public void goRegister(ActionEvent actionEvent) {
         mainController.navigateWindow("/register.fxml", "Crear una cuenta");
-        mainController.cerrarVentana(txtCorreo);
+        mainController.closeWindow(txtEmail);
     }
 
     public void login(ActionEvent actionEvent) {
-
-
         try {
-            String email = txtCorreo.getText();
+            String email = txtEmail.getText();
             String password = txtPassword.getText();
 
             // Cambiar throws a try catch
 
             if(email == null || email.isEmpty()) {
                 messageErrorCorreo.setText("Por favor ingrese su correo");
-                esValido = false;
+                isValid = false;
             }else{
 
-                esValido = mainController.validarCorreo(email);
-                if(!esValido){
+                isValid = mainController.validarCorreo(email);
+                if(!isValid){
                     messageErrorCorreo.setText("El correo ingresado no existe");
                 }
             }
 
             if (password == null || password.isEmpty()) {
                 messageErrorCorreo.setText("Por favor ingrese su contraseña");
-                esValido = false;
+                isValid = false;
             }else{
-                esValido = mainController.validarContrasena(password);
-                if(!esValido){
+                isValid = mainController.validarContrasena(password);
+                if(!isValid){
                     messageErrorCorreo.setText("Contraseña incorrecta");
                 }
             }
 
-            if(esValido){
+            if(isValid){
                 User user = mainController.login(email, password);
                 Session session = Session.getInstancia();
                 session.setUser(user);
 
-                if(user.getRole() == Role.ADMIN) {
-                    mainController.navigateWindow("/panelAdmin.fxml", "Panel Administrador");
-                }else{
+                if(user.getRole() == Role.HOTELIER) {
+                    mainController.navigateWindow("/panelHotelier.fxml", "Panel hotelero");
+                } else if (user.getRole() == Role.ADMIN) {
+                    mainController.navigateWindow("/panelHotelier.fxml", "Panel Administrador");
+                } else{
                     mainController.navigateWindow("/home.fxml", "Inicio");
                 }
-                mainController.cerrarVentana(txtCorreo);
+                mainController.closeWindow(txtEmail);
             }
-
-
         } catch (Exception e) {
             mainController.showAlert(e.getMessage(), "Error", Alert.AlertType.ERROR);
         }
