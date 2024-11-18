@@ -26,17 +26,13 @@
                         <StackPane>
                             <!-- Contenedor cuando el usuario es null -->
                             <HBox fx:id="boxAnonimo" visible="true">
-                                <Button mnemonicParsing="false" onAction="#goLogin"
-                                        style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2; -fx-padding: 10 20; -fx-font-size: 14px;"
-                                        text="Iniciar sesión">
+                                <Button mnemonicParsing="false" onAction="#goLogin" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-border-width: 2; -fx-padding: 10 20; -fx-font-size: 14px;" text="Iniciar sesión">
                                     <HBox.margin>
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </Button>
 
-                                <Button mnemonicParsing="false" onAction="#goRegister"
-                                        style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;"
-                                        text="Registrarse">
+                                <Button mnemonicParsing="false" onAction="#goRegister" style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Registrarse">
                                     <HBox.margin>
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
@@ -45,17 +41,13 @@
 
                             <!-- Contenedor cuando el usuario está autenticado -->
                             <HBox fx:id="boxAutenticado" visible="false">
-                                <Button mnemonicParsing="false" onAction="#goProfile"
-                                        style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;"
-                                        text="Ver perfil">
+                                <Button mnemonicParsing="false" onAction="#goProfile" style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Ver perfil">
                                     <HBox.margin>
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
                                 </Button>
 
-                                <Button mnemonicParsing="false" onAction="#logout"
-                                        style="-fx-background-color: #ff4a4a; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;"
-                                        text="Cerrar sesión">
+                                <Button mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #ff4a4a; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Cerrar sesión">
                                     <HBox.margin>
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                     </HBox.margin>
@@ -79,28 +71,27 @@
                 <children>
                     <Label text="Ciudad">
                         <HBox.margin>
-                            <Insets right="20.0" />
+                            <Insets left="20.0" right="20.0" />
                         </HBox.margin>
                     </Label>
-                    <TextField prefHeight="26.0" prefWidth="104.0" />
-                    <Label text="Tipo de alojamiento">
+                    <ComboBox fx:id="comboBoxCity" prefHeight="26.0" prefWidth="171.0" />
+                    <Label text="Hotel">
                         <HBox.margin>
                             <Insets left="20.0" right="20.0" />
                         </HBox.margin>
                     </Label>
-                    <ComboBox prefHeight="26.0" prefWidth="90.0" />
+                    <ComboBox fx:id="comboBoxHotel" prefHeight="26.0" prefWidth="141.0" />
                     <Label text="Rango de precios">
                         <HBox.margin>
                             <Insets left="20.0" right="20.0" />
                         </HBox.margin>
                     </Label>
-                    <ComboBox prefHeight="26.0" prefWidth="68.0" />
-                    <Label text="Fechas">
-                        <HBox.margin>
-                            <Insets left="20.0" right="20.0" />
-                        </HBox.margin>
-                    </Label>
-                    <DatePicker prefHeight="26.0" prefWidth="101.0" />
+                    <ComboBox fx:id="comboBoxPrice" prefHeight="26.0" prefWidth="126.0" />
+                    <Button onAction="#cleanFilters" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 2; -fx-padding: 10 20; -fx-font-size: 14px;" text="Limpiar filtros">
+                  <HBox.margin>
+                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  </HBox.margin></Button>
+
                     <Button onAction="#search" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 2; -fx-padding: 10 20; -fx-font-size: 14px;" text="Buscar">
                         <HBox.margin>
                             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

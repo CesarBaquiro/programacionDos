@@ -74,7 +74,7 @@ public class MainController implements ServicesBookYourStay {
             ArrayList<Room> roomsMocawa = new ArrayList<>();
 
             // --- Crear acomodacion de prueba
-            reservationsBYS.createAccommodation("1", "Hotel Mocawa", "Descripción del alojamiento", "Armenia, Colombia", roomsMocawa);
+            reservationsBYS.createHotel( "Mocawa", "Descripción del alojamiento", "Armenia, Quindío", roomsMocawa);
 
             roomsMocawa.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa1, reservationsBYS.getHotels().get(0).getIdHotel()));
             roomsMocawa.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), schedulesMocawa, imagesMocawa2, reservationsBYS.getHotels().get(0).getIdHotel()));
@@ -121,12 +121,59 @@ public class MainController implements ServicesBookYourStay {
         return false;
     }
 
-    public ArrayList<String> listarInstalaciones(){
-        ArrayList<String> tiposInstalaciones = new ArrayList<>();
+    public ArrayList<String> listCities(){
+        ArrayList<String> cities = new ArrayList<>();
+        cities.add("Arauca, Arauca");
+        cities.add("Armenia, Quindío");
+        cities.add("Barranquilla, Atlántico");
+        cities.add("Bogotá, Cundinamarca");
+        cities.add("Bucaramanga, Santander");
+        cities.add("Cali, Valle del Cauca");
+        cities.add("Cartagena, Bolívar");
+        cities.add("Cúcuta, Norte de Santander");
+        cities.add("Florencia, Caquetá");
+        cities.add("Ibagué, Tolima");
+        cities.add("Inírida, Guainía");
+        cities.add("Leticia, Amazonas");
+        cities.add("Manizales, Caldas");
+        cities.add("Medellín, Antioquia");
+        cities.add("Mitú, Vaupés");
+        cities.add("Mocoa, Putumayo");
+        cities.add("Montería, Córdoba");
+        cities.add("Neiva, Huila");
+        cities.add("Pasto, Nariño");
+        cities.add("Pereira, Risaralda");
+        cities.add("Popayán, Cauca");
+        cities.add("Puerto Carreño, Vichada");
+        cities.add("Quibdó, Chocó");
+        cities.add("Riohacha, La Guajira");
+        cities.add("San Andrés, Archipiélago de San Andrés, Providencia y Santa Catalina");
+        cities.add("San José del Guaviare, Guaviare");
+        cities.add("Santa Marta, Magdalena");
+        cities.add("Sincelejo, Sucre");
+        cities.add("Tunja, Boyacá");
+        cities.add("Valledupar, Cesar");
+        cities.add("Villavicencio, Meta");
+        cities.add("Yopal, Casanare");
+        return cities;
+    }
+
+    public ArrayList<String> listHotels(){
+        ArrayList<String> hotels = new ArrayList<>();
         for(Hotel i: reservationsBYS.getHotels()){
-            tiposInstalaciones.add(i.getName());
+            hotels.add(i.getName());
         }
-        return tiposInstalaciones;
+        return hotels;
+    }
+
+    public ArrayList<String> listRangesPrices(){
+        ArrayList<String> prices = new ArrayList<>();
+        prices.add("Menos de $80.0000");
+        prices.add("$80000 - $100000");
+        prices.add("$100000 - $150000");
+        prices.equals("$100000 - $150000");
+        prices.add("Más de $150000");
+        return prices;
     }
 
     public void printUsers(){
@@ -230,8 +277,8 @@ public class MainController implements ServicesBookYourStay {
 
 
     @Override
-    public void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms) {
-        reservationsBYS.createAccommodation(idAccommodation, name, description, location, rooms);
+    public void createHotel(String name, String description, String location, ArrayList<Room> rooms) {
+        reservationsBYS.createHotel(name, description, location, rooms);
     }
 
     @Override

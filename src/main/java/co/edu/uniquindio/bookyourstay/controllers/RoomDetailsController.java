@@ -11,7 +11,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
 
@@ -81,9 +80,9 @@ public class RoomDetailsController {
 
         if (room != null) {
             // Asignar los datos a los elementos de la interfaz
-            hotelName.setText(room.getAccommodationByIdAccommodation().getName());
+            hotelName.setText(room.getHotel().getName());
             roomTitle.setText(room.getName());
-            hotelLocation.setText(room.getAccommodationByIdAccommodation().getLocation());
+            hotelLocation.setText(room.getHotel().getLocation());
             //roomLocation.setText(room.getLocation());
             roomPrice.setText(String.valueOf(room.getPrice()));
             roomDescription.setText(room.getDescription());
@@ -136,7 +135,7 @@ public class RoomDetailsController {
         if(save && session.getUser() != null) {
             // Logic to handle room reservation
             try {
-                mainController.createReservation(room.getAccommodationByIdAccommodation().getIdHotel(), room.getIdRoom(),session.getUser().getIDdocumentation(), initDate,endDate);
+                mainController.createReservation(room.getHotel().getIdHotel(), room.getIdRoom(),session.getUser().getIDdocumentation(), initDate,endDate);
                 mainController.showAlert("La reserva se creo exitosamente", "Reserva guardada", Alert.AlertType.CONFIRMATION);
             } catch (Exception e) {
                 throw new RuntimeException(e);

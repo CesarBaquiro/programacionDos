@@ -35,7 +35,7 @@ public class Room{
         this.idHotel = idHotel;
     }
 
-    public Hotel getAccommodationByIdAccommodation() {
+    public Hotel getHotel() {
         MainController mainController = MainController.getInstancia();
         Hotel hotel = null;
         for (Hotel ac : mainController.getAllHotels()){

@@ -2,7 +2,6 @@ package co.edu.uniquindio.bookyourstay.services;
 
 
 import co.edu.uniquindio.bookyourstay.models.Room;
-import co.edu.uniquindio.bookyourstay.models.Schedule;
 import co.edu.uniquindio.bookyourstay.models.User;
 import co.edu.uniquindio.bookyourstay.models.Reservation;
 import co.edu.uniquindio.bookyourstay.models.enums.Role;
@@ -17,7 +16,7 @@ public interface ServicesBookYourStay {
 
     void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception;
 
-    void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms);
+    void createHotel(String name, String description, String location, ArrayList<Room> rooms);
 
     void createReservation(String idAccommodation, String idRoom, String idDocumentationUser, LocalDate startDate, LocalDate endDate) throws Exception;
 

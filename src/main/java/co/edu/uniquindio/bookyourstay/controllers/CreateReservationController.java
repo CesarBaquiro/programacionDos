@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateReservationController extends ObserverWindow implements Initializable {
@@ -146,7 +145,7 @@ public class CreateReservationController extends ObserverWindow implements Initi
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addBtnReservar();
         // Cargar combo box
-        comboBoxInstalacion.setItems( FXCollections.observableList(mainController.listarInstalaciones()) );
+        comboBoxInstalacion.setItems( FXCollections.observableList(mainController.listHotels()) );
 
         // Cargar tabla
         colDia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDia().toString()));

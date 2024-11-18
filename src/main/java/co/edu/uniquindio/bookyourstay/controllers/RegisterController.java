@@ -232,6 +232,6 @@ public class RegisterController implements Observer, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //comboBoxTipoPersona.setItems(FXCollections.observableList(mainController.listUserTypes()));
+
     }
 }

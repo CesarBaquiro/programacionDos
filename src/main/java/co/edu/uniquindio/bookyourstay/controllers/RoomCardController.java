@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 public class RoomCardController {
 
@@ -35,7 +34,7 @@ public class RoomCardController {
     public void setRoomData(Room room) {
         this.room = room;
         roomName.setText(room.getName());
-        roomAccommodationName.setText(room.getAccommodationByIdAccommodation().getName());
+        roomAccommodationName.setText(room.getHotel().getName());
         roomPrice.setText(String.valueOf(room.getPrice()));
         roomImage.setImage(new Image(room.getImages().get(0))); // Trae siempre la primer imagen en la lista
     }

@@ -63,8 +63,8 @@ public class ReservationsBYS implements ServicesBookYourStay {
     }
 
     @Override
-    public void createAccommodation(String idAccommodation, String name, String description, String location, ArrayList<Room> rooms) {
-        hotels.add(new Hotel(idAccommodation, name, description, location, rooms));
+    public void createHotel(String name, String description, String location, ArrayList<Room> rooms) {
+        hotels.add(new Hotel(name, description, location, rooms));
     }
 
     @Override
