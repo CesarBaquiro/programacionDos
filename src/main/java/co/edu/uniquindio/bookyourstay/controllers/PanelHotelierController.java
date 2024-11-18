@@ -53,7 +53,8 @@ public class PanelHotelierController implements Initializable {
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
-    public void createHotel(ActionEvent actionEvent) {
+    public void goCreateHotel(ActionEvent actionEvent) {
+        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
 
     }
 

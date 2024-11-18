@@ -3,6 +3,8 @@ package co.edu.uniquindio.bookyourstay.controllers;
 import co.edu.uniquindio.bookyourstay.models.*;
 import co.edu.uniquindio.bookyourstay.observer.Observer;
 import co.edu.uniquindio.bookyourstay.observer.ObserverWindow;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,7 +18,13 @@ public class CreateHotelController extends ObserverWindow implements Initializab
     User user = session.getUser();
 
     @FXML
-    private ComboBox<String> comboBoxInstalacion;
+    private TextField txtCity;
+
+    @FXML
+    private TextArea txtDescription;
+
+    @FXML
+    private ComboBox<String> comboBoxCities;
     
     private final MainController mainController;
 
@@ -31,22 +39,11 @@ public class CreateHotelController extends ObserverWindow implements Initializab
         this.observer = observer;
     }
 
-    /**
-    public void buscarHorarios(ActionEvent event) {
-        String instalacionElegida = comboBoxInstalacion.getValue();
-        LocalDate fechaElegida = startDatePicker.getValue();
-        horariosObservable.setAll(mainController.searchRoomBySchedules(instalacionElegida, fechaElegida));
-        tablaHoraios.setItems(horariosObservable);
+    public void createHotel(ActionEvent actionEvent) {
+        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
+
     }
 
-     * Actualiza la lista observable de notas
-    public void actualizarHorarios() {
-        String instalacionElegida = comboBoxInstalacion.getValue();
-        LocalDate fechaElegida = startDatePicker.getValue();
-        horariosObservable.setAll(mainController.searchRoomBySchedules(instalacionElegida, fechaElegida));
-        tablaHoraios.setItems(horariosObservable);
-    }
-     */
 /**
     private void addBtnReservar() {
         Callback<TableColumn<Hotel, Void>, TableCell<Hotel, Void>> cellFactory = new Callback<>() {
@@ -106,8 +103,8 @@ public class CreateHotelController extends ObserverWindow implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //       // addBtnReservar();
-//        // Cargar combo box
-//        comboBoxInstalacion.setItems( FXCollections.observableList(mainController.listHotels()) );
+        // Cargar combo box
+        comboBoxCities.setItems( FXCollections.observableList(mainController.listCities()) );
 //
 //        // Cargar tabla
 //        colDia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDia().toString()));
