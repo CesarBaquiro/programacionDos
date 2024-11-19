@@ -130,6 +130,13 @@ public class MainController implements ServicesBookYourStay {
         return cities;
     }
 
+    public ArrayList<String> listRoles(){
+        ArrayList<String> roles = new ArrayList<>();
+        roles.add("Usuario");
+        roles.add("Hotelero");
+        return roles;
+    }
+
     public ArrayList<String> listHotels(){
         ArrayList<String> hotels = new ArrayList<>();
         for(Hotel i: reservationsBYS.getHotels()){

@@ -49,13 +49,13 @@ public class PanelHotelierController implements Initializable {
     }
 
     public void goHome(ActionEvent actionEvent) {
-        //mainController.closeWindow();
+        mainController.closeWindow(labelTipoUsuario);
         mainController.navigateWindow("/home.fxml", "Inicio");
     }
 
     public void goCreateHotel(ActionEvent actionEvent) {
-        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
 
+        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
     }
 
     public void cerrarSesion(ActionEvent actionEvent) {

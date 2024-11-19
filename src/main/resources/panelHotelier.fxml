@@ -24,7 +24,7 @@
                     <Font name="System Bold Italic" size="12.0" />
                 </font></Label>
             <Label fx:id="labelNombre" alignment="CENTER" prefHeight="30.0" prefWidth="156.0" />
-                     <Button alignment="CENTER" mnemonicParsing="false" onAction="#goCreateHotel" prefHeight="43.0" prefWidth="173.0" style="-fx-background-color: #00bf30;" text="Crear hotel" textFill="WHITE">
+                     <Button onAction="#goCreateHotel" alignment="CENTER" prefHeight="43.0" prefWidth="173.0" style="-fx-background-color: #00bf30;" text="Crear hotel" textFill="WHITE">
                         <font>
                            <Font name="System Bold" size="20.0" />
                         </font>

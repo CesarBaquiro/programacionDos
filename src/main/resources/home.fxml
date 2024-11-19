@@ -40,7 +40,22 @@
                             </HBox>
 
                             <!-- Contenedor cuando el usuario está autenticado -->
-                            <HBox fx:id="boxAutenticado" visible="false">
+                            <HBox fx:id="boxHotelierButtons" visible="false">
+                                <Button mnemonicParsing="false" onAction="#goHotelsManager" style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Administrar hoteles">
+                                    <HBox.margin>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                    </HBox.margin>
+                                </Button>
+
+                                <Button mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #ff4a4a; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Cerrar sesión">
+                                    <HBox.margin>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </HBox>
+
+                            <!-- Contenedor cuando el usuario está autenticado -->
+                            <HBox fx:id="boxUserButtons" visible="false">
                                 <Button mnemonicParsing="false" onAction="#goProfile" style="-fx-background-color: #FF6B4A; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" text="Ver perfil">
                                     <HBox.margin>
                                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -105,6 +120,11 @@
                <Insets bottom="20.0" left="20.0" right="20.0" />
             </VBox.margin>
             </HBox>
+         <Label alignment="CENTER" text="Habitaciones disponibles">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
             <GridPane fx:id="gridPane" alignment="CENTER_LEFT" hgap="10" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" vgap="10">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" right="20.0" />

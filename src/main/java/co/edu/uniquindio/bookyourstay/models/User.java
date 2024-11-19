@@ -38,10 +38,10 @@ public class User {
     public String toString() {
         String msg = "";
         if(role.equals(Role.USER)) {
-            msg = "User [iDdocumentation=" + iDdocumentation + ", fullname=" + fullname + ", phone=" + phone + ", role=" + role.toString() + ", email=" + email + ", password=" + password + ", activationCode=" + activationCode + "]";
+            msg = "User [iDdocumentation=" + iDdocumentation + ", fullname=" + fullname + ", phone=" + phone + ", role=" + role + ", email=" + email + ", password=" + password + ", activationCode=" + activationCode + "]";
 
         } else if (role.equals(Role.HOTELIER)) {
-            msg = "User [iDdocumentation=" + iDdocumentation + ", fullname=" + fullname + ", phone=" + phone + ", role=" + role.toString() + ", email=" + email + ", password=" + password + ", activationCode=" + activationCode + ", hotels="+ myHotelsId + "]";
+            msg = "Hotelier [iDdocumentation=" + iDdocumentation + ", fullname=" + fullname + ", phone=" + phone + ", role=" + role + ", email=" + email + ", password=" + password + ", activationCode=" + activationCode + ", hotels="+ myHotelsId + "]";
 
         }
         return msg;

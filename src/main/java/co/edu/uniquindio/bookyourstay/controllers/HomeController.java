@@ -1,6 +1,7 @@
 package co.edu.uniquindio.bookyourstay.controllers;
 
 import co.edu.uniquindio.bookyourstay.models.*;
+import co.edu.uniquindio.bookyourstay.models.enums.Role;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,10 @@ public class HomeController implements Initializable {
     private HBox boxAnonimo;
 
     @FXML
-    private HBox boxAutenticado;
+    private HBox boxUserButtons;
+
+    @FXML
+    private HBox boxHotelierButtons;
 
     @FXML
     private ComboBox<String> comboBoxHotel;
@@ -61,6 +65,11 @@ public class HomeController implements Initializable {
     public void goProfile(ActionEvent event) throws IOException {
         mainController.closeWindow(gridPane);
         mainController.navigateWindow("/panelClient.fxml", "Perfil");
+    }
+
+    public void goHotelsManager(ActionEvent event) throws IOException {
+        mainController.closeWindow(gridPane);
+        mainController.navigateWindow("/panelHotelier.fxml", "Administrador de hoteles");
     }
 
     @FXML
@@ -209,11 +218,18 @@ public class HomeController implements Initializable {
         if (user == null) {
         // If the user is not authenticated, show the "Login" and "Register" buttons
             boxAnonimo.setVisible(true);
-            boxAutenticado.setVisible(false);
-        } else {
-        // If the user is authenticated, show the "Logout" button
+            boxHotelierButtons.setVisible(false);
+            boxUserButtons.setVisible(false);
+        } else if (user.getRole() == Role.HOTELIER) {
+            // If the user is authenticated, show the "Logout" button
             boxAnonimo.setVisible(false);
-            boxAutenticado.setVisible(true);
+            boxHotelierButtons.setVisible(true);
+            boxUserButtons.setVisible(false);
+        } else {
+            // If the user is authenticated, show the "Logout" button
+            boxAnonimo.setVisible(false);
+            boxHotelierButtons.setVisible(false);
+            boxUserButtons.setVisible(true);
         }
         rooms = mainController.getAllRooms();
         llenarGridPaneConCards(rooms);

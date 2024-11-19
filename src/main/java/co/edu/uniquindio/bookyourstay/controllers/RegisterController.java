@@ -3,10 +3,12 @@ package co.edu.uniquindio.bookyourstay.controllers;
 import co.edu.uniquindio.bookyourstay.models.enums.Role;
 import co.edu.uniquindio.bookyourstay.observer.Observer;
 import co.edu.uniquindio.bookyourstay.utils.EnvioEmail;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -51,6 +53,12 @@ public class RegisterController implements Observer, Initializable {
     @FXML
     public Label msgErrorPassword2;
 
+    @FXML
+    private ComboBox<String> cmbRole;
+
+    @FXML
+    public Label msgErrorComboBox;
+
     private final MainController mainController;
 
     private Observer observer;
@@ -80,7 +88,15 @@ public class RegisterController implements Observer, Initializable {
             phone = txtPhone.getText(); // Placeholder para el campo de teléfono
             // phone = txtPhone.getText();
             email = txtEmail.getText();
-            role = Role.USER;
+            //ring role = cmbRole.valueProperty().get();
+            String roleSelected = cmbRole.getValue();
+
+            if(roleSelected.equals("Usuario")){
+                role = Role.USER;
+            }else if(roleSelected.equals("Hotelero")){
+                role = Role.HOTELIER;
+            }
+
             password = txtPassword.getText();
             passwordConfirm = txtPasswordConfirm.getText();
 
@@ -94,7 +110,7 @@ public class RegisterController implements Observer, Initializable {
                 //EnvioEmail.enviarNotificacion(email, "Codigo de verificacion Book Your Stay", "Hola! Te enviamos tu codigo de verificación "+generatedCode);
                 System.out.println("Código generado: " + generatedCode);
 
-                // Abrir la ventana verifyCode.fxml para que el usuario ingrese el código
+                // Open the verifyCode.fxml window for the user to enter the code
                 mainController.navegarVentanaObservable("/verifyCode.fxml", "Verificar código de autenticación", this);
             }
         } catch (Exception e) {
@@ -232,6 +248,6 @@ public class RegisterController implements Observer, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        cmbRole.setItems( FXCollections.observableList(mainController.listRoles()));
     }
 }

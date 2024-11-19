@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CreateHotelController extends ObserverWindow implements Initializable {
@@ -18,7 +19,7 @@ public class CreateHotelController extends ObserverWindow implements Initializab
     User user = session.getUser();
 
     @FXML
-    private TextField txtCity;
+    private TextField txtName;
 
     @FXML
     private TextArea txtDescription;
@@ -40,7 +41,15 @@ public class CreateHotelController extends ObserverWindow implements Initializab
     }
 
     public void createHotel(ActionEvent actionEvent) {
-        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
+        String name = txtName.getText();
+        String description = txtDescription.getText();
+        String city = comboBoxCities.getValue();
+        ArrayList<Room> rooms = new ArrayList<>();
+
+        mainController.createHotel(name, description, city, rooms);
+        mainController.showAlert("Se guardo el hotel " + name,"Hotel creado", Alert.AlertType.INFORMATION);
+
+
 
     }
 
