@@ -17,31 +17,10 @@ public class ReservationsBYS implements ServicesBookYourStay {
     ArrayList<User> users =   new ArrayList();
     ArrayList<Hotel> hotels =   new ArrayList();
 
-    /**
-     * Comprobar si hay espacios disponibles y retornar True si los hay
-     * */
-    public Boolean verificarAforoPorHora(String nombreInstalacion, String hora) {
-        Boolean hayEspacio = false;
-        int cantidadReservas = 0;
-        cantidadReservas = contarReservasPorInstalacionHora(nombreInstalacion, hora);
-        /*
-        for (Accommodation i: accommodations){
-            if(nombreInstalacion.equals(i.getName())){
-                for (Reservation r : reservations) {
-                    if(nombreInstalacion.equals(r.getIdReservation()) && cantidadReservas < i.getAforo()){
-                        hayEspacio = true;
-                    }
-                }
-            }
-        }
-        */
-        return hayEspacio;
-    }
-
-    public int contarReservasPorInstalacionHora(String nombreInstalacion, String hora) {
-        int cantidadReservas = 0;
+    public int countReservationsByHotel(String hotelName) {
+        int reservesQuantity = 0;
         // Logica de contar
-        return cantidadReservas;
+        return reservesQuantity;
     }
 
     @Override

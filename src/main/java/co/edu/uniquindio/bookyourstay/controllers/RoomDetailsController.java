@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class RoomDetailsController {
 
@@ -136,12 +137,13 @@ public class RoomDetailsController {
             // Logic to handle room reservation
             try {
                 mainController.createReservation(room.getHotel().getIdHotel(), room.getIdRoom(),session.getUser().getIDdocumentation(), initDate,endDate);
-                mainController.showAlert("La reserva se creo exitosamente", "Reserva guardada", Alert.AlertType.CONFIRMATION);
+                mainController.showAlert("La reserva se creo exitosamente con un valor de "+ room.getPrice() * (int) ChronoUnit.DAYS.between(initDate, endDate), "Reserva guardada", Alert.AlertType.INFORMATION);
+                mainController.closeWindow(image1);
+                mainController.navigateWindow("/home.fxml", "Inicio");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
-        mainController.closeWindow(image1);
-        mainController.navigateWindow("/home.fxml", "Inicio");
+
     }
 }

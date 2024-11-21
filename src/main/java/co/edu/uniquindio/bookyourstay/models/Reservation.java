@@ -34,6 +34,7 @@ public class Reservation {
         this.idUser = idUser;
         this.startDate = startDate;
         this.endDate = endDate;
+        // Calculate reserved nights
         this.numberNightsReserved = (int) ChronoUnit.DAYS.between(startDate, endDate);;
     }
 

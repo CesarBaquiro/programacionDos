@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a8e9642e-d478-4c47-960c-cd27a49e04f2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/controllers/RoomDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/ReservationsBYS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/bookyourstay/models/ReservationsBYS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,7 @@
       <workItem from="1731887208406" duration="7941000" />
       <workItem from="1731904976237" duration="9451000" />
       <workItem from="1731964987821" duration="11643000" />
-      <workItem from="1732220339480" duration="2411000" />
+      <workItem from="1732220339480" duration="3152000" />
     </task>
     <servers />
   </component>
