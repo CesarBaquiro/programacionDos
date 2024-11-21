@@ -48,9 +48,7 @@ public class CreateHotelController extends ObserverWindow implements Initializab
 
         mainController.createHotel(name, description, city, rooms);
         mainController.showAlert("Se guardo el hotel " + name,"Hotel creado", Alert.AlertType.INFORMATION);
-
-
-
+        // Terminar la creacion de habitaciones
     }
 
 /**
