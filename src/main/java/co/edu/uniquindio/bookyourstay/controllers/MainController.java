@@ -85,9 +85,12 @@ public class MainController implements ServicesBookYourStay {
             reservationsBYS.createHotel( "Playona", "La casona redefine la experiencia hotelera con comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable y un ambiente junto al mar", "Cartagena, Bolívar", roomsPlayona);
 
             // --- Add mocawa hotels to test hotelier 1
-            ArrayList<String> idMocawisHotels = new ArrayList<>();
-            idMocawisHotels.add(reservationsBYS.getHotels().get(0).getIdHotel());
-            reservationsBYS.getUsers().get(1).setMyHotelsId(idMocawisHotels);
+            ArrayList<String> idHotels = new ArrayList<>();
+            idHotels.add(reservationsBYS.getHotels().get(0).getIdHotel());
+            idHotels.add(reservationsBYS.getHotels().get(1).getIdHotel());
+            idHotels.add(reservationsBYS.getHotels().get(2).getIdHotel());
+            idHotels.add(reservationsBYS.getHotels().get(3).getIdHotel());
+            reservationsBYS.getUsers().get(1).setMyHotelsId(idHotels);
 
             // --- Test rooms
             roomsMocawi.add(new Room("Habitación 1", 3,"Cama simple", 60000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi1, reservationsBYS.getHotels().get(0).getIdHotel()));
@@ -199,7 +202,6 @@ public class MainController implements ServicesBookYourStay {
         for (User u: usersList) {
             System.out.println( u.toString());
         }
-
     }
 
     public ArrayList<Room> getAllRooms(){
@@ -298,7 +300,22 @@ public class MainController implements ServicesBookYourStay {
         return listadoReservations;
     }
 
-    //@Override
+    public ArrayList<Hotel> listHotelsByUser(String idUser) {
+        ArrayList<Hotel> hotels = new ArrayList<>();
+        // Find user
+        for (User u: reservationsBYS.getUsers()) {
+            if (u.getIDdocumentation().equals(idUser)) {
+                for (Hotel h : reservationsBYS.getHotels()){
+                    if(h.getIdHotel() == idUser){
+                        hotels.add(h);
+                    }
+                }
+            }
+        }
+        return hotels;
+    }
+
+
     public ArrayList<Hotel> listHotelsByIdHotel(ArrayList<String> listIdsHotels) {
         ArrayList<Hotel> listHotels = new ArrayList<>();
         for (Hotel h : reservationsBYS.getHotels()){

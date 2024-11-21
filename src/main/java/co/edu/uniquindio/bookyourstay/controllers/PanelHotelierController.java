@@ -3,6 +3,7 @@ package co.edu.uniquindio.bookyourstay.controllers;
 import co.edu.uniquindio.bookyourstay.models.Hotel;
 import co.edu.uniquindio.bookyourstay.models.User;
 import co.edu.uniquindio.bookyourstay.models.Session;
+import co.edu.uniquindio.bookyourstay.observer.Observer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class PanelHotelierController implements Initializable {
+public class PanelHotelierController implements Observer, Initializable {
 
     @FXML
     private Label labelNombre;
@@ -54,8 +55,7 @@ public class PanelHotelierController implements Initializable {
     }
 
     public void goCreateHotel(ActionEvent actionEvent) {
-
-        mainController.navigateWindow("/createHotel.fxml", "Crear nuevo hotel");
+        mainController.navegarVentanaObservable("/createHotel.fxml", "Crear nuevo hotel", this);
     }
 
     public void cerrarSesion(ActionEvent actionEvent) {
@@ -66,6 +66,12 @@ public class PanelHotelierController implements Initializable {
     private void loadHotels() {
         observableHotels = FXCollections.observableArrayList(mainController.listHotelsByIdHotel(session.getUser().getMyHotelsId()));
         hotelsTable.setItems(observableHotels);
+    }
+
+    @Override
+    public void notificar() {
+        observableHotels.setAll(mainController.listHotelsByIdHotel(session.getUser().getMyHotelsId()));
+        hotelsTable.refresh();  // Refrescar la tabla para mostrar cambios
     }
 
     @Override
