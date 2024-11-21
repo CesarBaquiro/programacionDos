@@ -48,10 +48,41 @@ public class MainController implements ServicesBookYourStay {
             imagesMocawi2.add(getClass().getResource("/img/dormitorio1Basico2.jpg").toExternalForm());
             imagesMocawi2.add(getClass().getResource("/img/recepcion1.jpg").toExternalForm());
 
+            ArrayList<String> imagesCasona = new ArrayList<>();
+            imagesCasona.add(getClass().getResource("/img/fotoHotel1.jpg").toExternalForm());
+            imagesCasona.add(getClass().getResource("/img/fotoHotel2.jpg").toExternalForm());
+            imagesCasona.add(getClass().getResource("/img/fotoHotel3.jpg").toExternalForm());
+            imagesCasona.add(getClass().getResource("/img/fotoHotel4.jpg").toExternalForm());
+
+            ArrayList<String> imagesCasona2 = new ArrayList<>();
+            imagesCasona2.add(getClass().getResource("/img/fotoHotel3.jpg").toExternalForm());
+            imagesCasona2.add(getClass().getResource("/img/fotoHotel1.jpg").toExternalForm());
+            imagesCasona2.add(getClass().getResource("/img/fotoHotel2.jpg").toExternalForm());
+            imagesCasona2.add(getClass().getResource("/img/fotoHotel4.jpg").toExternalForm());
+
+            ArrayList<String> imagesCasona3 = new ArrayList<>();
+            imagesCasona3.add(getClass().getResource("/img/fotoHotel4.jpg").toExternalForm());
+            imagesCasona3.add(getClass().getResource("/img/fotoHotel3.jpg").toExternalForm());
+            imagesCasona3.add(getClass().getResource("/img/fotoHotel2.jpg").toExternalForm());
+            imagesCasona3.add(getClass().getResource("/img/fotoHotel1.jpg").toExternalForm());
+
+
+            ArrayList<String> imagesPlayona = new ArrayList<>();
+            imagesPlayona.add(getClass().getResource("/img/fotoHotel3.jpg").toExternalForm());
+            imagesPlayona.add(getClass().getResource("/img/fotoHotel2.jpg").toExternalForm());
+            imagesPlayona.add(getClass().getResource("/img/fotoHotel1.jpg").toExternalForm());
+            imagesPlayona.add(getClass().getResource("/img/fotoHotel4.jpg").toExternalForm());
+
             ArrayList<Room> roomsMocawi = new ArrayList<>();
+            ArrayList<Room> roomsCasona = new ArrayList<>();
+            ArrayList<Room> roomsCasonaBogota = new ArrayList<>();
+            ArrayList<Room> roomsPlayona = new ArrayList<>();
 
             // --- Test hotels
             reservationsBYS.createHotel( "Mocawi", "Ubicado en la vibrante ciudad de Armenia, Hotel Mocawi redefine la experiencia hotelera con un concepto que fusiona lujo, comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable en el centro de la ciudad, rodeado de modernas comodidades y un ambiente acogedor.", "Armenia, Quindío", roomsMocawi);
+            reservationsBYS.createHotel( "Casona Cali", "Vive la experiencia en la playa, experiencia hotelera, comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable en el centro de la ciudad, rodeado de modernas comodidades y un ambiente familiar", "Cali, Valle del Cauca", roomsCasona);
+            reservationsBYS.createHotel( "Casona Bogota", "Vive la experiencia en la playa, experiencia hotelera, comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable en el centro de la ciudad, rodeado de modernas comodidades y un ambiente familiar", "Bogotá, Cundinamarca", roomsCasonaBogota);
+            reservationsBYS.createHotel( "Playona", "La casona redefine la experiencia hotelera con comodidad y conexión con la naturaleza. Inspirado en la rica cultura cafetera y los paisajes únicos del Quindío, Mocawi ofrece a sus huéspedes una experiencia inolvidable y un ambiente junto al mar", "Cartagena, Bolívar", roomsPlayona);
 
             // --- Add mocawa hotels to test hotelier 1
             ArrayList<String> idMocawisHotels = new ArrayList<>();
@@ -59,8 +90,15 @@ public class MainController implements ServicesBookYourStay {
             reservationsBYS.getUsers().get(1).setMyHotelsId(idMocawisHotels);
 
             // --- Test rooms
-            roomsMocawi.add(new Room("Habitación 1", 3,"Cama simple", 180000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi1, reservationsBYS.getHotels().get(0).getIdHotel()));
+            roomsMocawi.add(new Room("Habitación 1", 3,"Cama simple", 60000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi1, reservationsBYS.getHotels().get(0).getIdHotel()));
             roomsMocawi.add(new Room("Habitacion presidencial", 6,"Cama doble", 490000,"Descripción de la Habitación 2", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesMocawi2, reservationsBYS.getHotels().get(0).getIdHotel()));
+            roomsCasona.add(new Room("Ejecutivo", 1,"Cama simple", 100000,"Descripción de la Habitación", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona, reservationsBYS.getHotels().get(1).getIdHotel()));
+            roomsCasonaBogota.add(new Room("Ejecutivo", 1,"Cama simple", 110000,"Descripción de la Habitación", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona2, reservationsBYS.getHotels().get(2).getIdHotel()));
+            roomsCasonaBogota.add(new Room("Ejecutivo", 1,"Cama simple", 100000,"Descripción de la Habitación", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona2, reservationsBYS.getHotels().get(2).getIdHotel()));
+            roomsCasonaBogota.add(new Room("Ejecutivo", 1,"Cama simple", 130000,"Descripción de la Habitación", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona3, reservationsBYS.getHotels().get(2).getIdHotel()));
+            roomsPlayona.add(new Room("A la playa con el combo", 3,"2 camas dobles", 600000,"Descripción de la Habitación", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona, reservationsBYS.getHotels().get(3).getIdHotel()));
+            roomsPlayona.add(new Room("A la playa", 3,"Cama simple", 200000,"Descripción de la Habitación 1", new ServicesIncluded(true, true, true, true, false, true, true, true, true ), imagesCasona, reservationsBYS.getHotels().get(3).getIdHotel()));
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);

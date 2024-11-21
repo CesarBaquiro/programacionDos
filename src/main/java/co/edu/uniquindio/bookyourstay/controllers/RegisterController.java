@@ -107,7 +107,7 @@ public class RegisterController implements Observer, Initializable {
                 generatedCode = EnvioEmail.createCodeActivation();
 
                 // Send the code to the registered email
-                EnvioEmail.enviarNotificacion(email, "Codigo de verificacion Book Your Stay", "Hola! Te enviamos tu codigo de verificación "+generatedCode);
+                //EnvioEmail.enviarNotificacion(email, "Codigo de verificacion Book Your Stay", "Hola! Te enviamos tu codigo de verificación "+generatedCode);
                 System.out.println("Código generado: " + generatedCode);
 
                 // Open the verifyCode.fxml window for the user to enter the code
