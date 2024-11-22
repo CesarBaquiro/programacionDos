@@ -53,6 +53,19 @@ public class CreateHotelController extends ObserverWindow implements Initializab
         // Terminar la creacion de habitaciones
     }
 
+    public void createRoom(ActionEvent actionEvent) {
+        String name = txtName.getText();
+        String description = txtDescription.getText();
+        String city = comboBoxCities.getValue();
+        ArrayList<Room> rooms = new ArrayList<>();
+
+        mainController.createHotel(name, description, city, rooms);
+        session.getUser().getMyHotelsId().add(mainController.getAllHotels().getLast().getIdHotel());
+        mainController.showAlert("Se guardo el hotel " + name,"Hotel creado", Alert.AlertType.INFORMATION);
+        observer.notificar();
+        // Terminar la creacion de habitaciones
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Load combo box

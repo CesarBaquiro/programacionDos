@@ -58,6 +58,10 @@ public class PanelHotelierController implements Observer, Initializable {
         mainController.navegarVentanaObservable("/createHotel.fxml", "Crear nuevo hotel", this);
     }
 
+    public void goCreateRoom(ActionEvent actionEvent) {
+        mainController.navegarVentanaObservable("/createRoom.fxml", "Crear nueva habitación", this);
+    }
+
     public void cerrarSesion(ActionEvent actionEvent) {
         mainController.closeWindow(hotelsTable);
         session.cerrarSesion();
