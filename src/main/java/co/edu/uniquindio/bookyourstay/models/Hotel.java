@@ -25,6 +25,10 @@ public class Hotel {
         this.rooms = rooms;
     }
 
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
+
     // Method to bring all rooms
     public ArrayList<Room> getRooms(){
         return new ArrayList<>(rooms);

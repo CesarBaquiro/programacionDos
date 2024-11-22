@@ -279,6 +279,10 @@ public class MainController implements ServicesBookYourStay {
         reservationsBYS.createHotel(name, description, location, rooms);
     }
 
+    public void createRoom(String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, String idHotel) {
+        reservationsBYS.createRoom(name,  capacity, typeBed,price,  description,  servicesIncluded, idHotel);
+    }
+
     @Override
     public void createReservation(String idAccommodation, String idRoom, String idDocumentationUser, LocalDate startDate, LocalDate endDate) throws Exception {
         reservationsBYS.createReservation(idAccommodation, idRoom, idDocumentationUser,startDate,endDate);

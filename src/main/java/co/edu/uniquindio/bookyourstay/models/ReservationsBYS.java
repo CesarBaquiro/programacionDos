@@ -33,9 +33,6 @@ public class ReservationsBYS implements ServicesBookYourStay {
         return null;
     }
 
-
-
-
     @Override
     public void registerUser(String iDdocumentation, String fullname, String phone, Role role, String email, String password, String activationCode) throws Exception {
         users.add(new User(iDdocumentation, fullname, phone, role, email, password, activationCode));
@@ -44,6 +41,16 @@ public class ReservationsBYS implements ServicesBookYourStay {
     @Override
     public void createHotel(String name, String description, String location, ArrayList<Room> rooms) {
         hotels.add(new Hotel(name, description, location, rooms));
+    }
+
+    public void createRoom(String name, int capacity, String typeBed, float price, String description, ServicesIncluded servicesIncluded, String idHotel) {
+        ArrayList<String> images = new ArrayList<>();
+        images.add("/fotoHotel1.png");
+        for (Hotel h: hotels){
+            if(h.getIdHotel().equals(idHotel)){
+                h.addRoom(new Room(name, capacity, typeBed, price,description, servicesIncluded, images, idHotel));
+            }
+        }
     }
 
     @Override
