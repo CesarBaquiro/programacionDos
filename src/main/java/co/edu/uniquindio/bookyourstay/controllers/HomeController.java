@@ -179,7 +179,7 @@ public class HomeController implements Initializable {
             return; // Exit method since there are no rooms
         }
 
-        int elementosPorFila = 2; // Number of elements per row
+        int elementosPorFila = 3; // Number of elements per row
         int row = 0, col = 0;
 
         for (Room room : rooms) {

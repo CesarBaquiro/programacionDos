@@ -62,7 +62,6 @@ public class CreateHotelController extends ObserverWindow implements Initializab
         session.getUser().getMyHotelsId().add(mainController.getAllHotels().getLast().getIdHotel());
         mainController.showAlert("Se guardo el hotel " + name,"Hotel creado", Alert.AlertType.INFORMATION);
         observer.notificar();
-        // Terminar la creacion de habitaciones
     }
 
     @Override

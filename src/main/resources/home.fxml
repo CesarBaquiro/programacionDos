@@ -125,7 +125,7 @@
                <Font name="System Bold" size="18.0" />
             </font>
          </Label>
-            <GridPane fx:id="gridPane" alignment="CENTER_LEFT" hgap="10" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" vgap="10">
+            <GridPane fx:id="gridPane" alignment="CENTER" hgap="10" style="-fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 10; -fx-background-color: white;" vgap="10">
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" right="20.0" />
             </VBox.margin></GridPane>
